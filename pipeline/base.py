@@ -5,9 +5,9 @@ from datetime import datetime
 # this a wrapper class where we hold the ouput (pandas dataframe) for each component
 # this allows us to store metadata about each df
 class DataWrapper:
-    def __init__(self, data, metadata):
-        self.data : pd.DataFrame = data
-        self.metadata : dict = metadata
+    def __init__(self, data, metadata={}):
+        self.data = data
+        self.metadata = metadata
 
 # this is our superclass for each of our pipeline components
 # pipeline components will inherit from this class
@@ -15,22 +15,22 @@ class Component:
     def __init__(self, name):
         self.component_name = name
 
-    def start_time(self) -> datetime:
+    def start_time(self) -> str:
         # this is the format of time (Tue Oct 21 18:09:32 2025)
         return datetime.now().strftime("%c")
-    
+
     def time_elapsed(self, start: float, end: float) -> float:
         return end - start
     
     # Subclasses need to override this, all components will need to implement this method
-    def run(self, data: pd.DataFrame) -> DataWrapper:
+    def run(self, data) -> DataWrapper:
         raise NotImplementedError
     
     # Metadata we are collecting for every component
     # 1) when component execution begins
     # 2) the duration of execution
     # we can add more metadata to the dictionary as needed
-    def execute_component(self, data: pd.DataFrame) -> DataWrapper:
+    def execute_component(self, data) -> DataWrapper:
         # log start time and start stopwatch
         component_start_time = self.start_time()
         t0 = time.perf_counter()
