@@ -8,8 +8,8 @@ from datetime import timedelta
 
 ### PREPROCESSING WORK
 
-# Get all column names files = glob.glob('Processing\\States\\**\\*.csv')  
-files = glob.glob(os.path.join('Processing\\States', '**', '*.csv'), recursive=True)
+# Get all files for preprocessing
+files = glob.glob(os.path.join('pipeline\\Processing\\States', '**', '*.csv'), recursive=True)
 cols = set()   
 
 for file in files:
@@ -34,7 +34,7 @@ for time in timestamp:
 
 # Get the raw county set for each state
 raw_county_dict = {}
-base = os.path.join("Processing\\States")
+base = os.path.join("pipeline\\Processing\\States")
 key_val_set = set()
 
 for state in glob.glob(os.path.join(base, '*')):
@@ -59,7 +59,7 @@ for state in glob.glob(os.path.join(base, '*')):
 
 # Compile the "master" county list we will use
 master_county_dict = {}
-base = os.path.join("Processing\\CountyList", "*.txt")
+base = os.path.join("pipeline\\Processing\\CountyList", "*.txt")
 
 for state in glob.glob(base):
     with open(state, 'r', encoding="utf-8") as file:
@@ -114,6 +114,10 @@ def standardize_cols(df, state):
         if "customers_served" in df.columns:
             df.drop(columns="% out", inplace=True)
         else:
+            # TODO: figure out how to handle "<" more robustly
+            mask = ~df['% out'].astype(str).str.contains('<', na=True)
+            valid_rows = df[mask]
+            
             df['% out'] = df['% out'].str.replace("<", "", regex=False).str.rstrip('%').replace("", np.nan).astype(float)
             df['% out'] = pd.to_numeric(df['% out'], errors="coerce") / 100
             df['customers_served'] = np.where(
@@ -164,7 +168,7 @@ def standardize_cols(df, state):
         return [True, df]
 
 # Pull most recent customers served data as a baseline
-base = os.path.join("Processing\\States")
+base = os.path.join("pipeline\\Processing\\States")
 
 for state in glob.glob(os.path.join(base, '*')):
     state_code = state[-2:]
@@ -209,7 +213,7 @@ for state in glob.glob(os.path.join(base, '*')):
     df = df.rename(columns={'index': 'county'})
     df = df.sort_values('county')
     # Uncomment below to write data into state csv
-    df.to_csv(os.path.join("Processing\\CustomersServed", f"{state_code}_customers_served.csv"))
+    df.to_csv(os.path.join("pipeline\\Processing\\CustomersServed", f"{state_code}_customers_served.csv"))
 
 ### PROCESSING 
 STATE = 'AL'
@@ -218,7 +222,7 @@ DATE = "2024-05-23"
 # Initialize a list of dictionaries, each entry representing a county and its data 
 schema = ["ID", "county", "daily_max_customers_affected", "per_outage_customers_afffected", "customers_served", "start_time", "end_time", "duration"]
 county_dfs = {c: pd.DataFrame(columns=schema) for c in master_county_dict[STATE]}
-files = glob.glob(os.path.join('Processing\\States', STATE, '*.csv'))
+files = glob.glob(os.path.join('pipeline\\Processing\\States', STATE, '*.csv'))
 
 for file in files:
     df = pd.read_csv(file)
@@ -294,7 +298,7 @@ for county in master_county_dict[STATE]:
     if county_dfs[county].empty:
 
         # Pull historical customers served
-        historical_base = glob.glob(os.path.join('Processing\\CustomersServed', f"{STATE}_customers_served.csv"))
+        historical_base = glob.glob(os.path.join('pipeline\\Processing\\CustomersServed', f"{STATE}_customers_served.csv"))
         historical_val = -1
         if historical_base:
             historical_served = pd.read_csv(historical_base[0])
@@ -351,7 +355,7 @@ for county in county_dfs:
 # Write data to CSV
 combined = pd.concat(county_dfs.values(), ignore_index=True)
 # Uncomment below to write data to corresponding csv file
-combined.to_csv(os.path.join("Processing\\Processed_Data", f"{STATE}_all_counties_{DATE}.csv"), index=False)
+combined.to_csv(os.path.join("pipeline\\Processing\\Processed_Data", f"{STATE}_all_counties_{DATE}.csv"), index=False)
 
 num_counties = combined['county'].nunique()
 print(f"Total number of counties reported for {STATE}: {num_counties}")
