@@ -15,8 +15,7 @@ class Preprocess(Component):
         # NOTE: original to standarized column name mappings are done manually using this csv
         raw_cols = set()
         for col in data.columns:
-            raw_cols.update(col)
-        raw_cols = sorted(raw_cols)
+            raw_cols.update(col.strip().lower())
 
         output_path = os.path.join(self.base_path, "raw_col_names.txt")
         with open(output_path, "w") as f:
@@ -24,10 +23,9 @@ class Preprocess(Component):
                 f.write(c + "\n")
 
     def buildRawCountySet(self, data):
-        # Get a list of which columns to search for county names
-        all_mappings = pd.read_csv(self.base_path, "col_mappings.csv")
+        # Get a list of which columns to search county names for
+        all_mappings = pd.read_csv(self.base_path, "col_map.csv")
         county_col_list = all_mappings["county"].tolist()
-
         raw_county_set = set()
 
         # Iterate through all columns to get raw county name list
@@ -35,7 +33,7 @@ class Preprocess(Component):
             if col in county_col_list:
                 # Filter to only use rows where key column != 'muni'
                 if 'key' in data.columns:
-                    mask = data['key'].str.lower() != 'muni'
+                    mask = data['key'].str.lower().str.strip() != 'muni'
 
                     values_to_add = (
                         data.loc[mask, col]
