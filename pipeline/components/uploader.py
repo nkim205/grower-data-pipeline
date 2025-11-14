@@ -3,6 +3,8 @@ import boto3
 import os
 import logging
 from botocore.exceptions import NoCredentialsError, ClientError
+from io import StringIO
+from datetime import date
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -24,14 +26,14 @@ class WriteToS3(Component):
         self.bucket_name = bucket_name
         self.s3_client = boto3.client("s3")
 
-    def upload_file(self, file_path: str, s3_key: str) -> bool:
+    def upload_dataframe(self, df, s3_key: str) -> bool:
         """
-        Uploads a file from the local filesystem to an S3 bucket.
+        Converts a dataframe to CSV in-memory and uploads it to S3.
 
         Parameters
         ----------
-        file_path : str
-            Local path to the file to upload.
+        df : pd.DataFrame
+            The dataframe to upload.
         s3_key : str
             The destination key/path in the S3 bucket.
 
@@ -40,19 +42,25 @@ class WriteToS3(Component):
         bool
             True if upload succeeded, False otherwise.
         """
-        # Ensure file exists locally
-        if not os.path.exists(file_path):
-            logger.error(f"File not found: {file_path}")
-            return False
-
         try:
-            logger.info(f"Uploading {file_path} to s3://{self.bucket_name}/{s3_key} ...")
-            self.s3_client.upload_file(file_path, self.bucket_name, s3_key)
+            # Convert DF → CSV in memory
+            csv_buffer = StringIO()
+            df.to_csv(csv_buffer, index=False)
+            csv_buffer.seek(0)
+
+            logger.info(f"Uploading dataframe to s3://{self.bucket_name}/{s3_key} ...")
+
+            # Upload without creating a temp file
+            self.s3_client.put_object(
+                Bucket=self.bucket_name,
+                Key=s3_key,
+                Body=csv_buffer.getvalue(),
+                ContentType="text/csv",
+            )
+
             logger.info("Upload successful ✅")
             return True
 
-        except FileNotFoundError:
-            logger.error(f"File not found: {file_path}")
         except NoCredentialsError:
             logger.error("AWS credentials not found. Please configure them properly.")
         except ClientError as e:
@@ -60,31 +68,38 @@ class WriteToS3(Component):
 
         return False
 
-    def run(self, data: DataWrapper, local_file_path: str, s3_key: str):
+    def run(self, data: DataWrapper, s3_prefix: str = ""):
         """
-        Main entry point for this pipeline component.
-        Uploads the processed metrics file to S3.
-
-        Parameters
-        ----------
-        data : DataWrapper
-            The data passed from the previous component (e.g., metrics output).
-        local_file_path : str
-            Path to the processed CSV file stored locally on the GitHub runner.
-        s3_key : str
-            The S3 destination key for the uploaded file.
-
-        Returns
-        -------
-        DataWrapper
-            Returns the same data wrapper object for downstream pipeline components.
+        Takes the dataframe from upstream (via DataWrapper),
+        uploads it to S3, and returns a new DataWrapper indicating the result.
         """
-        success = self.upload_file(local_file_path, s3_key)
+
+        # Extract dataframe from DataWrapper
+        df = data.data
+
+        # Build filename
+        filename = f"{date.today().isoformat()}.csv"
+
+        # Normalize S3 prefix (e.g., "al")
+        clean_prefix = s3_prefix.strip().lower().rstrip("/")
+
+        # Build S3 key
+        s3_key = filename if clean_prefix == "" else f"{clean_prefix}/{filename}"
+
+        # Upload the dataframe
+        success = self.upload_dataframe(df, s3_key)
 
         if not success:
-            logger.error(f"Upload failed for {local_file_path}")
-        else:
-            logger.info(f"Successfully uploaded {local_file_path} to {self.bucket_name}")
+            logger.error(f"Failed to upload to s3://{self.bucket_name}/{s3_key}")
 
-        # Continue the pipeline by returning the same wrapped data
-        return data
+        # Prepare result for next pipeline step
+        payload = {
+            "uploaded": success,
+            "s3_bucket": self.bucket_name,
+            "s3_key": s3_key,
+            "rows": df.shape[0],
+            "columns": df.shape[1],
+        }
+        payload = DataWrapper(payload)
+
+        return payload
