@@ -1,12 +1,12 @@
 from pipeline.base import Component, DataWrapper
-from standardize import Standardize
+from pipeline.components.standardize import Standardize
 import os
 import pandas as pd
 from datetime import timedelta
 
 class Processing(Component):
     def __init__(self, name, state, date):
-        super.__init__(name)
+        super().__init__(name)
         self.state = state
         self.date = date
         self.schema = [
@@ -27,12 +27,10 @@ class Processing(Component):
         self.master_county_list = self.std.get_master_county_list()  # [county 1, county 2, ...]
         self.county_dfs = {c: pd.DataFrame(columns=self.schema) for c in self.master_county_list}
 
-
-
     # Aggregate data for a given county and provider and add it to the list of dfs to return 
     def aggregate(self, df, county):
         # Get only the columns we need 
-        df = df[['county', 'per_outage_customers_afffected', 'customers_served', 'timestamp']]
+        df = df[['county', 'per_outage_customers_affected', 'customers_served', 'timestamp']].copy()
 
         # Setup for outage grouping
         df = df.sort_values('timestamp')
@@ -47,7 +45,7 @@ class Processing(Component):
 
         # Aggregate result
         result = (
-            df.groupBy('ID').agg(
+            df.groupby('ID').agg(
                 county=('county', 'first'),
                 per_outage_customers_affected=('per_outage_customers_affected', 'max'),
                 customers_served=('customers_served', 'max'),
@@ -64,8 +62,6 @@ class Processing(Component):
         else:
             self.county_dfs[county] = pd.concat([self.county_dfs[county], result], ignore_index=True)
 
-
-
     # Fill in the daily max customers affected column for each county
     def fill_daily_max(self, county):
         # Convert customers_affected to numeric 
@@ -78,28 +74,30 @@ class Processing(Component):
             daily_max = self.county_dfs[county]['per_outage_customers_affected'].max()
             self.county_dfs[county]['daily_max_customers_affected'] = daily_max
 
-
-
     # Creates filler dataframes for counties that had no reported outages for a given day
     def create_filler(self, county):
         # Pull historical customers served
         read_path = os.path.join(self.std.base_path, 'historical.csv')
-        df = pd.read_csv(read_path)
-        county_df = df.loc[df['county'] == county]
         historical_val = -1
 
         # Check that the historical data exists
-        if not county_df.empty:
-            historical_val = int(county_df['customers_served'].sum())
-        else:
-            print(f"Unable to find historical data for {county}, {self.state}")
+        try:
+            df = pd.read_csv(read_path)
+            county_df = df.loc[df['county'] == county]
+            
+            if not county_df.empty:
+                historical_val = int(county_df['customers_served'].sum())
+            else:
+                print(f"Unable to find historical data for {county}, {self.state}")
+        except FileNotFoundError:
+            print(f"Unable to find historical.csv for {self.state}")
         
         # Create the filler dataframe using the historical data
         result = pd.DataFrame([{
             "ID": 1,
             "county": county,
             "daily_max_customers_affected": 0,
-            "per_outage_customers_afffected": 0,
+            "per_outage_customers_affected": 0,
             "customers_served": historical_val,
             "start_time": pd.NaT,
             "end_time": pd.NaT,
@@ -109,8 +107,6 @@ class Processing(Component):
         self.county_dfs[county] = result
         # Reindex to reorganize and enforce column order
         self.county_dfs[county] = self.county_dfs[county].reindex(columns=self.schema)
-
-
 
     # Sums each provider's customers served number to be used as the total county customers served
     def aggregate_customers_served(self, county):
@@ -122,10 +118,8 @@ class Processing(Component):
 
         # Keep only 1 instance of each unique EMC, take the sum, replace previous customers served with correct values
         unique_customers_served = self.county_dfs[county]['customers_served'].drop_duplicates()
-        sum = int(unique_customers_served.unique().sum())
-        self.county_dfs[county]['customers_served'] = sum
-
-
+        total = int(unique_customers_served.sum())
+        self.county_dfs[county]['customers_served'] = total
 
     def process(self, data):
         # Add initial state of processed data to self.county_dfs dictionary
@@ -165,13 +159,17 @@ class Processing(Component):
                 self.aggregate_customers_served(county)
 
         return self.county_dfs
-    
-
 
     def run(self, data):
         # this is the main function to be implemented, use your helper functions here 
         processed_data = self.process(data)
+        
+        # Combine all county dataframes into one
+        combined = pd.concat(processed_data.values(), ignore_index=True)
+        
+        print(f"Processing complete for {self.state}")
+        
         # once you have data ready for the next step, now we wrap it using the DataWrapper Class
-        per_county_data = DataWrapper(processed_data)
+        per_county_data = DataWrapper(combined)
         # we can return this data to the next component of the pipeline
         return per_county_data
