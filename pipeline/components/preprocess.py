@@ -19,10 +19,17 @@ class Preprocess(Component):
 
         output_path = os.path.join(self.base_path, "raw_col_names.txt")
         with open(output_path, "w") as f:
-            for c in sorted(raw_cols):
+            for c in raw_cols:
                 f.write(c + "\n")
 
-    def buildRawCountySet(self, data, county_col_list):
+    def buildRawCountySet(self, data):
+        # Get a list of which columns to search county names for
+        all_mappings = pd.read_csv(os.path.join(self.base_path, "col_map.csv"), sep=",")
+        county_col_list = all_mappings.loc[
+            all_mappings.iloc[:, 1].str.lower() == "county",
+            all_mappings.columns[0]
+        ].tolist()
+
         raw_county_set = set()
 
         # Iterate through all columns to get raw county name list
@@ -36,58 +43,53 @@ class Preprocess(Component):
                         data.loc[mask, col]
                         .dropna()
                         .astype(str)
-                        .str.strip()
                         .str.lower()
+                        .str.replace("county", "", regex=True)
+                        .str.strip()
                         .replace("", pd.NA)
                         .dropna()
                     )
                     raw_county_set.update(values_to_add)
                 else:
                     values_to_add = (
-                        data[col]
+                        data.loc[col]
                         .dropna()
                         .astype(str)
-                        .str.strip()
                         .str.lower()
+                        .str.replace("county", "", regex=True)
+                        .str.strip()
                         .replace("", pd.NA)
                         .dropna()
                     )
                     raw_county_set.update(values_to_add)
-        
+
         raw_county_set = sorted(raw_county_set)
         output_path = os.path.join(self.base_path, "raw_county_list.txt")
         with open(output_path, "w") as f:
             for c in raw_county_set:
                 f.write(c + "\n")
 
-    def buildCountyMap(self):
+    def buildCountyMap(self, data):
         # Builds the mapping of {original name : standardized name} and stores it in a csv
         
         # Get the list of raw county names
-        raw_county_list = []
+        raw_county_list = set()
         read_path = os.path.join(self.base_path, "raw_county_list.txt")
-        try:
-            with open(read_path, "r") as f:
-                raw_county_list = [line.strip() for line in f if line.strip()]
-        except FileNotFoundError:
-            print(f"Error: {read_path} not found. Run buildRawCountySet first.")
-            return
-
+        with open(read_path, "r") as f:
+            lines = f.readlines()
+            for line in lines:
+                raw_county_list.add(line.strip().lower())
+        
         # Get the list of standardized names we will use
-        master_county_set = []
+        master_county_set = set()
         read_path = os.path.join(self.base_path, "master_county_list.txt")
-        try:
-            with open(read_path, "r") as f:
-                master_county_set = [
-                    line.strip().lower().replace("county", "").strip() 
-                    for line in f if line.strip()
-                ]
-        except FileNotFoundError:
-            print(f"Error: {read_path} not found. Please create master_county_list.txt manually.")
-            return
+        with open(read_path, "r") as f:
+            lines = f.readlines()
+            for line in lines:
+                master_county_set.add(line.lower().replace("county", "").strip())
         
         # Fuzzy match raw county names to master county names
-        county_map = {}  # {raw : [standardized name, score]}
+        county_map = {} # {raw : [standardized name, score]}
         for raw in raw_county_list:
             match, score, _ = process.extractOne(raw, master_county_set)
             if score >= 85:
@@ -96,22 +98,16 @@ class Preprocess(Component):
         # Write results to csv
         output_path = os.path.join(self.base_path, "county_map.csv")
         rows = [(raw, vals[0], vals[1]) for raw, vals in county_map.items()]
-        with open(output_path, "w", newline="") as f:
-            writer = csv.writer(f)
-            writer.writerow(["raw", "standard", "score"])
-            writer.writerows(rows)
+        df = pd.DataFrame(rows, columns=["raw", "standard", "score"])
+        df.to_csv(output_path, index =False)
 
-    def preprocess(self, data, county_col_list=None):
+    def preprocess(self, data):
+        # Uncomment preprocessing calls to run
         # NOTE: some sub-routines rely on the manually built column mapping to be completed
         data.columns = [col.strip().lower() for col in data.columns]
-        
-        if county_col_list is None:
-            county_col_list = ['countynam', 'countyname', 'county', 'counties', 
-                             'area', 'name', 'area_name']
-        
         self.writeRawColNames(data)
-        self.buildRawCountySet(data, county_col_list)
-        self.buildCountyMap()
+        self.buildRawCountySet(data)
+        self.buildCountyMap(data)
 
         return None
     
