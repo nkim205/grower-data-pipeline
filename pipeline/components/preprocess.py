@@ -32,36 +32,38 @@ class Preprocess(Component):
 
         raw_county_set = set()
 
-        # Iterate through all columns to get raw county name list
-        for col in data.columns:
-            if col in county_col_list:
-                # Filter to only use rows where key column != 'muni'
-                if 'key' in data.columns:
-                    mask = data['key'].str.lower().str.strip() != 'muni'
+        # Get all matching column indicies to loop through
+        indicies = [i for i, c in enumerate(data.columns) if c in county_col_list]
+        
+        for i in indicies:
+            if 'key' in data.columns:
+                series = data.iloc[:, i]
+                mask = (data['key'].isna()) | (data['key'].str.lower().str.strip() != 'muni')
+                non_muni = series[mask]
 
-                    values_to_add = (
-                        data.loc[mask, col]
-                        .dropna()
-                        .astype(str)
-                        .str.lower()
-                        .str.replace("county", "", regex=True)
-                        .str.strip()
-                        .replace("", pd.NA)
-                        .dropna()
-                    )
-                    raw_county_set.update(values_to_add)
-                else:
-                    values_to_add = (
-                        data.loc[col]
-                        .dropna()
-                        .astype(str)
-                        .str.lower()
-                        .str.replace("county", "", regex=True)
-                        .str.strip()
-                        .replace("", pd.NA)
-                        .dropna()
-                    )
-                    raw_county_set.update(values_to_add)
+                values_to_add = (
+                    non_muni
+                    .dropna()
+                    .astype(str)
+                    .str.lower()
+                    .str.replace("county", "", regex=True)
+                    .str.strip()
+                    .replace("", pd.NA)
+                    .dropna()
+                )
+                raw_county_set.update(values_to_add)
+            else:
+                values_to_add = (
+                    data.iloc[:, i]
+                    .dropna()
+                    .astype(str)
+                    .str.lower()
+                    .str.replace("county", "", regex=True)
+                    .str.strip()
+                    .replace("", pd.NA)
+                    .dropna()
+                )
+                raw_county_set.update(values_to_add)
 
         raw_county_set = sorted(raw_county_set)
         output_path = os.path.join(self.base_path, "raw_county_list.txt")
