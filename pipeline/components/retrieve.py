@@ -127,8 +127,13 @@ class DataRetrievalS3(Component):
         # Generate the NaN report for the retrieved data
         self.generate_nan_report(s3_data, output_file=f"{self.state}_nan_report.xlsx")
 
+        # Add metadata so downstream components know the prefix to use
+        metadata = {
+            "s3_prefix": self.state.lower().strip()
+        }
+
         # once you have data ready for the next step, now we wrap it using the DataWrapper Class
-        per_provider_data = DataWrapper(s3_data)
+        per_provider_data = DataWrapper(s3_data, metadata=metadata)
 
         # we can return this data to the next component of the pipeline
         return per_provider_data
