@@ -77,11 +77,14 @@ class WriteToS3(Component):
         # Extract dataframe from DataWrapper
         df = data.data
 
+        # Pull prefix from metadata
+        prefix = data.metadata.get("s3_prefix", "")
+
         # Build filename
         filename = f"{date.today().isoformat()}.csv"
 
         # Normalize S3 prefix (e.g., "al")
-        clean_prefix = s3_prefix.strip().lower().rstrip("/")
+        clean_prefix = prefix.strip().lower().rstrip("/")
 
         # Build S3 key
         s3_key = filename if clean_prefix == "" else f"{clean_prefix}/{filename}"
