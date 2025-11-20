@@ -1,0 +1,6 @@
+raw,standard
+customersaffected,per_outage_customers_affected
+customersserved,customers_served
+timestamp,timestamp
+name,county
+customersoutnow,per_outage_customers_affected
