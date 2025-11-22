@@ -2,6 +2,7 @@ import argparse
 from pipeline.components.retrieve import DataRetrievalS3
 from pipeline.components.process import Processing
 from pipeline.components.metrics import Metrics
+from pipeline.components.uploader import WriteToS3
 from pipeline.base import DataWrapper
 
 def retrieve_state_arg() -> str:
@@ -29,8 +30,9 @@ def pipeline() -> DataWrapper:
     retrieve = DataRetrievalS3(name="Retrieve Outage Data from S3", state=state) # for retrieve we would need to pass in state parameter
     process = Processing(name="Standardize Outage Data")
     metrics = Metrics(name="Calculate SAIDI and SAIFI")
+    upload = WriteToS3(name='Upload Processed Data to S3', bucket_name='state-metrics')
     # create a list of all the components in order of pipeline steps
-    components = [retrieve, process, metrics]
+    components = [retrieve, process, metrics, upload]
     # call execute_pipeline, which will call the execute method for each component
     result = execute_pipeline(components) # the final_result will be DataWrapper object containing data and metadata
     return result
