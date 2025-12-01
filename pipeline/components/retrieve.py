@@ -13,13 +13,15 @@ class DataRetrievalS3(Component):
         self.state = state
         self.bucket = bucket
 
-    def retrieve(self) -> list[pd.DataFrame]:
+    def retrieve(self, days: int = 1) -> list[pd.DataFrame]:
         """
         Retrieve per-county outage data for a given state from S3.
 
         Args:
             state (str): Two-letter state code (e.g., 'al', 'ga')
             bucket (str): S3 bucket name
+            days (int): How many past days of data to retrieve.
+                        Default = 1 (yesterday only)
 
         Returns:
             list[pd.DataFrame]: List of dataframes, each corresponding to a provider
@@ -30,11 +32,12 @@ class DataRetrievalS3(Component):
         Returns:
             list[pd.DataFrame]: List of dataframes, each corresponding to a provider
         """
-        # Initialize s3 client
+        # Initialize S3 client
         s3 = boto3.client("s3")
 
-        # Yesterday’s date string (adjust format if needed)
-        yesterday = (datetime.now(timezone.utc) - timedelta(days=1)).strftime("%Y-%m-%d")
+        # Time window: last N days
+        end_date = datetime.now(timezone.utc).date()
+        start_date = end_date - timedelta(days=days)
 
         # List all objects in the given state's folder from S3
         prefix = f"{self.state}/"
@@ -51,6 +54,7 @@ class DataRetrievalS3(Component):
 
             # Match any variation of "per_county" in the file name (case-insensitive)
             if key.lower().endswith(".csv") and re.search(r"per[_]?count(y|ies)?", key, re.IGNORECASE):
+
                 s3_obj = s3.get_object(Bucket=self.bucket, Key=key)
                 df = pd.read_csv(io.BytesIO(s3_obj["Body"].read()))
 
@@ -58,22 +62,26 @@ class DataRetrievalS3(Component):
                 if "timestamp" not in df.columns:
                     continue
 
-                # Convert timestamp to datetime and filter by yesterday's date
+                # Convert timestamp to datetime
                 df["timestamp"] = pd.to_datetime(df["timestamp"], errors="coerce")
-                df = df[df["timestamp"].dt.strftime("%Y-%m-%d") == yesterday]
+
+                # Keep rows within the last N days
+                df = df[
+                    (df["timestamp"].dt.date >= start_date) &
+                    (df["timestamp"].dt.date <= end_date)
+                ]
 
                 if not df.empty:
-                    df["source_file"] = key  # optional: track source file
+                    df["source_file"] = key
                     dfs.append(df)
 
         if not dfs:
             return []
 
-        # Combine all into one big DataFrame
         combined = pd.concat(dfs, ignore_index=True)
 
-        # Group by provider column → return as list of DataFrames
-        provider_col = "EMC"  # adjust if your column name is different
+        # Group by provider column -> return as list of DataFrames
+        provider_col = "EMC" # adjust if your column name is different
         if provider_col not in combined.columns:
             raise ValueError(f"Expected column '{provider_col}' not found in data")
 
