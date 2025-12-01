@@ -173,11 +173,19 @@ def build_customers_served_history(
     lookback_days: int = 365,
 ):
     """
-    Build per-county baselines for customers served by scanning each provider
-    file over the requested lookback period (defaults to 1 year). For every
-    county we grab the most recent outage event per provider, then sum those
-    values to get the total customers served for that county.
+        Usage notes:
+        - Run the S3 retrieval first (DataRetrievalS3 / “retrieve_s3”) so `states_dir`
+        is already populated.
+        - Expected layout: states_dir/<STATE_CODE>/*.csv where <STATE_CODE> is a
+        two-letter code; filenames don't matter.
+        - Each CSV needs headers that can be standardized to:
+        county, per_outage_customers_afffected, customers_served, timestamp
+        (common variants are auto-mapped; everything else is dropped).
+        - Only rows within `lookback_days` are used. For each provider we keep the
+        latest record per county, sum across providers, and write
+        <STATE_CODE>_customers_served.csv to `output_dir`.
     """
+
     if not os.path.isdir(states_dir):
         return
 
