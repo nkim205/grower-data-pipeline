@@ -205,9 +205,11 @@ class Standardize(Component):
                     inplace=True
                 )
         
-        renamed_data = self.rename_cols(data)
+        renamed_data = self.rename_cols(data)        
+        renamed_data = renamed_data.loc[:, ~renamed_data.columns.str.lower().duplicated()].copy()   # Drop duplicate columns after renaming
+
         good_data = self.handle_bad_data(renamed_data)
-        
+
         # Check for if any columns are still missing. If so, skip that provider
         std_names = ['county', 'per_outage_customers_affected', 'customers_served', 'timestamp']
         missing = [name for name in std_names if name not in good_data.columns]
@@ -217,6 +219,8 @@ class Standardize(Component):
         
         # Standardize data types
         type_std_data = self.standardize_data_types(good_data)
+        type_std_data = type_std_data[type_std_data['customers_served'] != 0]
+
         # Standardize county names
         std_data = self.standardize_county(type_std_data)
         
