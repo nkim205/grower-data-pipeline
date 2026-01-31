@@ -167,53 +167,84 @@ def standardize_cols(df, state):
         df = df[df['county'].map(type) == str]
         return [True, df]
 
-# Pull most recent customers served data as a baseline
-base = os.path.join("pipeline\\Processing\\States")
+def build_customers_served_history(
+    states_dir=os.path.join("pipeline", "Processing", "States"),
+    output_dir=os.path.join("pipeline", "Processing", "CustomersServed"),
+    lookback_days: int = 365,
+):
+    """
+        Usage notes:
+        - Run the S3 retrieval first (DataRetrievalS3 / “retrieve_s3”) so `states_dir`
+        is already populated.
+        - Expected layout: states_dir/<STATE_CODE>/*.csv where <STATE_CODE> is a
+        two-letter code; filenames don't matter.
+        - Each CSV needs headers that can be standardized to:
+        county, per_outage_customers_afffected, customers_served, timestamp
+        (common variants are auto-mapped; everything else is dropped).
+        - Only rows within `lookback_days` are used. For each provider we keep the
+        latest record per county, sum across providers, and write
+        <STATE_CODE>_customers_served.csv to `output_dir`.
+    """
 
-for state in glob.glob(os.path.join(base, '*')):
-    state_code = state[-2:]
-    served_dict = {}  # {county : [customers served, last updated date]}
+    if not os.path.isdir(states_dir):
+        return
 
-    for file in glob.glob(os.path.join(state, '*.csv')):
-        # Standardize cols 
-        df = pd.read_csv(file)
-        df.columns = df.columns.str.strip().str.lower()
-        res = standardize_cols(df, state_code)
-        if res[0]:
-            df = res[1]
-        else:
+    os.makedirs(output_dir, exist_ok=True)
+    cutoff = pd.Timestamp.utcnow() - pd.Timedelta(days=lookback_days)
+
+    for state in sorted(glob.glob(os.path.join(states_dir, '*'))):
+        state_code = os.path.basename(state)
+        latest_records = []
+
+        for file in glob.glob(os.path.join(state, '*.csv')):
+            df = pd.read_csv(file)
+            df.columns = df.columns.str.strip().str.lower()
+            ok, standardized = standardize_cols(df, state_code)
+            if not ok or standardized.empty:
+                continue
+
+            standardized['timestamp'] = pd.to_datetime(standardized['timestamp'], errors='coerce')
+            mask = standardized['timestamp'].notna() & (standardized['timestamp'] >= cutoff)
+            standardized = standardized.loc[mask]
+            if standardized.empty:
+                continue
+
+            standardized['customers_served'] = pd.to_numeric(
+                standardized['customers_served'],
+                errors='coerce'
+            )
+            standardized = standardized[
+                standardized['customers_served'].notna() &
+                (standardized['customers_served'] >= 0)
+            ]
+            if standardized.empty:
+                continue
+
+            latest = (
+                standardized.sort_values('timestamp')
+                .drop_duplicates('county', keep='last')
+                [['county', 'customers_served', 'timestamp']]
+            )
+            latest_records.append(latest)
+
+        if not latest_records:
             continue
 
-        # Group by county name and sort by timestamp
-        df = df.sort_values(by=['county', 'timestamp'], ascending=[True, False])
-        latest = df.groupby('county', as_index=False).last()
-        latest['customers_served'] = pd.to_numeric(latest['customers_served'], errors='coerce')
-        latest = latest[latest['customers_served'].notna() & (latest['customers_served'] >= 0)] 
+        state_df = (
+            pd.concat(latest_records, ignore_index=True)
+            .groupby('county', as_index=False)
+            .agg(
+                customers_served=('customers_served', 'sum'),
+                timestamp=('timestamp', 'max')
+            )
+            .sort_values('county')
+        )
 
-        # Get the most recent customers served data for each provider
-        for _, row in latest.iterrows():
-            county = row['county']
-            served = row['customers_served']
-            timestamp = row['timestamp']
-            
-            if pd.notna(served):
-                if county in served_dict:
-                    prev_served, prev_ts = served_dict[county]
-                    new_served = served + prev_served
-                    new_ts = max(prev_ts, timestamp)
-                    served_dict[county] = [new_served, new_ts]
-                else:
-                    served_dict[county] = [served, timestamp]
-    
-    df = pd.DataFrame.from_dict(
-        served_dict,
-        orient="index",
-        columns=['customers_served', 'timestamp']
-    ).reset_index()
-    df = df.rename(columns={'index': 'county'})
-    df = df.sort_values('county')
-    # Uncomment below to write data into state csv
-    df.to_csv(os.path.join("pipeline\\Processing\\CustomersServed", f"{state_code}_customers_served.csv"))
+        out_path = os.path.join(output_dir, f"{state_code}_customers_served.csv")
+        state_df.to_csv(out_path, index=False)
+
+
+build_customers_served_history()
 
 ### PROCESSING 
 STATE = 'AL'
