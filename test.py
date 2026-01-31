@@ -30,4 +30,5 @@ TYPE = "proc"
 res = proc.process([df])
 combined = pd.concat(res.values(), ignore_index=True)
 
+combined = combined.drop(columns=['per_outage_customers_affected'])
 combined.to_csv(os.path.join("testing", f"{TYPE}_{STATE}_all_counties_{DATE}.csv"), index=False)
