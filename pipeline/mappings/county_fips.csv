@@ -1,0 +1,3236 @@
+state_abbr,county,fips,state_name
+AL,autauga,01001,Alabama
+AL,baldwin,01003,Alabama
+AL,barbour,01005,Alabama
+AL,bibb,01007,Alabama
+AL,blount,01009,Alabama
+AL,bullock,01011,Alabama
+AL,butler,01013,Alabama
+AL,calhoun,01015,Alabama
+AL,chambers,01017,Alabama
+AL,cherokee,01019,Alabama
+AL,chilton,01021,Alabama
+AL,choctaw,01023,Alabama
+AL,clarke,01025,Alabama
+AL,clay,01027,Alabama
+AL,cleburne,01029,Alabama
+AL,coffee,01031,Alabama
+AL,colbert,01033,Alabama
+AL,conecuh,01035,Alabama
+AL,coosa,01037,Alabama
+AL,covington,01039,Alabama
+AL,crenshaw,01041,Alabama
+AL,cullman,01043,Alabama
+AL,dale,01045,Alabama
+AL,dallas,01047,Alabama
+AL,dekalb,01049,Alabama
+AL,elmore,01051,Alabama
+AL,escambia,01053,Alabama
+AL,etowah,01055,Alabama
+AL,fayette,01057,Alabama
+AL,franklin,01059,Alabama
+AL,geneva,01061,Alabama
+AL,greene,01063,Alabama
+AL,hale,01065,Alabama
+AL,henry,01067,Alabama
+AL,houston,01069,Alabama
+AL,jackson,01071,Alabama
+AL,jefferson,01073,Alabama
+AL,lamar,01075,Alabama
+AL,lauderdale,01077,Alabama
+AL,lawrence,01079,Alabama
+AL,lee,01081,Alabama
+AL,limestone,01083,Alabama
+AL,lowndes,01085,Alabama
+AL,macon,01087,Alabama
+AL,madison,01089,Alabama
+AL,marengo,01091,Alabama
+AL,marion,01093,Alabama
+AL,marshall,01095,Alabama
+AL,mobile,01097,Alabama
+AL,monroe,01099,Alabama
+AL,montgomery,01101,Alabama
+AL,morgan,01103,Alabama
+AL,perry,01105,Alabama
+AL,pickens,01107,Alabama
+AL,pike,01109,Alabama
+AL,randolph,01111,Alabama
+AL,russell,01113,Alabama
+AL,st. clair,01115,Alabama
+AL,shelby,01117,Alabama
+AL,sumter,01119,Alabama
+AL,talladega,01121,Alabama
+AL,tallapoosa,01123,Alabama
+AL,tuscaloosa,01125,Alabama
+AL,walker,01127,Alabama
+AL,washington,01129,Alabama
+AL,wilcox,01131,Alabama
+AL,winston,01133,Alabama
+AK,aleutians east borough,02013,Alaska
+AK,aleutians west census area,02016,Alaska
+AK,anchorage municipality,02020,Alaska
+AK,bethel census area,02050,Alaska
+AK,bristol bay borough,02060,Alaska
+AK,chugach census area,02063,Alaska
+AK,copper river census area,02066,Alaska
+AK,denali borough,02068,Alaska
+AK,dillingham census area,02070,Alaska
+AK,fairbanks north star borough,02090,Alaska
+AK,haines borough,02100,Alaska
+AK,hoonah-angoon census area,02105,Alaska
+AK,juneau city and borough,02110,Alaska
+AK,kenai peninsula borough,02122,Alaska
+AK,ketchikan gateway borough,02130,Alaska
+AK,kodiak island borough,02150,Alaska
+AK,kusilvak census area,02158,Alaska
+AK,lake and peninsula borough,02164,Alaska
+AK,matanuska-susitna borough,02170,Alaska
+AK,nome census area,02180,Alaska
+AK,north slope borough,02185,Alaska
+AK,northwest arctic borough,02188,Alaska
+AK,petersburg borough,02195,Alaska
+AK,prince of wales-hyder census area,02198,Alaska
+AK,sitka city and borough,02220,Alaska
+AK,skagway municipality,02230,Alaska
+AK,southeast fairbanks census area,02240,Alaska
+AK,wrangell city and borough,02275,Alaska
+AK,yakutat city and borough,02282,Alaska
+AK,yukon-koyukuk census area,02290,Alaska
+AZ,apache,04001,Arizona
+AZ,cochise,04003,Arizona
+AZ,coconino,04005,Arizona
+AZ,gila,04007,Arizona
+AZ,graham,04009,Arizona
+AZ,greenlee,04011,Arizona
+AZ,la paz,04012,Arizona
+AZ,maricopa,04013,Arizona
+AZ,mohave,04015,Arizona
+AZ,navajo,04017,Arizona
+AZ,pima,04019,Arizona
+AZ,pinal,04021,Arizona
+AZ,santa cruz,04023,Arizona
+AZ,yavapai,04025,Arizona
+AZ,yuma,04027,Arizona
+AR,arkansas,05001,Arkansas
+AR,ashley,05003,Arkansas
+AR,baxter,05005,Arkansas
+AR,benton,05007,Arkansas
+AR,boone,05009,Arkansas
+AR,bradley,05011,Arkansas
+AR,calhoun,05013,Arkansas
+AR,carroll,05015,Arkansas
+AR,chicot,05017,Arkansas
+AR,clark,05019,Arkansas
+AR,clay,05021,Arkansas
+AR,cleburne,05023,Arkansas
+AR,cleveland,05025,Arkansas
+AR,columbia,05027,Arkansas
+AR,conway,05029,Arkansas
+AR,craighead,05031,Arkansas
+AR,crawford,05033,Arkansas
+AR,crittenden,05035,Arkansas
+AR,cross,05037,Arkansas
+AR,dallas,05039,Arkansas
+AR,desha,05041,Arkansas
+AR,drew,05043,Arkansas
+AR,faulkner,05045,Arkansas
+AR,franklin,05047,Arkansas
+AR,fulton,05049,Arkansas
+AR,garland,05051,Arkansas
+AR,grant,05053,Arkansas
+AR,greene,05055,Arkansas
+AR,hempstead,05057,Arkansas
+AR,hot spring,05059,Arkansas
+AR,howard,05061,Arkansas
+AR,independence,05063,Arkansas
+AR,izard,05065,Arkansas
+AR,jackson,05067,Arkansas
+AR,jefferson,05069,Arkansas
+AR,johnson,05071,Arkansas
+AR,lafayette,05073,Arkansas
+AR,lawrence,05075,Arkansas
+AR,lee,05077,Arkansas
+AR,lincoln,05079,Arkansas
+AR,little river,05081,Arkansas
+AR,logan,05083,Arkansas
+AR,lonoke,05085,Arkansas
+AR,madison,05087,Arkansas
+AR,marion,05089,Arkansas
+AR,miller,05091,Arkansas
+AR,mississippi,05093,Arkansas
+AR,monroe,05095,Arkansas
+AR,montgomery,05097,Arkansas
+AR,nevada,05099,Arkansas
+AR,newton,05101,Arkansas
+AR,ouachita,05103,Arkansas
+AR,perry,05105,Arkansas
+AR,phillips,05107,Arkansas
+AR,pike,05109,Arkansas
+AR,poinsett,05111,Arkansas
+AR,polk,05113,Arkansas
+AR,pope,05115,Arkansas
+AR,prairie,05117,Arkansas
+AR,pulaski,05119,Arkansas
+AR,randolph,05121,Arkansas
+AR,st. francis,05123,Arkansas
+AR,saline,05125,Arkansas
+AR,scott,05127,Arkansas
+AR,searcy,05129,Arkansas
+AR,sebastian,05131,Arkansas
+AR,sevier,05133,Arkansas
+AR,sharp,05135,Arkansas
+AR,stone,05137,Arkansas
+AR,union,05139,Arkansas
+AR,van buren,05141,Arkansas
+AR,washington,05143,Arkansas
+AR,white,05145,Arkansas
+AR,woodruff,05147,Arkansas
+AR,yell,05149,Arkansas
+CA,alameda,06001,California
+CA,alpine,06003,California
+CA,amador,06005,California
+CA,butte,06007,California
+CA,calaveras,06009,California
+CA,colusa,06011,California
+CA,contra costa,06013,California
+CA,del norte,06015,California
+CA,el dorado,06017,California
+CA,fresno,06019,California
+CA,glenn,06021,California
+CA,humboldt,06023,California
+CA,imperial,06025,California
+CA,inyo,06027,California
+CA,kern,06029,California
+CA,kings,06031,California
+CA,lake,06033,California
+CA,lassen,06035,California
+CA,los angeles,06037,California
+CA,madera,06039,California
+CA,marin,06041,California
+CA,mariposa,06043,California
+CA,mendocino,06045,California
+CA,merced,06047,California
+CA,modoc,06049,California
+CA,mono,06051,California
+CA,monterey,06053,California
+CA,napa,06055,California
+CA,nevada,06057,California
+CA,orange,06059,California
+CA,placer,06061,California
+CA,plumas,06063,California
+CA,riverside,06065,California
+CA,sacramento,06067,California
+CA,san benito,06069,California
+CA,san bernardino,06071,California
+CA,san diego,06073,California
+CA,san francisco,06075,California
+CA,san joaquin,06077,California
+CA,san luis obispo,06079,California
+CA,san mateo,06081,California
+CA,santa barbara,06083,California
+CA,santa clara,06085,California
+CA,santa cruz,06087,California
+CA,shasta,06089,California
+CA,sierra,06091,California
+CA,siskiyou,06093,California
+CA,solano,06095,California
+CA,sonoma,06097,California
+CA,stanislaus,06099,California
+CA,sutter,06101,California
+CA,tehama,06103,California
+CA,trinity,06105,California
+CA,tulare,06107,California
+CA,tuolumne,06109,California
+CA,ventura,06111,California
+CA,yolo,06113,California
+CA,yuba,06115,California
+CO,adams,08001,Colorado
+CO,alamosa,08003,Colorado
+CO,arapahoe,08005,Colorado
+CO,archuleta,08007,Colorado
+CO,baca,08009,Colorado
+CO,bent,08011,Colorado
+CO,boulder,08013,Colorado
+CO,broomfield,08014,Colorado
+CO,chaffee,08015,Colorado
+CO,cheyenne,08017,Colorado
+CO,clear creek,08019,Colorado
+CO,conejos,08021,Colorado
+CO,costilla,08023,Colorado
+CO,crowley,08025,Colorado
+CO,custer,08027,Colorado
+CO,delta,08029,Colorado
+CO,denver,08031,Colorado
+CO,dolores,08033,Colorado
+CO,douglas,08035,Colorado
+CO,eagle,08037,Colorado
+CO,elbert,08039,Colorado
+CO,el paso,08041,Colorado
+CO,fremont,08043,Colorado
+CO,garfield,08045,Colorado
+CO,gilpin,08047,Colorado
+CO,grand,08049,Colorado
+CO,gunnison,08051,Colorado
+CO,hinsdale,08053,Colorado
+CO,huerfano,08055,Colorado
+CO,jackson,08057,Colorado
+CO,jefferson,08059,Colorado
+CO,kiowa,08061,Colorado
+CO,kit carson,08063,Colorado
+CO,lake,08065,Colorado
+CO,la plata,08067,Colorado
+CO,larimer,08069,Colorado
+CO,las animas,08071,Colorado
+CO,lincoln,08073,Colorado
+CO,logan,08075,Colorado
+CO,mesa,08077,Colorado
+CO,mineral,08079,Colorado
+CO,moffat,08081,Colorado
+CO,montezuma,08083,Colorado
+CO,montrose,08085,Colorado
+CO,morgan,08087,Colorado
+CO,otero,08089,Colorado
+CO,ouray,08091,Colorado
+CO,park,08093,Colorado
+CO,phillips,08095,Colorado
+CO,pitkin,08097,Colorado
+CO,prowers,08099,Colorado
+CO,pueblo,08101,Colorado
+CO,rio blanco,08103,Colorado
+CO,rio grande,08105,Colorado
+CO,routt,08107,Colorado
+CO,saguache,08109,Colorado
+CO,san juan,08111,Colorado
+CO,san miguel,08113,Colorado
+CO,sedgwick,08115,Colorado
+CO,summit,08117,Colorado
+CO,teller,08119,Colorado
+CO,washington,08121,Colorado
+CO,weld,08123,Colorado
+CO,yuma,08125,Colorado
+CT,fairfield,09001,Connecticut
+CT,hartford,09003,Connecticut
+CT,litchfield,09005,Connecticut
+CT,middlesex,09007,Connecticut
+CT,new haven,09009,Connecticut
+CT,new london,09011,Connecticut
+CT,tolland,09013,Connecticut
+CT,windham,09015,Connecticut
+DE,kent,10001,Delaware
+DE,new castle,10003,Delaware
+DE,sussex,10005,Delaware
+DC,district of columbia,11001,District of Columbia
+FL,alachua,12001,Florida
+FL,baker,12003,Florida
+FL,bay,12005,Florida
+FL,bradford,12007,Florida
+FL,brevard,12009,Florida
+FL,broward,12011,Florida
+FL,calhoun,12013,Florida
+FL,charlotte,12015,Florida
+FL,citrus,12017,Florida
+FL,clay,12019,Florida
+FL,collier,12021,Florida
+FL,columbia,12023,Florida
+FL,desoto,12027,Florida
+FL,dixie,12029,Florida
+FL,duval,12031,Florida
+FL,escambia,12033,Florida
+FL,flagler,12035,Florida
+FL,franklin,12037,Florida
+FL,gadsden,12039,Florida
+FL,gilchrist,12041,Florida
+FL,glades,12043,Florida
+FL,gulf,12045,Florida
+FL,hamilton,12047,Florida
+FL,hardee,12049,Florida
+FL,hendry,12051,Florida
+FL,hernando,12053,Florida
+FL,highlands,12055,Florida
+FL,hillsborough,12057,Florida
+FL,holmes,12059,Florida
+FL,indian river,12061,Florida
+FL,jackson,12063,Florida
+FL,jefferson,12065,Florida
+FL,lafayette,12067,Florida
+FL,lake,12069,Florida
+FL,lee,12071,Florida
+FL,leon,12073,Florida
+FL,levy,12075,Florida
+FL,liberty,12077,Florida
+FL,madison,12079,Florida
+FL,manatee,12081,Florida
+FL,marion,12083,Florida
+FL,martin,12085,Florida
+FL,miami-dade,12086,Florida
+FL,monroe,12087,Florida
+FL,nassau,12089,Florida
+FL,okaloosa,12091,Florida
+FL,okeechobee,12093,Florida
+FL,orange,12095,Florida
+FL,osceola,12097,Florida
+FL,palm beach,12099,Florida
+FL,pasco,12101,Florida
+FL,pinellas,12103,Florida
+FL,polk,12105,Florida
+FL,putnam,12107,Florida
+FL,st. johns,12109,Florida
+FL,st. lucie,12111,Florida
+FL,santa rosa,12113,Florida
+FL,sarasota,12115,Florida
+FL,seminole,12117,Florida
+FL,sumter,12119,Florida
+FL,suwannee,12121,Florida
+FL,taylor,12123,Florida
+FL,union,12125,Florida
+FL,volusia,12127,Florida
+FL,wakulla,12129,Florida
+FL,walton,12131,Florida
+FL,washington,12133,Florida
+GA,appling,13001,Georgia
+GA,atkinson,13003,Georgia
+GA,bacon,13005,Georgia
+GA,baker,13007,Georgia
+GA,baldwin,13009,Georgia
+GA,banks,13011,Georgia
+GA,barrow,13013,Georgia
+GA,bartow,13015,Georgia
+GA,ben hill,13017,Georgia
+GA,berrien,13019,Georgia
+GA,bibb,13021,Georgia
+GA,bleckley,13023,Georgia
+GA,brantley,13025,Georgia
+GA,brooks,13027,Georgia
+GA,bryan,13029,Georgia
+GA,bulloch,13031,Georgia
+GA,burke,13033,Georgia
+GA,butts,13035,Georgia
+GA,calhoun,13037,Georgia
+GA,camden,13039,Georgia
+GA,candler,13043,Georgia
+GA,carroll,13045,Georgia
+GA,catoosa,13047,Georgia
+GA,charlton,13049,Georgia
+GA,chatham,13051,Georgia
+GA,chattahoochee,13053,Georgia
+GA,chattooga,13055,Georgia
+GA,cherokee,13057,Georgia
+GA,clarke,13059,Georgia
+GA,clay,13061,Georgia
+GA,clayton,13063,Georgia
+GA,clinch,13065,Georgia
+GA,cobb,13067,Georgia
+GA,coffee,13069,Georgia
+GA,colquitt,13071,Georgia
+GA,columbia,13073,Georgia
+GA,cook,13075,Georgia
+GA,coweta,13077,Georgia
+GA,crawford,13079,Georgia
+GA,crisp,13081,Georgia
+GA,dade,13083,Georgia
+GA,dawson,13085,Georgia
+GA,decatur,13087,Georgia
+GA,dekalb,13089,Georgia
+GA,dodge,13091,Georgia
+GA,dooly,13093,Georgia
+GA,dougherty,13095,Georgia
+GA,douglas,13097,Georgia
+GA,early,13099,Georgia
+GA,echols,13101,Georgia
+GA,effingham,13103,Georgia
+GA,elbert,13105,Georgia
+GA,emanuel,13107,Georgia
+GA,evans,13109,Georgia
+GA,fannin,13111,Georgia
+GA,fayette,13113,Georgia
+GA,floyd,13115,Georgia
+GA,forsyth,13117,Georgia
+GA,franklin,13119,Georgia
+GA,fulton,13121,Georgia
+GA,gilmer,13123,Georgia
+GA,glascock,13125,Georgia
+GA,glynn,13127,Georgia
+GA,gordon,13129,Georgia
+GA,grady,13131,Georgia
+GA,greene,13133,Georgia
+GA,gwinnett,13135,Georgia
+GA,habersham,13137,Georgia
+GA,hall,13139,Georgia
+GA,hancock,13141,Georgia
+GA,haralson,13143,Georgia
+GA,harris,13145,Georgia
+GA,hart,13147,Georgia
+GA,heard,13149,Georgia
+GA,henry,13151,Georgia
+GA,houston,13153,Georgia
+GA,irwin,13155,Georgia
+GA,jackson,13157,Georgia
+GA,jasper,13159,Georgia
+GA,jeff davis,13161,Georgia
+GA,jefferson,13163,Georgia
+GA,jenkins,13165,Georgia
+GA,johnson,13167,Georgia
+GA,jones,13169,Georgia
+GA,lamar,13171,Georgia
+GA,lanier,13173,Georgia
+GA,laurens,13175,Georgia
+GA,lee,13177,Georgia
+GA,liberty,13179,Georgia
+GA,lincoln,13181,Georgia
+GA,long,13183,Georgia
+GA,lowndes,13185,Georgia
+GA,lumpkin,13187,Georgia
+GA,mcduffie,13189,Georgia
+GA,mcintosh,13191,Georgia
+GA,macon,13193,Georgia
+GA,madison,13195,Georgia
+GA,marion,13197,Georgia
+GA,meriwether,13199,Georgia
+GA,miller,13201,Georgia
+GA,mitchell,13205,Georgia
+GA,monroe,13207,Georgia
+GA,montgomery,13209,Georgia
+GA,morgan,13211,Georgia
+GA,murray,13213,Georgia
+GA,muscogee,13215,Georgia
+GA,newton,13217,Georgia
+GA,oconee,13219,Georgia
+GA,oglethorpe,13221,Georgia
+GA,paulding,13223,Georgia
+GA,peach,13225,Georgia
+GA,pickens,13227,Georgia
+GA,pierce,13229,Georgia
+GA,pike,13231,Georgia
+GA,polk,13233,Georgia
+GA,pulaski,13235,Georgia
+GA,putnam,13237,Georgia
+GA,quitman,13239,Georgia
+GA,rabun,13241,Georgia
+GA,randolph,13243,Georgia
+GA,richmond,13245,Georgia
+GA,rockdale,13247,Georgia
+GA,schley,13249,Georgia
+GA,screven,13251,Georgia
+GA,seminole,13253,Georgia
+GA,spalding,13255,Georgia
+GA,stephens,13257,Georgia
+GA,stewart,13259,Georgia
+GA,sumter,13261,Georgia
+GA,talbot,13263,Georgia
+GA,taliaferro,13265,Georgia
+GA,tattnall,13267,Georgia
+GA,taylor,13269,Georgia
+GA,telfair,13271,Georgia
+GA,terrell,13273,Georgia
+GA,thomas,13275,Georgia
+GA,tift,13277,Georgia
+GA,toombs,13279,Georgia
+GA,towns,13281,Georgia
+GA,treutlen,13283,Georgia
+GA,troup,13285,Georgia
+GA,turner,13287,Georgia
+GA,twiggs,13289,Georgia
+GA,union,13291,Georgia
+GA,upson,13293,Georgia
+GA,walker,13295,Georgia
+GA,walton,13297,Georgia
+GA,ware,13299,Georgia
+GA,warren,13301,Georgia
+GA,washington,13303,Georgia
+GA,wayne,13305,Georgia
+GA,webster,13307,Georgia
+GA,wheeler,13309,Georgia
+GA,white,13311,Georgia
+GA,whitfield,13313,Georgia
+GA,wilcox,13315,Georgia
+GA,wilkes,13317,Georgia
+GA,wilkinson,13319,Georgia
+GA,worth,13321,Georgia
+HI,hawaii,15001,Hawaii
+HI,honolulu,15003,Hawaii
+HI,kalawao,15005,Hawaii
+HI,kauai,15007,Hawaii
+HI,maui,15009,Hawaii
+ID,ada,16001,Idaho
+ID,adams,16003,Idaho
+ID,bannock,16005,Idaho
+ID,bear lake,16007,Idaho
+ID,benewah,16009,Idaho
+ID,bingham,16011,Idaho
+ID,blaine,16013,Idaho
+ID,boise,16015,Idaho
+ID,bonner,16017,Idaho
+ID,bonneville,16019,Idaho
+ID,boundary,16021,Idaho
+ID,butte,16023,Idaho
+ID,camas,16025,Idaho
+ID,canyon,16027,Idaho
+ID,caribou,16029,Idaho
+ID,cassia,16031,Idaho
+ID,clark,16033,Idaho
+ID,clearwater,16035,Idaho
+ID,custer,16037,Idaho
+ID,elmore,16039,Idaho
+ID,franklin,16041,Idaho
+ID,fremont,16043,Idaho
+ID,gem,16045,Idaho
+ID,gooding,16047,Idaho
+ID,idaho,16049,Idaho
+ID,jefferson,16051,Idaho
+ID,jerome,16053,Idaho
+ID,kootenai,16055,Idaho
+ID,latah,16057,Idaho
+ID,lemhi,16059,Idaho
+ID,lewis,16061,Idaho
+ID,lincoln,16063,Idaho
+ID,madison,16065,Idaho
+ID,minidoka,16067,Idaho
+ID,nez perce,16069,Idaho
+ID,oneida,16071,Idaho
+ID,owyhee,16073,Idaho
+ID,payette,16075,Idaho
+ID,power,16077,Idaho
+ID,shoshone,16079,Idaho
+ID,teton,16081,Idaho
+ID,twin falls,16083,Idaho
+ID,valley,16085,Idaho
+ID,washington,16087,Idaho
+IL,adams,17001,Illinois
+IL,alexander,17003,Illinois
+IL,bond,17005,Illinois
+IL,boone,17007,Illinois
+IL,brown,17009,Illinois
+IL,bureau,17011,Illinois
+IL,calhoun,17013,Illinois
+IL,carroll,17015,Illinois
+IL,cass,17017,Illinois
+IL,champaign,17019,Illinois
+IL,christian,17021,Illinois
+IL,clark,17023,Illinois
+IL,clay,17025,Illinois
+IL,clinton,17027,Illinois
+IL,coles,17029,Illinois
+IL,cook,17031,Illinois
+IL,crawford,17033,Illinois
+IL,cumberland,17035,Illinois
+IL,dekalb,17037,Illinois
+IL,de witt,17039,Illinois
+IL,douglas,17041,Illinois
+IL,dupage,17043,Illinois
+IL,edgar,17045,Illinois
+IL,edwards,17047,Illinois
+IL,effingham,17049,Illinois
+IL,fayette,17051,Illinois
+IL,ford,17053,Illinois
+IL,franklin,17055,Illinois
+IL,fulton,17057,Illinois
+IL,gallatin,17059,Illinois
+IL,greene,17061,Illinois
+IL,grundy,17063,Illinois
+IL,hamilton,17065,Illinois
+IL,hancock,17067,Illinois
+IL,hardin,17069,Illinois
+IL,henderson,17071,Illinois
+IL,henry,17073,Illinois
+IL,iroquois,17075,Illinois
+IL,jackson,17077,Illinois
+IL,jasper,17079,Illinois
+IL,jefferson,17081,Illinois
+IL,jersey,17083,Illinois
+IL,jo daviess,17085,Illinois
+IL,johnson,17087,Illinois
+IL,kane,17089,Illinois
+IL,kankakee,17091,Illinois
+IL,kendall,17093,Illinois
+IL,knox,17095,Illinois
+IL,lake,17097,Illinois
+IL,lasalle,17099,Illinois
+IL,lawrence,17101,Illinois
+IL,lee,17103,Illinois
+IL,livingston,17105,Illinois
+IL,logan,17107,Illinois
+IL,mcdonough,17109,Illinois
+IL,mchenry,17111,Illinois
+IL,mclean,17113,Illinois
+IL,macon,17115,Illinois
+IL,macoupin,17117,Illinois
+IL,madison,17119,Illinois
+IL,marion,17121,Illinois
+IL,marshall,17123,Illinois
+IL,mason,17125,Illinois
+IL,massac,17127,Illinois
+IL,menard,17129,Illinois
+IL,mercer,17131,Illinois
+IL,monroe,17133,Illinois
+IL,montgomery,17135,Illinois
+IL,morgan,17137,Illinois
+IL,moultrie,17139,Illinois
+IL,ogle,17141,Illinois
+IL,peoria,17143,Illinois
+IL,perry,17145,Illinois
+IL,piatt,17147,Illinois
+IL,pike,17149,Illinois
+IL,pope,17151,Illinois
+IL,pulaski,17153,Illinois
+IL,putnam,17155,Illinois
+IL,randolph,17157,Illinois
+IL,richland,17159,Illinois
+IL,rock island,17161,Illinois
+IL,st. clair,17163,Illinois
+IL,saline,17165,Illinois
+IL,sangamon,17167,Illinois
+IL,schuyler,17169,Illinois
+IL,scott,17171,Illinois
+IL,shelby,17173,Illinois
+IL,stark,17175,Illinois
+IL,stephenson,17177,Illinois
+IL,tazewell,17179,Illinois
+IL,union,17181,Illinois
+IL,vermilion,17183,Illinois
+IL,wabash,17185,Illinois
+IL,warren,17187,Illinois
+IL,washington,17189,Illinois
+IL,wayne,17191,Illinois
+IL,white,17193,Illinois
+IL,whiteside,17195,Illinois
+IL,will,17197,Illinois
+IL,williamson,17199,Illinois
+IL,winnebago,17201,Illinois
+IL,woodford,17203,Illinois
+IN,adams,18001,Indiana
+IN,allen,18003,Indiana
+IN,bartholomew,18005,Indiana
+IN,benton,18007,Indiana
+IN,blackford,18009,Indiana
+IN,boone,18011,Indiana
+IN,brown,18013,Indiana
+IN,carroll,18015,Indiana
+IN,cass,18017,Indiana
+IN,clark,18019,Indiana
+IN,clay,18021,Indiana
+IN,clinton,18023,Indiana
+IN,crawford,18025,Indiana
+IN,daviess,18027,Indiana
+IN,dearborn,18029,Indiana
+IN,decatur,18031,Indiana
+IN,dekalb,18033,Indiana
+IN,delaware,18035,Indiana
+IN,dubois,18037,Indiana
+IN,elkhart,18039,Indiana
+IN,fayette,18041,Indiana
+IN,floyd,18043,Indiana
+IN,fountain,18045,Indiana
+IN,franklin,18047,Indiana
+IN,fulton,18049,Indiana
+IN,gibson,18051,Indiana
+IN,grant,18053,Indiana
+IN,greene,18055,Indiana
+IN,hamilton,18057,Indiana
+IN,hancock,18059,Indiana
+IN,harrison,18061,Indiana
+IN,hendricks,18063,Indiana
+IN,henry,18065,Indiana
+IN,howard,18067,Indiana
+IN,huntington,18069,Indiana
+IN,jackson,18071,Indiana
+IN,jasper,18073,Indiana
+IN,jay,18075,Indiana
+IN,jefferson,18077,Indiana
+IN,jennings,18079,Indiana
+IN,johnson,18081,Indiana
+IN,knox,18083,Indiana
+IN,kosciusko,18085,Indiana
+IN,lagrange,18087,Indiana
+IN,lake,18089,Indiana
+IN,laporte,18091,Indiana
+IN,lawrence,18093,Indiana
+IN,madison,18095,Indiana
+IN,marion,18097,Indiana
+IN,marshall,18099,Indiana
+IN,martin,18101,Indiana
+IN,miami,18103,Indiana
+IN,monroe,18105,Indiana
+IN,montgomery,18107,Indiana
+IN,morgan,18109,Indiana
+IN,newton,18111,Indiana
+IN,noble,18113,Indiana
+IN,ohio,18115,Indiana
+IN,orange,18117,Indiana
+IN,owen,18119,Indiana
+IN,parke,18121,Indiana
+IN,perry,18123,Indiana
+IN,pike,18125,Indiana
+IN,porter,18127,Indiana
+IN,posey,18129,Indiana
+IN,pulaski,18131,Indiana
+IN,putnam,18133,Indiana
+IN,randolph,18135,Indiana
+IN,ripley,18137,Indiana
+IN,rush,18139,Indiana
+IN,st. joseph,18141,Indiana
+IN,scott,18143,Indiana
+IN,shelby,18145,Indiana
+IN,spencer,18147,Indiana
+IN,starke,18149,Indiana
+IN,steuben,18151,Indiana
+IN,sullivan,18153,Indiana
+IN,switzerland,18155,Indiana
+IN,tippecanoe,18157,Indiana
+IN,tipton,18159,Indiana
+IN,union,18161,Indiana
+IN,vanderburgh,18163,Indiana
+IN,vermillion,18165,Indiana
+IN,vigo,18167,Indiana
+IN,wabash,18169,Indiana
+IN,warren,18171,Indiana
+IN,warrick,18173,Indiana
+IN,washington,18175,Indiana
+IN,wayne,18177,Indiana
+IN,wells,18179,Indiana
+IN,white,18181,Indiana
+IN,whitley,18183,Indiana
+IA,adair,19001,Iowa
+IA,adams,19003,Iowa
+IA,allamakee,19005,Iowa
+IA,appanoose,19007,Iowa
+IA,audubon,19009,Iowa
+IA,benton,19011,Iowa
+IA,black hawk,19013,Iowa
+IA,boone,19015,Iowa
+IA,bremer,19017,Iowa
+IA,buchanan,19019,Iowa
+IA,buena vista,19021,Iowa
+IA,butler,19023,Iowa
+IA,calhoun,19025,Iowa
+IA,carroll,19027,Iowa
+IA,cass,19029,Iowa
+IA,cedar,19031,Iowa
+IA,cerro gordo,19033,Iowa
+IA,cherokee,19035,Iowa
+IA,chickasaw,19037,Iowa
+IA,clarke,19039,Iowa
+IA,clay,19041,Iowa
+IA,clayton,19043,Iowa
+IA,clinton,19045,Iowa
+IA,crawford,19047,Iowa
+IA,dallas,19049,Iowa
+IA,davis,19051,Iowa
+IA,decatur,19053,Iowa
+IA,delaware,19055,Iowa
+IA,des moines,19057,Iowa
+IA,dickinson,19059,Iowa
+IA,dubuque,19061,Iowa
+IA,emmet,19063,Iowa
+IA,fayette,19065,Iowa
+IA,floyd,19067,Iowa
+IA,franklin,19069,Iowa
+IA,fremont,19071,Iowa
+IA,greene,19073,Iowa
+IA,grundy,19075,Iowa
+IA,guthrie,19077,Iowa
+IA,hamilton,19079,Iowa
+IA,hancock,19081,Iowa
+IA,hardin,19083,Iowa
+IA,harrison,19085,Iowa
+IA,henry,19087,Iowa
+IA,howard,19089,Iowa
+IA,humboldt,19091,Iowa
+IA,ida,19093,Iowa
+IA,iowa,19095,Iowa
+IA,jackson,19097,Iowa
+IA,jasper,19099,Iowa
+IA,jefferson,19101,Iowa
+IA,johnson,19103,Iowa
+IA,jones,19105,Iowa
+IA,keokuk,19107,Iowa
+IA,kossuth,19109,Iowa
+IA,lee,19111,Iowa
+IA,linn,19113,Iowa
+IA,louisa,19115,Iowa
+IA,lucas,19117,Iowa
+IA,lyon,19119,Iowa
+IA,madison,19121,Iowa
+IA,mahaska,19123,Iowa
+IA,marion,19125,Iowa
+IA,marshall,19127,Iowa
+IA,mills,19129,Iowa
+IA,mitchell,19131,Iowa
+IA,monona,19133,Iowa
+IA,monroe,19135,Iowa
+IA,montgomery,19137,Iowa
+IA,muscatine,19139,Iowa
+IA,o'brien,19141,Iowa
+IA,osceola,19143,Iowa
+IA,page,19145,Iowa
+IA,palo alto,19147,Iowa
+IA,plymouth,19149,Iowa
+IA,pocahontas,19151,Iowa
+IA,polk,19153,Iowa
+IA,pottawattamie,19155,Iowa
+IA,poweshiek,19157,Iowa
+IA,ringgold,19159,Iowa
+IA,sac,19161,Iowa
+IA,scott,19163,Iowa
+IA,shelby,19165,Iowa
+IA,sioux,19167,Iowa
+IA,story,19169,Iowa
+IA,tama,19171,Iowa
+IA,taylor,19173,Iowa
+IA,union,19175,Iowa
+IA,van buren,19177,Iowa
+IA,wapello,19179,Iowa
+IA,warren,19181,Iowa
+IA,washington,19183,Iowa
+IA,wayne,19185,Iowa
+IA,webster,19187,Iowa
+IA,winnebago,19189,Iowa
+IA,winneshiek,19191,Iowa
+IA,woodbury,19193,Iowa
+IA,worth,19195,Iowa
+IA,wright,19197,Iowa
+KS,allen,20001,Kansas
+KS,anderson,20003,Kansas
+KS,atchison,20005,Kansas
+KS,barber,20007,Kansas
+KS,barton,20009,Kansas
+KS,bourbon,20011,Kansas
+KS,brown,20013,Kansas
+KS,butler,20015,Kansas
+KS,chase,20017,Kansas
+KS,chautauqua,20019,Kansas
+KS,cherokee,20021,Kansas
+KS,cheyenne,20023,Kansas
+KS,clark,20025,Kansas
+KS,clay,20027,Kansas
+KS,cloud,20029,Kansas
+KS,coffey,20031,Kansas
+KS,comanche,20033,Kansas
+KS,cowley,20035,Kansas
+KS,crawford,20037,Kansas
+KS,decatur,20039,Kansas
+KS,dickinson,20041,Kansas
+KS,doniphan,20043,Kansas
+KS,douglas,20045,Kansas
+KS,edwards,20047,Kansas
+KS,elk,20049,Kansas
+KS,ellis,20051,Kansas
+KS,ellsworth,20053,Kansas
+KS,finney,20055,Kansas
+KS,ford,20057,Kansas
+KS,franklin,20059,Kansas
+KS,geary,20061,Kansas
+KS,gove,20063,Kansas
+KS,graham,20065,Kansas
+KS,grant,20067,Kansas
+KS,gray,20069,Kansas
+KS,greeley,20071,Kansas
+KS,greenwood,20073,Kansas
+KS,hamilton,20075,Kansas
+KS,harper,20077,Kansas
+KS,harvey,20079,Kansas
+KS,haskell,20081,Kansas
+KS,hodgeman,20083,Kansas
+KS,jackson,20085,Kansas
+KS,jefferson,20087,Kansas
+KS,jewell,20089,Kansas
+KS,johnson,20091,Kansas
+KS,kearny,20093,Kansas
+KS,kingman,20095,Kansas
+KS,kiowa,20097,Kansas
+KS,labette,20099,Kansas
+KS,lane,20101,Kansas
+KS,leavenworth,20103,Kansas
+KS,lincoln,20105,Kansas
+KS,linn,20107,Kansas
+KS,logan,20109,Kansas
+KS,lyon,20111,Kansas
+KS,mcpherson,20113,Kansas
+KS,marion,20115,Kansas
+KS,marshall,20117,Kansas
+KS,meade,20119,Kansas
+KS,miami,20121,Kansas
+KS,mitchell,20123,Kansas
+KS,montgomery,20125,Kansas
+KS,morris,20127,Kansas
+KS,morton,20129,Kansas
+KS,nemaha,20131,Kansas
+KS,neosho,20133,Kansas
+KS,ness,20135,Kansas
+KS,norton,20137,Kansas
+KS,osage,20139,Kansas
+KS,osborne,20141,Kansas
+KS,ottawa,20143,Kansas
+KS,pawnee,20145,Kansas
+KS,phillips,20147,Kansas
+KS,pottawatomie,20149,Kansas
+KS,pratt,20151,Kansas
+KS,rawlins,20153,Kansas
+KS,reno,20155,Kansas
+KS,republic,20157,Kansas
+KS,rice,20159,Kansas
+KS,riley,20161,Kansas
+KS,rooks,20163,Kansas
+KS,rush,20165,Kansas
+KS,russell,20167,Kansas
+KS,saline,20169,Kansas
+KS,scott,20171,Kansas
+KS,sedgwick,20173,Kansas
+KS,seward,20175,Kansas
+KS,shawnee,20177,Kansas
+KS,sheridan,20179,Kansas
+KS,sherman,20181,Kansas
+KS,smith,20183,Kansas
+KS,stafford,20185,Kansas
+KS,stanton,20187,Kansas
+KS,stevens,20189,Kansas
+KS,sumner,20191,Kansas
+KS,thomas,20193,Kansas
+KS,trego,20195,Kansas
+KS,wabaunsee,20197,Kansas
+KS,wallace,20199,Kansas
+KS,washington,20201,Kansas
+KS,wichita,20203,Kansas
+KS,wilson,20205,Kansas
+KS,woodson,20207,Kansas
+KS,wyandotte,20209,Kansas
+KY,adair,21001,Kentucky
+KY,allen,21003,Kentucky
+KY,anderson,21005,Kentucky
+KY,ballard,21007,Kentucky
+KY,barren,21009,Kentucky
+KY,bath,21011,Kentucky
+KY,bell,21013,Kentucky
+KY,boone,21015,Kentucky
+KY,bourbon,21017,Kentucky
+KY,boyd,21019,Kentucky
+KY,boyle,21021,Kentucky
+KY,bracken,21023,Kentucky
+KY,breathitt,21025,Kentucky
+KY,breckinridge,21027,Kentucky
+KY,bullitt,21029,Kentucky
+KY,butler,21031,Kentucky
+KY,caldwell,21033,Kentucky
+KY,calloway,21035,Kentucky
+KY,campbell,21037,Kentucky
+KY,carlisle,21039,Kentucky
+KY,carroll,21041,Kentucky
+KY,carter,21043,Kentucky
+KY,casey,21045,Kentucky
+KY,christian,21047,Kentucky
+KY,clark,21049,Kentucky
+KY,clay,21051,Kentucky
+KY,clinton,21053,Kentucky
+KY,crittenden,21055,Kentucky
+KY,cumberland,21057,Kentucky
+KY,daviess,21059,Kentucky
+KY,edmonson,21061,Kentucky
+KY,elliott,21063,Kentucky
+KY,estill,21065,Kentucky
+KY,fayette,21067,Kentucky
+KY,fleming,21069,Kentucky
+KY,floyd,21071,Kentucky
+KY,franklin,21073,Kentucky
+KY,fulton,21075,Kentucky
+KY,gallatin,21077,Kentucky
+KY,garrard,21079,Kentucky
+KY,grant,21081,Kentucky
+KY,graves,21083,Kentucky
+KY,grayson,21085,Kentucky
+KY,green,21087,Kentucky
+KY,greenup,21089,Kentucky
+KY,hancock,21091,Kentucky
+KY,hardin,21093,Kentucky
+KY,harlan,21095,Kentucky
+KY,harrison,21097,Kentucky
+KY,hart,21099,Kentucky
+KY,henderson,21101,Kentucky
+KY,henry,21103,Kentucky
+KY,hickman,21105,Kentucky
+KY,hopkins,21107,Kentucky
+KY,jackson,21109,Kentucky
+KY,jefferson,21111,Kentucky
+KY,jessamine,21113,Kentucky
+KY,johnson,21115,Kentucky
+KY,kenton,21117,Kentucky
+KY,knott,21119,Kentucky
+KY,knox,21121,Kentucky
+KY,larue,21123,Kentucky
+KY,laurel,21125,Kentucky
+KY,lawrence,21127,Kentucky
+KY,lee,21129,Kentucky
+KY,leslie,21131,Kentucky
+KY,letcher,21133,Kentucky
+KY,lewis,21135,Kentucky
+KY,lincoln,21137,Kentucky
+KY,livingston,21139,Kentucky
+KY,logan,21141,Kentucky
+KY,lyon,21143,Kentucky
+KY,mccracken,21145,Kentucky
+KY,mccreary,21147,Kentucky
+KY,mclean,21149,Kentucky
+KY,madison,21151,Kentucky
+KY,magoffin,21153,Kentucky
+KY,marion,21155,Kentucky
+KY,marshall,21157,Kentucky
+KY,martin,21159,Kentucky
+KY,mason,21161,Kentucky
+KY,meade,21163,Kentucky
+KY,menifee,21165,Kentucky
+KY,mercer,21167,Kentucky
+KY,metcalfe,21169,Kentucky
+KY,monroe,21171,Kentucky
+KY,montgomery,21173,Kentucky
+KY,morgan,21175,Kentucky
+KY,muhlenberg,21177,Kentucky
+KY,nelson,21179,Kentucky
+KY,nicholas,21181,Kentucky
+KY,ohio,21183,Kentucky
+KY,oldham,21185,Kentucky
+KY,owen,21187,Kentucky
+KY,owsley,21189,Kentucky
+KY,pendleton,21191,Kentucky
+KY,perry,21193,Kentucky
+KY,pike,21195,Kentucky
+KY,powell,21197,Kentucky
+KY,pulaski,21199,Kentucky
+KY,robertson,21201,Kentucky
+KY,rockcastle,21203,Kentucky
+KY,rowan,21205,Kentucky
+KY,russell,21207,Kentucky
+KY,scott,21209,Kentucky
+KY,shelby,21211,Kentucky
+KY,simpson,21213,Kentucky
+KY,spencer,21215,Kentucky
+KY,taylor,21217,Kentucky
+KY,todd,21219,Kentucky
+KY,trigg,21221,Kentucky
+KY,trimble,21223,Kentucky
+KY,union,21225,Kentucky
+KY,warren,21227,Kentucky
+KY,washington,21229,Kentucky
+KY,wayne,21231,Kentucky
+KY,webster,21233,Kentucky
+KY,whitley,21235,Kentucky
+KY,wolfe,21237,Kentucky
+KY,woodford,21239,Kentucky
+LA,acadia parish,22001,Louisiana
+LA,allen parish,22003,Louisiana
+LA,ascension parish,22005,Louisiana
+LA,assumption parish,22007,Louisiana
+LA,avoyelles parish,22009,Louisiana
+LA,beauregard parish,22011,Louisiana
+LA,bienville parish,22013,Louisiana
+LA,bossier parish,22015,Louisiana
+LA,caddo parish,22017,Louisiana
+LA,calcasieu parish,22019,Louisiana
+LA,caldwell parish,22021,Louisiana
+LA,cameron parish,22023,Louisiana
+LA,catahoula parish,22025,Louisiana
+LA,claiborne parish,22027,Louisiana
+LA,concordia parish,22029,Louisiana
+LA,de soto parish,22031,Louisiana
+LA,east baton rouge parish,22033,Louisiana
+LA,east carroll parish,22035,Louisiana
+LA,east feliciana parish,22037,Louisiana
+LA,evangeline parish,22039,Louisiana
+LA,franklin parish,22041,Louisiana
+LA,grant parish,22043,Louisiana
+LA,iberia parish,22045,Louisiana
+LA,iberville parish,22047,Louisiana
+LA,jackson parish,22049,Louisiana
+LA,jefferson parish,22051,Louisiana
+LA,jefferson davis parish,22053,Louisiana
+LA,lafayette parish,22055,Louisiana
+LA,lafourche parish,22057,Louisiana
+LA,lasalle parish,22059,Louisiana
+LA,lincoln parish,22061,Louisiana
+LA,livingston parish,22063,Louisiana
+LA,madison parish,22065,Louisiana
+LA,morehouse parish,22067,Louisiana
+LA,natchitoches parish,22069,Louisiana
+LA,orleans parish,22071,Louisiana
+LA,ouachita parish,22073,Louisiana
+LA,plaquemines parish,22075,Louisiana
+LA,pointe coupee parish,22077,Louisiana
+LA,rapides parish,22079,Louisiana
+LA,red river parish,22081,Louisiana
+LA,richland parish,22083,Louisiana
+LA,sabine parish,22085,Louisiana
+LA,st. bernard parish,22087,Louisiana
+LA,st. charles parish,22089,Louisiana
+LA,st. helena parish,22091,Louisiana
+LA,st. james parish,22093,Louisiana
+LA,st. john the baptist parish,22095,Louisiana
+LA,st. landry parish,22097,Louisiana
+LA,st. martin parish,22099,Louisiana
+LA,st. mary parish,22101,Louisiana
+LA,st. tammany parish,22103,Louisiana
+LA,tangipahoa parish,22105,Louisiana
+LA,tensas parish,22107,Louisiana
+LA,terrebonne parish,22109,Louisiana
+LA,union parish,22111,Louisiana
+LA,vermilion parish,22113,Louisiana
+LA,vernon parish,22115,Louisiana
+LA,washington parish,22117,Louisiana
+LA,webster parish,22119,Louisiana
+LA,west baton rouge parish,22121,Louisiana
+LA,west carroll parish,22123,Louisiana
+LA,west feliciana parish,22125,Louisiana
+LA,winn parish,22127,Louisiana
+ME,androscoggin,23001,Maine
+ME,aroostook,23003,Maine
+ME,cumberland,23005,Maine
+ME,franklin,23007,Maine
+ME,hancock,23009,Maine
+ME,kennebec,23011,Maine
+ME,knox,23013,Maine
+ME,lincoln,23015,Maine
+ME,oxford,23017,Maine
+ME,penobscot,23019,Maine
+ME,piscataquis,23021,Maine
+ME,sagadahoc,23023,Maine
+ME,somerset,23025,Maine
+ME,waldo,23027,Maine
+ME,washington,23029,Maine
+ME,york,23031,Maine
+MD,allegany,24001,Maryland
+MD,anne arundel,24003,Maryland
+MD,baltimore,24005,Maryland
+MD,calvert,24009,Maryland
+MD,caroline,24011,Maryland
+MD,carroll,24013,Maryland
+MD,cecil,24015,Maryland
+MD,charles,24017,Maryland
+MD,dorchester,24019,Maryland
+MD,frederick,24021,Maryland
+MD,garrett,24023,Maryland
+MD,harford,24025,Maryland
+MD,howard,24027,Maryland
+MD,kent,24029,Maryland
+MD,montgomery,24031,Maryland
+MD,prince george's,24033,Maryland
+MD,queen anne's,24035,Maryland
+MD,st. mary's,24037,Maryland
+MD,somerset,24039,Maryland
+MD,talbot,24041,Maryland
+MD,washington,24043,Maryland
+MD,wicomico,24045,Maryland
+MD,worcester,24047,Maryland
+MD,baltimore city,24510,Maryland
+MA,barnstable,25001,Massachusetts
+MA,berkshire,25003,Massachusetts
+MA,bristol,25005,Massachusetts
+MA,dukes,25007,Massachusetts
+MA,essex,25009,Massachusetts
+MA,franklin,25011,Massachusetts
+MA,hampden,25013,Massachusetts
+MA,hampshire,25015,Massachusetts
+MA,middlesex,25017,Massachusetts
+MA,nantucket,25019,Massachusetts
+MA,norfolk,25021,Massachusetts
+MA,plymouth,25023,Massachusetts
+MA,suffolk,25025,Massachusetts
+MA,worcester,25027,Massachusetts
+MI,alcona,26001,Michigan
+MI,alger,26003,Michigan
+MI,allegan,26005,Michigan
+MI,alpena,26007,Michigan
+MI,antrim,26009,Michigan
+MI,arenac,26011,Michigan
+MI,baraga,26013,Michigan
+MI,barry,26015,Michigan
+MI,bay,26017,Michigan
+MI,benzie,26019,Michigan
+MI,berrien,26021,Michigan
+MI,branch,26023,Michigan
+MI,calhoun,26025,Michigan
+MI,cass,26027,Michigan
+MI,charlevoix,26029,Michigan
+MI,cheboygan,26031,Michigan
+MI,chippewa,26033,Michigan
+MI,clare,26035,Michigan
+MI,clinton,26037,Michigan
+MI,crawford,26039,Michigan
+MI,delta,26041,Michigan
+MI,dickinson,26043,Michigan
+MI,eaton,26045,Michigan
+MI,emmet,26047,Michigan
+MI,genesee,26049,Michigan
+MI,gladwin,26051,Michigan
+MI,gogebic,26053,Michigan
+MI,grand traverse,26055,Michigan
+MI,gratiot,26057,Michigan
+MI,hillsdale,26059,Michigan
+MI,houghton,26061,Michigan
+MI,huron,26063,Michigan
+MI,ingham,26065,Michigan
+MI,ionia,26067,Michigan
+MI,iosco,26069,Michigan
+MI,iron,26071,Michigan
+MI,isabella,26073,Michigan
+MI,jackson,26075,Michigan
+MI,kalamazoo,26077,Michigan
+MI,kalkaska,26079,Michigan
+MI,kent,26081,Michigan
+MI,keweenaw,26083,Michigan
+MI,lake,26085,Michigan
+MI,lapeer,26087,Michigan
+MI,leelanau,26089,Michigan
+MI,lenawee,26091,Michigan
+MI,livingston,26093,Michigan
+MI,luce,26095,Michigan
+MI,mackinac,26097,Michigan
+MI,macomb,26099,Michigan
+MI,manistee,26101,Michigan
+MI,marquette,26103,Michigan
+MI,mason,26105,Michigan
+MI,mecosta,26107,Michigan
+MI,menominee,26109,Michigan
+MI,midland,26111,Michigan
+MI,missaukee,26113,Michigan
+MI,monroe,26115,Michigan
+MI,montcalm,26117,Michigan
+MI,montmorency,26119,Michigan
+MI,muskegon,26121,Michigan
+MI,newaygo,26123,Michigan
+MI,oakland,26125,Michigan
+MI,oceana,26127,Michigan
+MI,ogemaw,26129,Michigan
+MI,ontonagon,26131,Michigan
+MI,osceola,26133,Michigan
+MI,oscoda,26135,Michigan
+MI,otsego,26137,Michigan
+MI,ottawa,26139,Michigan
+MI,presque isle,26141,Michigan
+MI,roscommon,26143,Michigan
+MI,saginaw,26145,Michigan
+MI,st. clair,26147,Michigan
+MI,st. joseph,26149,Michigan
+MI,sanilac,26151,Michigan
+MI,schoolcraft,26153,Michigan
+MI,shiawassee,26155,Michigan
+MI,tuscola,26157,Michigan
+MI,van buren,26159,Michigan
+MI,washtenaw,26161,Michigan
+MI,wayne,26163,Michigan
+MI,wexford,26165,Michigan
+MN,aitkin,27001,Minnesota
+MN,anoka,27003,Minnesota
+MN,becker,27005,Minnesota
+MN,beltrami,27007,Minnesota
+MN,benton,27009,Minnesota
+MN,big stone,27011,Minnesota
+MN,blue earth,27013,Minnesota
+MN,brown,27015,Minnesota
+MN,carlton,27017,Minnesota
+MN,carver,27019,Minnesota
+MN,cass,27021,Minnesota
+MN,chippewa,27023,Minnesota
+MN,chisago,27025,Minnesota
+MN,clay,27027,Minnesota
+MN,clearwater,27029,Minnesota
+MN,cook,27031,Minnesota
+MN,cottonwood,27033,Minnesota
+MN,crow wing,27035,Minnesota
+MN,dakota,27037,Minnesota
+MN,dodge,27039,Minnesota
+MN,douglas,27041,Minnesota
+MN,faribault,27043,Minnesota
+MN,fillmore,27045,Minnesota
+MN,freeborn,27047,Minnesota
+MN,goodhue,27049,Minnesota
+MN,grant,27051,Minnesota
+MN,hennepin,27053,Minnesota
+MN,houston,27055,Minnesota
+MN,hubbard,27057,Minnesota
+MN,isanti,27059,Minnesota
+MN,itasca,27061,Minnesota
+MN,jackson,27063,Minnesota
+MN,kanabec,27065,Minnesota
+MN,kandiyohi,27067,Minnesota
+MN,kittson,27069,Minnesota
+MN,koochiching,27071,Minnesota
+MN,lac qui parle,27073,Minnesota
+MN,lake,27075,Minnesota
+MN,lake of the woods,27077,Minnesota
+MN,le sueur,27079,Minnesota
+MN,lincoln,27081,Minnesota
+MN,lyon,27083,Minnesota
+MN,mcleod,27085,Minnesota
+MN,mahnomen,27087,Minnesota
+MN,marshall,27089,Minnesota
+MN,martin,27091,Minnesota
+MN,meeker,27093,Minnesota
+MN,mille lacs,27095,Minnesota
+MN,morrison,27097,Minnesota
+MN,mower,27099,Minnesota
+MN,murray,27101,Minnesota
+MN,nicollet,27103,Minnesota
+MN,nobles,27105,Minnesota
+MN,norman,27107,Minnesota
+MN,olmsted,27109,Minnesota
+MN,otter tail,27111,Minnesota
+MN,pennington,27113,Minnesota
+MN,pine,27115,Minnesota
+MN,pipestone,27117,Minnesota
+MN,polk,27119,Minnesota
+MN,pope,27121,Minnesota
+MN,ramsey,27123,Minnesota
+MN,red lake,27125,Minnesota
+MN,redwood,27127,Minnesota
+MN,renville,27129,Minnesota
+MN,rice,27131,Minnesota
+MN,rock,27133,Minnesota
+MN,roseau,27135,Minnesota
+MN,st. louis,27137,Minnesota
+MN,scott,27139,Minnesota
+MN,sherburne,27141,Minnesota
+MN,sibley,27143,Minnesota
+MN,stearns,27145,Minnesota
+MN,steele,27147,Minnesota
+MN,stevens,27149,Minnesota
+MN,swift,27151,Minnesota
+MN,todd,27153,Minnesota
+MN,traverse,27155,Minnesota
+MN,wabasha,27157,Minnesota
+MN,wadena,27159,Minnesota
+MN,waseca,27161,Minnesota
+MN,washington,27163,Minnesota
+MN,watonwan,27165,Minnesota
+MN,wilkin,27167,Minnesota
+MN,winona,27169,Minnesota
+MN,wright,27171,Minnesota
+MN,yellow medicine,27173,Minnesota
+MS,adams,28001,Mississippi
+MS,alcorn,28003,Mississippi
+MS,amite,28005,Mississippi
+MS,attala,28007,Mississippi
+MS,benton,28009,Mississippi
+MS,bolivar,28011,Mississippi
+MS,calhoun,28013,Mississippi
+MS,carroll,28015,Mississippi
+MS,chickasaw,28017,Mississippi
+MS,choctaw,28019,Mississippi
+MS,claiborne,28021,Mississippi
+MS,clarke,28023,Mississippi
+MS,clay,28025,Mississippi
+MS,coahoma,28027,Mississippi
+MS,copiah,28029,Mississippi
+MS,covington,28031,Mississippi
+MS,desoto,28033,Mississippi
+MS,forrest,28035,Mississippi
+MS,franklin,28037,Mississippi
+MS,george,28039,Mississippi
+MS,greene,28041,Mississippi
+MS,grenada,28043,Mississippi
+MS,hancock,28045,Mississippi
+MS,harrison,28047,Mississippi
+MS,hinds,28049,Mississippi
+MS,holmes,28051,Mississippi
+MS,humphreys,28053,Mississippi
+MS,issaquena,28055,Mississippi
+MS,itawamba,28057,Mississippi
+MS,jackson,28059,Mississippi
+MS,jasper,28061,Mississippi
+MS,jefferson,28063,Mississippi
+MS,jefferson davis,28065,Mississippi
+MS,jones,28067,Mississippi
+MS,kemper,28069,Mississippi
+MS,lafayette,28071,Mississippi
+MS,lamar,28073,Mississippi
+MS,lauderdale,28075,Mississippi
+MS,lawrence,28077,Mississippi
+MS,leake,28079,Mississippi
+MS,lee,28081,Mississippi
+MS,leflore,28083,Mississippi
+MS,lincoln,28085,Mississippi
+MS,lowndes,28087,Mississippi
+MS,madison,28089,Mississippi
+MS,marion,28091,Mississippi
+MS,marshall,28093,Mississippi
+MS,monroe,28095,Mississippi
+MS,montgomery,28097,Mississippi
+MS,neshoba,28099,Mississippi
+MS,newton,28101,Mississippi
+MS,noxubee,28103,Mississippi
+MS,oktibbeha,28105,Mississippi
+MS,panola,28107,Mississippi
+MS,pearl river,28109,Mississippi
+MS,perry,28111,Mississippi
+MS,pike,28113,Mississippi
+MS,pontotoc,28115,Mississippi
+MS,prentiss,28117,Mississippi
+MS,quitman,28119,Mississippi
+MS,rankin,28121,Mississippi
+MS,scott,28123,Mississippi
+MS,sharkey,28125,Mississippi
+MS,simpson,28127,Mississippi
+MS,smith,28129,Mississippi
+MS,stone,28131,Mississippi
+MS,sunflower,28133,Mississippi
+MS,tallahatchie,28135,Mississippi
+MS,tate,28137,Mississippi
+MS,tippah,28139,Mississippi
+MS,tishomingo,28141,Mississippi
+MS,tunica,28143,Mississippi
+MS,union,28145,Mississippi
+MS,walthall,28147,Mississippi
+MS,warren,28149,Mississippi
+MS,washington,28151,Mississippi
+MS,wayne,28153,Mississippi
+MS,webster,28155,Mississippi
+MS,wilkinson,28157,Mississippi
+MS,winston,28159,Mississippi
+MS,yalobusha,28161,Mississippi
+MS,yazoo,28163,Mississippi
+MO,adair,29001,Missouri
+MO,andrew,29003,Missouri
+MO,atchison,29005,Missouri
+MO,audrain,29007,Missouri
+MO,barry,29009,Missouri
+MO,barton,29011,Missouri
+MO,bates,29013,Missouri
+MO,benton,29015,Missouri
+MO,bollinger,29017,Missouri
+MO,boone,29019,Missouri
+MO,buchanan,29021,Missouri
+MO,butler,29023,Missouri
+MO,caldwell,29025,Missouri
+MO,callaway,29027,Missouri
+MO,camden,29029,Missouri
+MO,cape girardeau,29031,Missouri
+MO,carroll,29033,Missouri
+MO,carter,29035,Missouri
+MO,cass,29037,Missouri
+MO,cedar,29039,Missouri
+MO,chariton,29041,Missouri
+MO,christian,29043,Missouri
+MO,clark,29045,Missouri
+MO,clay,29047,Missouri
+MO,clinton,29049,Missouri
+MO,cole,29051,Missouri
+MO,cooper,29053,Missouri
+MO,crawford,29055,Missouri
+MO,dade,29057,Missouri
+MO,dallas,29059,Missouri
+MO,daviess,29061,Missouri
+MO,dekalb,29063,Missouri
+MO,dent,29065,Missouri
+MO,douglas,29067,Missouri
+MO,dunklin,29069,Missouri
+MO,franklin,29071,Missouri
+MO,gasconade,29073,Missouri
+MO,gentry,29075,Missouri
+MO,greene,29077,Missouri
+MO,grundy,29079,Missouri
+MO,harrison,29081,Missouri
+MO,henry,29083,Missouri
+MO,hickory,29085,Missouri
+MO,holt,29087,Missouri
+MO,howard,29089,Missouri
+MO,howell,29091,Missouri
+MO,iron,29093,Missouri
+MO,jackson,29095,Missouri
+MO,jasper,29097,Missouri
+MO,jefferson,29099,Missouri
+MO,johnson,29101,Missouri
+MO,knox,29103,Missouri
+MO,laclede,29105,Missouri
+MO,lafayette,29107,Missouri
+MO,lawrence,29109,Missouri
+MO,lewis,29111,Missouri
+MO,lincoln,29113,Missouri
+MO,linn,29115,Missouri
+MO,livingston,29117,Missouri
+MO,mcdonald,29119,Missouri
+MO,macon,29121,Missouri
+MO,madison,29123,Missouri
+MO,maries,29125,Missouri
+MO,marion,29127,Missouri
+MO,mercer,29129,Missouri
+MO,miller,29131,Missouri
+MO,mississippi,29133,Missouri
+MO,moniteau,29135,Missouri
+MO,monroe,29137,Missouri
+MO,montgomery,29139,Missouri
+MO,morgan,29141,Missouri
+MO,new madrid,29143,Missouri
+MO,newton,29145,Missouri
+MO,nodaway,29147,Missouri
+MO,oregon,29149,Missouri
+MO,osage,29151,Missouri
+MO,ozark,29153,Missouri
+MO,pemiscot,29155,Missouri
+MO,perry,29157,Missouri
+MO,pettis,29159,Missouri
+MO,phelps,29161,Missouri
+MO,pike,29163,Missouri
+MO,platte,29165,Missouri
+MO,polk,29167,Missouri
+MO,pulaski,29169,Missouri
+MO,putnam,29171,Missouri
+MO,ralls,29173,Missouri
+MO,randolph,29175,Missouri
+MO,ray,29177,Missouri
+MO,reynolds,29179,Missouri
+MO,ripley,29181,Missouri
+MO,st. charles,29183,Missouri
+MO,st. clair,29185,Missouri
+MO,ste. genevieve,29186,Missouri
+MO,st. francois,29187,Missouri
+MO,st. louis,29189,Missouri
+MO,saline,29195,Missouri
+MO,schuyler,29197,Missouri
+MO,scotland,29199,Missouri
+MO,scott,29201,Missouri
+MO,shannon,29203,Missouri
+MO,shelby,29205,Missouri
+MO,stoddard,29207,Missouri
+MO,stone,29209,Missouri
+MO,sullivan,29211,Missouri
+MO,taney,29213,Missouri
+MO,texas,29215,Missouri
+MO,vernon,29217,Missouri
+MO,warren,29219,Missouri
+MO,washington,29221,Missouri
+MO,wayne,29223,Missouri
+MO,webster,29225,Missouri
+MO,worth,29227,Missouri
+MO,wright,29229,Missouri
+MO,st. louis city,29510,Missouri
+MT,beaverhead,30001,Montana
+MT,big horn,30003,Montana
+MT,blaine,30005,Montana
+MT,broadwater,30007,Montana
+MT,carbon,30009,Montana
+MT,carter,30011,Montana
+MT,cascade,30013,Montana
+MT,chouteau,30015,Montana
+MT,custer,30017,Montana
+MT,daniels,30019,Montana
+MT,dawson,30021,Montana
+MT,deer lodge,30023,Montana
+MT,fallon,30025,Montana
+MT,fergus,30027,Montana
+MT,flathead,30029,Montana
+MT,gallatin,30031,Montana
+MT,garfield,30033,Montana
+MT,glacier,30035,Montana
+MT,golden valley,30037,Montana
+MT,granite,30039,Montana
+MT,hill,30041,Montana
+MT,jefferson,30043,Montana
+MT,judith basin,30045,Montana
+MT,lake,30047,Montana
+MT,lewis and clark,30049,Montana
+MT,liberty,30051,Montana
+MT,lincoln,30053,Montana
+MT,mccone,30055,Montana
+MT,madison,30057,Montana
+MT,meagher,30059,Montana
+MT,mineral,30061,Montana
+MT,missoula,30063,Montana
+MT,musselshell,30065,Montana
+MT,park,30067,Montana
+MT,petroleum,30069,Montana
+MT,phillips,30071,Montana
+MT,pondera,30073,Montana
+MT,powder river,30075,Montana
+MT,powell,30077,Montana
+MT,prairie,30079,Montana
+MT,ravalli,30081,Montana
+MT,richland,30083,Montana
+MT,roosevelt,30085,Montana
+MT,rosebud,30087,Montana
+MT,sanders,30089,Montana
+MT,sheridan,30091,Montana
+MT,silver bow,30093,Montana
+MT,stillwater,30095,Montana
+MT,sweet grass,30097,Montana
+MT,teton,30099,Montana
+MT,toole,30101,Montana
+MT,treasure,30103,Montana
+MT,valley,30105,Montana
+MT,wheatland,30107,Montana
+MT,wibaux,30109,Montana
+MT,yellowstone,30111,Montana
+NE,adams,31001,Nebraska
+NE,antelope,31003,Nebraska
+NE,arthur,31005,Nebraska
+NE,banner,31007,Nebraska
+NE,blaine,31009,Nebraska
+NE,boone,31011,Nebraska
+NE,box butte,31013,Nebraska
+NE,boyd,31015,Nebraska
+NE,brown,31017,Nebraska
+NE,buffalo,31019,Nebraska
+NE,burt,31021,Nebraska
+NE,butler,31023,Nebraska
+NE,cass,31025,Nebraska
+NE,cedar,31027,Nebraska
+NE,chase,31029,Nebraska
+NE,cherry,31031,Nebraska
+NE,cheyenne,31033,Nebraska
+NE,clay,31035,Nebraska
+NE,colfax,31037,Nebraska
+NE,cuming,31039,Nebraska
+NE,custer,31041,Nebraska
+NE,dakota,31043,Nebraska
+NE,dawes,31045,Nebraska
+NE,dawson,31047,Nebraska
+NE,deuel,31049,Nebraska
+NE,dixon,31051,Nebraska
+NE,dodge,31053,Nebraska
+NE,douglas,31055,Nebraska
+NE,dundy,31057,Nebraska
+NE,fillmore,31059,Nebraska
+NE,franklin,31061,Nebraska
+NE,frontier,31063,Nebraska
+NE,furnas,31065,Nebraska
+NE,gage,31067,Nebraska
+NE,garden,31069,Nebraska
+NE,garfield,31071,Nebraska
+NE,gosper,31073,Nebraska
+NE,grant,31075,Nebraska
+NE,greeley,31077,Nebraska
+NE,hall,31079,Nebraska
+NE,hamilton,31081,Nebraska
+NE,harlan,31083,Nebraska
+NE,hayes,31085,Nebraska
+NE,hitchcock,31087,Nebraska
+NE,holt,31089,Nebraska
+NE,hooker,31091,Nebraska
+NE,howard,31093,Nebraska
+NE,jefferson,31095,Nebraska
+NE,johnson,31097,Nebraska
+NE,kearney,31099,Nebraska
+NE,keith,31101,Nebraska
+NE,keya paha,31103,Nebraska
+NE,kimball,31105,Nebraska
+NE,knox,31107,Nebraska
+NE,lancaster,31109,Nebraska
+NE,lincoln,31111,Nebraska
+NE,logan,31113,Nebraska
+NE,loup,31115,Nebraska
+NE,mcpherson,31117,Nebraska
+NE,madison,31119,Nebraska
+NE,merrick,31121,Nebraska
+NE,morrill,31123,Nebraska
+NE,nance,31125,Nebraska
+NE,nemaha,31127,Nebraska
+NE,nuckolls,31129,Nebraska
+NE,otoe,31131,Nebraska
+NE,pawnee,31133,Nebraska
+NE,perkins,31135,Nebraska
+NE,phelps,31137,Nebraska
+NE,pierce,31139,Nebraska
+NE,platte,31141,Nebraska
+NE,polk,31143,Nebraska
+NE,red willow,31145,Nebraska
+NE,richardson,31147,Nebraska
+NE,rock,31149,Nebraska
+NE,saline,31151,Nebraska
+NE,sarpy,31153,Nebraska
+NE,saunders,31155,Nebraska
+NE,scotts bluff,31157,Nebraska
+NE,seward,31159,Nebraska
+NE,sheridan,31161,Nebraska
+NE,sherman,31163,Nebraska
+NE,sioux,31165,Nebraska
+NE,stanton,31167,Nebraska
+NE,thayer,31169,Nebraska
+NE,thomas,31171,Nebraska
+NE,thurston,31173,Nebraska
+NE,valley,31175,Nebraska
+NE,washington,31177,Nebraska
+NE,wayne,31179,Nebraska
+NE,webster,31181,Nebraska
+NE,wheeler,31183,Nebraska
+NE,york,31185,Nebraska
+NV,churchill,32001,Nevada
+NV,clark,32003,Nevada
+NV,douglas,32005,Nevada
+NV,elko,32007,Nevada
+NV,esmeralda,32009,Nevada
+NV,eureka,32011,Nevada
+NV,humboldt,32013,Nevada
+NV,lander,32015,Nevada
+NV,lincoln,32017,Nevada
+NV,lyon,32019,Nevada
+NV,mineral,32021,Nevada
+NV,nye,32023,Nevada
+NV,pershing,32027,Nevada
+NV,storey,32029,Nevada
+NV,washoe,32031,Nevada
+NV,white pine,32033,Nevada
+NV,carson city,32510,Nevada
+NH,belknap,33001,New Hampshire
+NH,carroll,33003,New Hampshire
+NH,cheshire,33005,New Hampshire
+NH,coos,33007,New Hampshire
+NH,grafton,33009,New Hampshire
+NH,hillsborough,33011,New Hampshire
+NH,merrimack,33013,New Hampshire
+NH,rockingham,33015,New Hampshire
+NH,strafford,33017,New Hampshire
+NH,sullivan,33019,New Hampshire
+NJ,atlantic,34001,New Jersey
+NJ,bergen,34003,New Jersey
+NJ,burlington,34005,New Jersey
+NJ,camden,34007,New Jersey
+NJ,cape may,34009,New Jersey
+NJ,cumberland,34011,New Jersey
+NJ,essex,34013,New Jersey
+NJ,gloucester,34015,New Jersey
+NJ,hudson,34017,New Jersey
+NJ,hunterdon,34019,New Jersey
+NJ,mercer,34021,New Jersey
+NJ,middlesex,34023,New Jersey
+NJ,monmouth,34025,New Jersey
+NJ,morris,34027,New Jersey
+NJ,ocean,34029,New Jersey
+NJ,passaic,34031,New Jersey
+NJ,salem,34033,New Jersey
+NJ,somerset,34035,New Jersey
+NJ,sussex,34037,New Jersey
+NJ,union,34039,New Jersey
+NJ,warren,34041,New Jersey
+NM,bernalillo,35001,New Mexico
+NM,catron,35003,New Mexico
+NM,chaves,35005,New Mexico
+NM,cibola,35006,New Mexico
+NM,colfax,35007,New Mexico
+NM,curry,35009,New Mexico
+NM,de baca,35011,New Mexico
+NM,doña ana,35013,New Mexico
+NM,eddy,35015,New Mexico
+NM,grant,35017,New Mexico
+NM,guadalupe,35019,New Mexico
+NM,harding,35021,New Mexico
+NM,hidalgo,35023,New Mexico
+NM,lea,35025,New Mexico
+NM,lincoln,35027,New Mexico
+NM,los alamos,35028,New Mexico
+NM,luna,35029,New Mexico
+NM,mckinley,35031,New Mexico
+NM,mora,35033,New Mexico
+NM,otero,35035,New Mexico
+NM,quay,35037,New Mexico
+NM,rio arriba,35039,New Mexico
+NM,roosevelt,35041,New Mexico
+NM,sandoval,35043,New Mexico
+NM,san juan,35045,New Mexico
+NM,san miguel,35047,New Mexico
+NM,santa fe,35049,New Mexico
+NM,sierra,35051,New Mexico
+NM,socorro,35053,New Mexico
+NM,taos,35055,New Mexico
+NM,torrance,35057,New Mexico
+NM,union,35059,New Mexico
+NM,valencia,35061,New Mexico
+NY,albany,36001,New York
+NY,allegany,36003,New York
+NY,bronx,36005,New York
+NY,broome,36007,New York
+NY,cattaraugus,36009,New York
+NY,cayuga,36011,New York
+NY,chautauqua,36013,New York
+NY,chemung,36015,New York
+NY,chenango,36017,New York
+NY,clinton,36019,New York
+NY,columbia,36021,New York
+NY,cortland,36023,New York
+NY,delaware,36025,New York
+NY,dutchess,36027,New York
+NY,erie,36029,New York
+NY,essex,36031,New York
+NY,franklin,36033,New York
+NY,fulton,36035,New York
+NY,genesee,36037,New York
+NY,greene,36039,New York
+NY,hamilton,36041,New York
+NY,herkimer,36043,New York
+NY,jefferson,36045,New York
+NY,kings,36047,New York
+NY,lewis,36049,New York
+NY,livingston,36051,New York
+NY,madison,36053,New York
+NY,monroe,36055,New York
+NY,montgomery,36057,New York
+NY,nassau,36059,New York
+NY,new york,36061,New York
+NY,niagara,36063,New York
+NY,oneida,36065,New York
+NY,onondaga,36067,New York
+NY,ontario,36069,New York
+NY,orange,36071,New York
+NY,orleans,36073,New York
+NY,oswego,36075,New York
+NY,otsego,36077,New York
+NY,putnam,36079,New York
+NY,queens,36081,New York
+NY,rensselaer,36083,New York
+NY,richmond,36085,New York
+NY,rockland,36087,New York
+NY,st. lawrence,36089,New York
+NY,saratoga,36091,New York
+NY,schenectady,36093,New York
+NY,schoharie,36095,New York
+NY,schuyler,36097,New York
+NY,seneca,36099,New York
+NY,steuben,36101,New York
+NY,suffolk,36103,New York
+NY,sullivan,36105,New York
+NY,tioga,36107,New York
+NY,tompkins,36109,New York
+NY,ulster,36111,New York
+NY,warren,36113,New York
+NY,washington,36115,New York
+NY,wayne,36117,New York
+NY,westchester,36119,New York
+NY,wyoming,36121,New York
+NY,yates,36123,New York
+NC,alamance,37001,North Carolina
+NC,alexander,37003,North Carolina
+NC,alleghany,37005,North Carolina
+NC,anson,37007,North Carolina
+NC,ashe,37009,North Carolina
+NC,avery,37011,North Carolina
+NC,beaufort,37013,North Carolina
+NC,bertie,37015,North Carolina
+NC,bladen,37017,North Carolina
+NC,brunswick,37019,North Carolina
+NC,buncombe,37021,North Carolina
+NC,burke,37023,North Carolina
+NC,cabarrus,37025,North Carolina
+NC,caldwell,37027,North Carolina
+NC,camden,37029,North Carolina
+NC,carteret,37031,North Carolina
+NC,caswell,37033,North Carolina
+NC,catawba,37035,North Carolina
+NC,chatham,37037,North Carolina
+NC,cherokee,37039,North Carolina
+NC,chowan,37041,North Carolina
+NC,clay,37043,North Carolina
+NC,cleveland,37045,North Carolina
+NC,columbus,37047,North Carolina
+NC,craven,37049,North Carolina
+NC,cumberland,37051,North Carolina
+NC,currituck,37053,North Carolina
+NC,dare,37055,North Carolina
+NC,davidson,37057,North Carolina
+NC,davie,37059,North Carolina
+NC,duplin,37061,North Carolina
+NC,durham,37063,North Carolina
+NC,edgecombe,37065,North Carolina
+NC,forsyth,37067,North Carolina
+NC,franklin,37069,North Carolina
+NC,gaston,37071,North Carolina
+NC,gates,37073,North Carolina
+NC,graham,37075,North Carolina
+NC,granville,37077,North Carolina
+NC,greene,37079,North Carolina
+NC,guilford,37081,North Carolina
+NC,halifax,37083,North Carolina
+NC,harnett,37085,North Carolina
+NC,haywood,37087,North Carolina
+NC,henderson,37089,North Carolina
+NC,hertford,37091,North Carolina
+NC,hoke,37093,North Carolina
+NC,hyde,37095,North Carolina
+NC,iredell,37097,North Carolina
+NC,jackson,37099,North Carolina
+NC,johnston,37101,North Carolina
+NC,jones,37103,North Carolina
+NC,lee,37105,North Carolina
+NC,lenoir,37107,North Carolina
+NC,lincoln,37109,North Carolina
+NC,mcdowell,37111,North Carolina
+NC,macon,37113,North Carolina
+NC,madison,37115,North Carolina
+NC,martin,37117,North Carolina
+NC,mecklenburg,37119,North Carolina
+NC,mitchell,37121,North Carolina
+NC,montgomery,37123,North Carolina
+NC,moore,37125,North Carolina
+NC,nash,37127,North Carolina
+NC,new hanover,37129,North Carolina
+NC,northampton,37131,North Carolina
+NC,onslow,37133,North Carolina
+NC,orange,37135,North Carolina
+NC,pamlico,37137,North Carolina
+NC,pasquotank,37139,North Carolina
+NC,pender,37141,North Carolina
+NC,perquimans,37143,North Carolina
+NC,person,37145,North Carolina
+NC,pitt,37147,North Carolina
+NC,polk,37149,North Carolina
+NC,randolph,37151,North Carolina
+NC,richmond,37153,North Carolina
+NC,robeson,37155,North Carolina
+NC,rockingham,37157,North Carolina
+NC,rowan,37159,North Carolina
+NC,rutherford,37161,North Carolina
+NC,sampson,37163,North Carolina
+NC,scotland,37165,North Carolina
+NC,stanly,37167,North Carolina
+NC,stokes,37169,North Carolina
+NC,surry,37171,North Carolina
+NC,swain,37173,North Carolina
+NC,transylvania,37175,North Carolina
+NC,tyrrell,37177,North Carolina
+NC,union,37179,North Carolina
+NC,vance,37181,North Carolina
+NC,wake,37183,North Carolina
+NC,warren,37185,North Carolina
+NC,washington,37187,North Carolina
+NC,watauga,37189,North Carolina
+NC,wayne,37191,North Carolina
+NC,wilkes,37193,North Carolina
+NC,wilson,37195,North Carolina
+NC,yadkin,37197,North Carolina
+NC,yancey,37199,North Carolina
+ND,adams,38001,North Dakota
+ND,barnes,38003,North Dakota
+ND,benson,38005,North Dakota
+ND,billings,38007,North Dakota
+ND,bottineau,38009,North Dakota
+ND,bowman,38011,North Dakota
+ND,burke,38013,North Dakota
+ND,burleigh,38015,North Dakota
+ND,cass,38017,North Dakota
+ND,cavalier,38019,North Dakota
+ND,dickey,38021,North Dakota
+ND,divide,38023,North Dakota
+ND,dunn,38025,North Dakota
+ND,eddy,38027,North Dakota
+ND,emmons,38029,North Dakota
+ND,foster,38031,North Dakota
+ND,golden valley,38033,North Dakota
+ND,grand forks,38035,North Dakota
+ND,grant,38037,North Dakota
+ND,griggs,38039,North Dakota
+ND,hettinger,38041,North Dakota
+ND,kidder,38043,North Dakota
+ND,lamoure,38045,North Dakota
+ND,logan,38047,North Dakota
+ND,mchenry,38049,North Dakota
+ND,mcintosh,38051,North Dakota
+ND,mckenzie,38053,North Dakota
+ND,mclean,38055,North Dakota
+ND,mercer,38057,North Dakota
+ND,morton,38059,North Dakota
+ND,mountrail,38061,North Dakota
+ND,nelson,38063,North Dakota
+ND,oliver,38065,North Dakota
+ND,pembina,38067,North Dakota
+ND,pierce,38069,North Dakota
+ND,ramsey,38071,North Dakota
+ND,ransom,38073,North Dakota
+ND,renville,38075,North Dakota
+ND,richland,38077,North Dakota
+ND,rolette,38079,North Dakota
+ND,sargent,38081,North Dakota
+ND,sheridan,38083,North Dakota
+ND,sioux,38085,North Dakota
+ND,slope,38087,North Dakota
+ND,stark,38089,North Dakota
+ND,steele,38091,North Dakota
+ND,stutsman,38093,North Dakota
+ND,towner,38095,North Dakota
+ND,traill,38097,North Dakota
+ND,walsh,38099,North Dakota
+ND,ward,38101,North Dakota
+ND,wells,38103,North Dakota
+ND,williams,38105,North Dakota
+OH,adams,39001,Ohio
+OH,allen,39003,Ohio
+OH,ashland,39005,Ohio
+OH,ashtabula,39007,Ohio
+OH,athens,39009,Ohio
+OH,auglaize,39011,Ohio
+OH,belmont,39013,Ohio
+OH,brown,39015,Ohio
+OH,butler,39017,Ohio
+OH,carroll,39019,Ohio
+OH,champaign,39021,Ohio
+OH,clark,39023,Ohio
+OH,clermont,39025,Ohio
+OH,clinton,39027,Ohio
+OH,columbiana,39029,Ohio
+OH,coshocton,39031,Ohio
+OH,crawford,39033,Ohio
+OH,cuyahoga,39035,Ohio
+OH,darke,39037,Ohio
+OH,defiance,39039,Ohio
+OH,delaware,39041,Ohio
+OH,erie,39043,Ohio
+OH,fairfield,39045,Ohio
+OH,fayette,39047,Ohio
+OH,franklin,39049,Ohio
+OH,fulton,39051,Ohio
+OH,gallia,39053,Ohio
+OH,geauga,39055,Ohio
+OH,greene,39057,Ohio
+OH,guernsey,39059,Ohio
+OH,hamilton,39061,Ohio
+OH,hancock,39063,Ohio
+OH,hardin,39065,Ohio
+OH,harrison,39067,Ohio
+OH,henry,39069,Ohio
+OH,highland,39071,Ohio
+OH,hocking,39073,Ohio
+OH,holmes,39075,Ohio
+OH,huron,39077,Ohio
+OH,jackson,39079,Ohio
+OH,jefferson,39081,Ohio
+OH,knox,39083,Ohio
+OH,lake,39085,Ohio
+OH,lawrence,39087,Ohio
+OH,licking,39089,Ohio
+OH,logan,39091,Ohio
+OH,lorain,39093,Ohio
+OH,lucas,39095,Ohio
+OH,madison,39097,Ohio
+OH,mahoning,39099,Ohio
+OH,marion,39101,Ohio
+OH,medina,39103,Ohio
+OH,meigs,39105,Ohio
+OH,mercer,39107,Ohio
+OH,miami,39109,Ohio
+OH,monroe,39111,Ohio
+OH,montgomery,39113,Ohio
+OH,morgan,39115,Ohio
+OH,morrow,39117,Ohio
+OH,muskingum,39119,Ohio
+OH,noble,39121,Ohio
+OH,ottawa,39123,Ohio
+OH,paulding,39125,Ohio
+OH,perry,39127,Ohio
+OH,pickaway,39129,Ohio
+OH,pike,39131,Ohio
+OH,portage,39133,Ohio
+OH,preble,39135,Ohio
+OH,putnam,39137,Ohio
+OH,richland,39139,Ohio
+OH,ross,39141,Ohio
+OH,sandusky,39143,Ohio
+OH,scioto,39145,Ohio
+OH,seneca,39147,Ohio
+OH,shelby,39149,Ohio
+OH,stark,39151,Ohio
+OH,summit,39153,Ohio
+OH,trumbull,39155,Ohio
+OH,tuscarawas,39157,Ohio
+OH,union,39159,Ohio
+OH,van wert,39161,Ohio
+OH,vinton,39163,Ohio
+OH,warren,39165,Ohio
+OH,washington,39167,Ohio
+OH,wayne,39169,Ohio
+OH,williams,39171,Ohio
+OH,wood,39173,Ohio
+OH,wyandot,39175,Ohio
+OK,adair,40001,Oklahoma
+OK,alfalfa,40003,Oklahoma
+OK,atoka,40005,Oklahoma
+OK,beaver,40007,Oklahoma
+OK,beckham,40009,Oklahoma
+OK,blaine,40011,Oklahoma
+OK,bryan,40013,Oklahoma
+OK,caddo,40015,Oklahoma
+OK,canadian,40017,Oklahoma
+OK,carter,40019,Oklahoma
+OK,cherokee,40021,Oklahoma
+OK,choctaw,40023,Oklahoma
+OK,cimarron,40025,Oklahoma
+OK,cleveland,40027,Oklahoma
+OK,coal,40029,Oklahoma
+OK,comanche,40031,Oklahoma
+OK,cotton,40033,Oklahoma
+OK,craig,40035,Oklahoma
+OK,creek,40037,Oklahoma
+OK,custer,40039,Oklahoma
+OK,delaware,40041,Oklahoma
+OK,dewey,40043,Oklahoma
+OK,ellis,40045,Oklahoma
+OK,garfield,40047,Oklahoma
+OK,garvin,40049,Oklahoma
+OK,grady,40051,Oklahoma
+OK,grant,40053,Oklahoma
+OK,greer,40055,Oklahoma
+OK,harmon,40057,Oklahoma
+OK,harper,40059,Oklahoma
+OK,haskell,40061,Oklahoma
+OK,hughes,40063,Oklahoma
+OK,jackson,40065,Oklahoma
+OK,jefferson,40067,Oklahoma
+OK,johnston,40069,Oklahoma
+OK,kay,40071,Oklahoma
+OK,kingfisher,40073,Oklahoma
+OK,kiowa,40075,Oklahoma
+OK,latimer,40077,Oklahoma
+OK,le flore,40079,Oklahoma
+OK,lincoln,40081,Oklahoma
+OK,logan,40083,Oklahoma
+OK,love,40085,Oklahoma
+OK,mcclain,40087,Oklahoma
+OK,mccurtain,40089,Oklahoma
+OK,mcintosh,40091,Oklahoma
+OK,major,40093,Oklahoma
+OK,marshall,40095,Oklahoma
+OK,mayes,40097,Oklahoma
+OK,murray,40099,Oklahoma
+OK,muskogee,40101,Oklahoma
+OK,noble,40103,Oklahoma
+OK,nowata,40105,Oklahoma
+OK,okfuskee,40107,Oklahoma
+OK,oklahoma,40109,Oklahoma
+OK,okmulgee,40111,Oklahoma
+OK,osage,40113,Oklahoma
+OK,ottawa,40115,Oklahoma
+OK,pawnee,40117,Oklahoma
+OK,payne,40119,Oklahoma
+OK,pittsburg,40121,Oklahoma
+OK,pontotoc,40123,Oklahoma
+OK,pottawatomie,40125,Oklahoma
+OK,pushmataha,40127,Oklahoma
+OK,roger mills,40129,Oklahoma
+OK,rogers,40131,Oklahoma
+OK,seminole,40133,Oklahoma
+OK,sequoyah,40135,Oklahoma
+OK,stephens,40137,Oklahoma
+OK,texas,40139,Oklahoma
+OK,tillman,40141,Oklahoma
+OK,tulsa,40143,Oklahoma
+OK,wagoner,40145,Oklahoma
+OK,washington,40147,Oklahoma
+OK,washita,40149,Oklahoma
+OK,woods,40151,Oklahoma
+OK,woodward,40153,Oklahoma
+OR,baker,41001,Oregon
+OR,benton,41003,Oregon
+OR,clackamas,41005,Oregon
+OR,clatsop,41007,Oregon
+OR,columbia,41009,Oregon
+OR,coos,41011,Oregon
+OR,crook,41013,Oregon
+OR,curry,41015,Oregon
+OR,deschutes,41017,Oregon
+OR,douglas,41019,Oregon
+OR,gilliam,41021,Oregon
+OR,grant,41023,Oregon
+OR,harney,41025,Oregon
+OR,hood river,41027,Oregon
+OR,jackson,41029,Oregon
+OR,jefferson,41031,Oregon
+OR,josephine,41033,Oregon
+OR,klamath,41035,Oregon
+OR,lake,41037,Oregon
+OR,lane,41039,Oregon
+OR,lincoln,41041,Oregon
+OR,linn,41043,Oregon
+OR,malheur,41045,Oregon
+OR,marion,41047,Oregon
+OR,morrow,41049,Oregon
+OR,multnomah,41051,Oregon
+OR,polk,41053,Oregon
+OR,sherman,41055,Oregon
+OR,tillamook,41057,Oregon
+OR,umatilla,41059,Oregon
+OR,union,41061,Oregon
+OR,wallowa,41063,Oregon
+OR,wasco,41065,Oregon
+OR,washington,41067,Oregon
+OR,wheeler,41069,Oregon
+OR,yamhill,41071,Oregon
+PA,adams,42001,Pennsylvania
+PA,allegheny,42003,Pennsylvania
+PA,armstrong,42005,Pennsylvania
+PA,beaver,42007,Pennsylvania
+PA,bedford,42009,Pennsylvania
+PA,berks,42011,Pennsylvania
+PA,blair,42013,Pennsylvania
+PA,bradford,42015,Pennsylvania
+PA,bucks,42017,Pennsylvania
+PA,butler,42019,Pennsylvania
+PA,cambria,42021,Pennsylvania
+PA,cameron,42023,Pennsylvania
+PA,carbon,42025,Pennsylvania
+PA,centre,42027,Pennsylvania
+PA,chester,42029,Pennsylvania
+PA,clarion,42031,Pennsylvania
+PA,clearfield,42033,Pennsylvania
+PA,clinton,42035,Pennsylvania
+PA,columbia,42037,Pennsylvania
+PA,crawford,42039,Pennsylvania
+PA,cumberland,42041,Pennsylvania
+PA,dauphin,42043,Pennsylvania
+PA,delaware,42045,Pennsylvania
+PA,elk,42047,Pennsylvania
+PA,erie,42049,Pennsylvania
+PA,fayette,42051,Pennsylvania
+PA,forest,42053,Pennsylvania
+PA,franklin,42055,Pennsylvania
+PA,fulton,42057,Pennsylvania
+PA,greene,42059,Pennsylvania
+PA,huntingdon,42061,Pennsylvania
+PA,indiana,42063,Pennsylvania
+PA,jefferson,42065,Pennsylvania
+PA,juniata,42067,Pennsylvania
+PA,lackawanna,42069,Pennsylvania
+PA,lancaster,42071,Pennsylvania
+PA,lawrence,42073,Pennsylvania
+PA,lebanon,42075,Pennsylvania
+PA,lehigh,42077,Pennsylvania
+PA,luzerne,42079,Pennsylvania
+PA,lycoming,42081,Pennsylvania
+PA,mckean,42083,Pennsylvania
+PA,mercer,42085,Pennsylvania
+PA,mifflin,42087,Pennsylvania
+PA,monroe,42089,Pennsylvania
+PA,montgomery,42091,Pennsylvania
+PA,montour,42093,Pennsylvania
+PA,northampton,42095,Pennsylvania
+PA,northumberland,42097,Pennsylvania
+PA,perry,42099,Pennsylvania
+PA,philadelphia,42101,Pennsylvania
+PA,pike,42103,Pennsylvania
+PA,potter,42105,Pennsylvania
+PA,schuylkill,42107,Pennsylvania
+PA,snyder,42109,Pennsylvania
+PA,somerset,42111,Pennsylvania
+PA,sullivan,42113,Pennsylvania
+PA,susquehanna,42115,Pennsylvania
+PA,tioga,42117,Pennsylvania
+PA,union,42119,Pennsylvania
+PA,venango,42121,Pennsylvania
+PA,warren,42123,Pennsylvania
+PA,washington,42125,Pennsylvania
+PA,wayne,42127,Pennsylvania
+PA,westmoreland,42129,Pennsylvania
+PA,wyoming,42131,Pennsylvania
+PA,york,42133,Pennsylvania
+RI,bristol,44001,Rhode Island
+RI,kent,44003,Rhode Island
+RI,newport,44005,Rhode Island
+RI,providence,44007,Rhode Island
+RI,washington,44009,Rhode Island
+SC,abbeville,45001,South Carolina
+SC,aiken,45003,South Carolina
+SC,allendale,45005,South Carolina
+SC,anderson,45007,South Carolina
+SC,bamberg,45009,South Carolina
+SC,barnwell,45011,South Carolina
+SC,beaufort,45013,South Carolina
+SC,berkeley,45015,South Carolina
+SC,calhoun,45017,South Carolina
+SC,charleston,45019,South Carolina
+SC,cherokee,45021,South Carolina
+SC,chester,45023,South Carolina
+SC,chesterfield,45025,South Carolina
+SC,clarendon,45027,South Carolina
+SC,colleton,45029,South Carolina
+SC,darlington,45031,South Carolina
+SC,dillon,45033,South Carolina
+SC,dorchester,45035,South Carolina
+SC,edgefield,45037,South Carolina
+SC,fairfield,45039,South Carolina
+SC,florence,45041,South Carolina
+SC,georgetown,45043,South Carolina
+SC,greenville,45045,South Carolina
+SC,greenwood,45047,South Carolina
+SC,hampton,45049,South Carolina
+SC,horry,45051,South Carolina
+SC,jasper,45053,South Carolina
+SC,kershaw,45055,South Carolina
+SC,lancaster,45057,South Carolina
+SC,laurens,45059,South Carolina
+SC,lee,45061,South Carolina
+SC,lexington,45063,South Carolina
+SC,mccormick,45065,South Carolina
+SC,marion,45067,South Carolina
+SC,marlboro,45069,South Carolina
+SC,newberry,45071,South Carolina
+SC,oconee,45073,South Carolina
+SC,orangeburg,45075,South Carolina
+SC,pickens,45077,South Carolina
+SC,richland,45079,South Carolina
+SC,saluda,45081,South Carolina
+SC,spartanburg,45083,South Carolina
+SC,sumter,45085,South Carolina
+SC,union,45087,South Carolina
+SC,williamsburg,45089,South Carolina
+SC,york,45091,South Carolina
+SD,aurora,46003,South Dakota
+SD,beadle,46005,South Dakota
+SD,bennett,46007,South Dakota
+SD,bon homme,46009,South Dakota
+SD,brookings,46011,South Dakota
+SD,brown,46013,South Dakota
+SD,brule,46015,South Dakota
+SD,buffalo,46017,South Dakota
+SD,butte,46019,South Dakota
+SD,campbell,46021,South Dakota
+SD,charles mix,46023,South Dakota
+SD,clark,46025,South Dakota
+SD,clay,46027,South Dakota
+SD,codington,46029,South Dakota
+SD,corson,46031,South Dakota
+SD,custer,46033,South Dakota
+SD,davison,46035,South Dakota
+SD,day,46037,South Dakota
+SD,deuel,46039,South Dakota
+SD,dewey,46041,South Dakota
+SD,douglas,46043,South Dakota
+SD,edmunds,46045,South Dakota
+SD,fall river,46047,South Dakota
+SD,faulk,46049,South Dakota
+SD,grant,46051,South Dakota
+SD,gregory,46053,South Dakota
+SD,haakon,46055,South Dakota
+SD,hamlin,46057,South Dakota
+SD,hand,46059,South Dakota
+SD,hanson,46061,South Dakota
+SD,harding,46063,South Dakota
+SD,hughes,46065,South Dakota
+SD,hutchinson,46067,South Dakota
+SD,hyde,46069,South Dakota
+SD,jackson,46071,South Dakota
+SD,jerauld,46073,South Dakota
+SD,jones,46075,South Dakota
+SD,kingsbury,46077,South Dakota
+SD,lake,46079,South Dakota
+SD,lawrence,46081,South Dakota
+SD,lincoln,46083,South Dakota
+SD,lyman,46085,South Dakota
+SD,mccook,46087,South Dakota
+SD,mcpherson,46089,South Dakota
+SD,marshall,46091,South Dakota
+SD,meade,46093,South Dakota
+SD,mellette,46095,South Dakota
+SD,miner,46097,South Dakota
+SD,minnehaha,46099,South Dakota
+SD,moody,46101,South Dakota
+SD,oglala lakota,46102,South Dakota
+SD,pennington,46103,South Dakota
+SD,perkins,46105,South Dakota
+SD,potter,46107,South Dakota
+SD,roberts,46109,South Dakota
+SD,sanborn,46111,South Dakota
+SD,spink,46115,South Dakota
+SD,stanley,46117,South Dakota
+SD,sully,46119,South Dakota
+SD,todd,46121,South Dakota
+SD,tripp,46123,South Dakota
+SD,turner,46125,South Dakota
+SD,union,46127,South Dakota
+SD,walworth,46129,South Dakota
+SD,yankton,46135,South Dakota
+SD,ziebach,46137,South Dakota
+TN,anderson,47001,Tennessee
+TN,bedford,47003,Tennessee
+TN,benton,47005,Tennessee
+TN,bledsoe,47007,Tennessee
+TN,blount,47009,Tennessee
+TN,bradley,47011,Tennessee
+TN,campbell,47013,Tennessee
+TN,cannon,47015,Tennessee
+TN,carroll,47017,Tennessee
+TN,carter,47019,Tennessee
+TN,cheatham,47021,Tennessee
+TN,chester,47023,Tennessee
+TN,claiborne,47025,Tennessee
+TN,clay,47027,Tennessee
+TN,cocke,47029,Tennessee
+TN,coffee,47031,Tennessee
+TN,crockett,47033,Tennessee
+TN,cumberland,47035,Tennessee
+TN,davidson,47037,Tennessee
+TN,decatur,47039,Tennessee
+TN,dekalb,47041,Tennessee
+TN,dickson,47043,Tennessee
+TN,dyer,47045,Tennessee
+TN,fayette,47047,Tennessee
+TN,fentress,47049,Tennessee
+TN,franklin,47051,Tennessee
+TN,gibson,47053,Tennessee
+TN,giles,47055,Tennessee
+TN,grainger,47057,Tennessee
+TN,greene,47059,Tennessee
+TN,grundy,47061,Tennessee
+TN,hamblen,47063,Tennessee
+TN,hamilton,47065,Tennessee
+TN,hancock,47067,Tennessee
+TN,hardeman,47069,Tennessee
+TN,hardin,47071,Tennessee
+TN,hawkins,47073,Tennessee
+TN,haywood,47075,Tennessee
+TN,henderson,47077,Tennessee
+TN,henry,47079,Tennessee
+TN,hickman,47081,Tennessee
+TN,houston,47083,Tennessee
+TN,humphreys,47085,Tennessee
+TN,jackson,47087,Tennessee
+TN,jefferson,47089,Tennessee
+TN,johnson,47091,Tennessee
+TN,knox,47093,Tennessee
+TN,lake,47095,Tennessee
+TN,lauderdale,47097,Tennessee
+TN,lawrence,47099,Tennessee
+TN,lewis,47101,Tennessee
+TN,lincoln,47103,Tennessee
+TN,loudon,47105,Tennessee
+TN,mcminn,47107,Tennessee
+TN,mcnairy,47109,Tennessee
+TN,macon,47111,Tennessee
+TN,madison,47113,Tennessee
+TN,marion,47115,Tennessee
+TN,marshall,47117,Tennessee
+TN,maury,47119,Tennessee
+TN,meigs,47121,Tennessee
+TN,monroe,47123,Tennessee
+TN,montgomery,47125,Tennessee
+TN,moore,47127,Tennessee
+TN,morgan,47129,Tennessee
+TN,obion,47131,Tennessee
+TN,overton,47133,Tennessee
+TN,perry,47135,Tennessee
+TN,pickett,47137,Tennessee
+TN,polk,47139,Tennessee
+TN,putnam,47141,Tennessee
+TN,rhea,47143,Tennessee
+TN,roane,47145,Tennessee
+TN,robertson,47147,Tennessee
+TN,rutherford,47149,Tennessee
+TN,scott,47151,Tennessee
+TN,sequatchie,47153,Tennessee
+TN,sevier,47155,Tennessee
+TN,shelby,47157,Tennessee
+TN,smith,47159,Tennessee
+TN,stewart,47161,Tennessee
+TN,sullivan,47163,Tennessee
+TN,sumner,47165,Tennessee
+TN,tipton,47167,Tennessee
+TN,trousdale,47169,Tennessee
+TN,unicoi,47171,Tennessee
+TN,union,47173,Tennessee
+TN,van buren,47175,Tennessee
+TN,warren,47177,Tennessee
+TN,washington,47179,Tennessee
+TN,wayne,47181,Tennessee
+TN,weakley,47183,Tennessee
+TN,white,47185,Tennessee
+TN,williamson,47187,Tennessee
+TN,wilson,47189,Tennessee
+TX,anderson,48001,Texas
+TX,andrews,48003,Texas
+TX,angelina,48005,Texas
+TX,aransas,48007,Texas
+TX,archer,48009,Texas
+TX,armstrong,48011,Texas
+TX,atascosa,48013,Texas
+TX,austin,48015,Texas
+TX,bailey,48017,Texas
+TX,bandera,48019,Texas
+TX,bastrop,48021,Texas
+TX,baylor,48023,Texas
+TX,bee,48025,Texas
+TX,bell,48027,Texas
+TX,bexar,48029,Texas
+TX,blanco,48031,Texas
+TX,borden,48033,Texas
+TX,bosque,48035,Texas
+TX,bowie,48037,Texas
+TX,brazoria,48039,Texas
+TX,brazos,48041,Texas
+TX,brewster,48043,Texas
+TX,briscoe,48045,Texas
+TX,brooks,48047,Texas
+TX,brown,48049,Texas
+TX,burleson,48051,Texas
+TX,burnet,48053,Texas
+TX,caldwell,48055,Texas
+TX,calhoun,48057,Texas
+TX,callahan,48059,Texas
+TX,cameron,48061,Texas
+TX,camp,48063,Texas
+TX,carson,48065,Texas
+TX,cass,48067,Texas
+TX,castro,48069,Texas
+TX,chambers,48071,Texas
+TX,cherokee,48073,Texas
+TX,childress,48075,Texas
+TX,clay,48077,Texas
+TX,cochran,48079,Texas
+TX,coke,48081,Texas
+TX,coleman,48083,Texas
+TX,collin,48085,Texas
+TX,collingsworth,48087,Texas
+TX,colorado,48089,Texas
+TX,comal,48091,Texas
+TX,comanche,48093,Texas
+TX,concho,48095,Texas
+TX,cooke,48097,Texas
+TX,coryell,48099,Texas
+TX,cottle,48101,Texas
+TX,crane,48103,Texas
+TX,crockett,48105,Texas
+TX,crosby,48107,Texas
+TX,culberson,48109,Texas
+TX,dallam,48111,Texas
+TX,dallas,48113,Texas
+TX,dawson,48115,Texas
+TX,deaf smith,48117,Texas
+TX,delta,48119,Texas
+TX,denton,48121,Texas
+TX,dewitt,48123,Texas
+TX,dickens,48125,Texas
+TX,dimmit,48127,Texas
+TX,donley,48129,Texas
+TX,duval,48131,Texas
+TX,eastland,48133,Texas
+TX,ector,48135,Texas
+TX,edwards,48137,Texas
+TX,ellis,48139,Texas
+TX,el paso,48141,Texas
+TX,erath,48143,Texas
+TX,falls,48145,Texas
+TX,fannin,48147,Texas
+TX,fayette,48149,Texas
+TX,fisher,48151,Texas
+TX,floyd,48153,Texas
+TX,foard,48155,Texas
+TX,fort bend,48157,Texas
+TX,franklin,48159,Texas
+TX,freestone,48161,Texas
+TX,frio,48163,Texas
+TX,gaines,48165,Texas
+TX,galveston,48167,Texas
+TX,garza,48169,Texas
+TX,gillespie,48171,Texas
+TX,glasscock,48173,Texas
+TX,goliad,48175,Texas
+TX,gonzales,48177,Texas
+TX,gray,48179,Texas
+TX,grayson,48181,Texas
+TX,gregg,48183,Texas
+TX,grimes,48185,Texas
+TX,guadalupe,48187,Texas
+TX,hale,48189,Texas
+TX,hall,48191,Texas
+TX,hamilton,48193,Texas
+TX,hansford,48195,Texas
+TX,hardeman,48197,Texas
+TX,hardin,48199,Texas
+TX,harris,48201,Texas
+TX,harrison,48203,Texas
+TX,hartley,48205,Texas
+TX,haskell,48207,Texas
+TX,hays,48209,Texas
+TX,hemphill,48211,Texas
+TX,henderson,48213,Texas
+TX,hidalgo,48215,Texas
+TX,hill,48217,Texas
+TX,hockley,48219,Texas
+TX,hood,48221,Texas
+TX,hopkins,48223,Texas
+TX,houston,48225,Texas
+TX,howard,48227,Texas
+TX,hudspeth,48229,Texas
+TX,hunt,48231,Texas
+TX,hutchinson,48233,Texas
+TX,irion,48235,Texas
+TX,jack,48237,Texas
+TX,jackson,48239,Texas
+TX,jasper,48241,Texas
+TX,jeff davis,48243,Texas
+TX,jefferson,48245,Texas
+TX,jim hogg,48247,Texas
+TX,jim wells,48249,Texas
+TX,johnson,48251,Texas
+TX,jones,48253,Texas
+TX,karnes,48255,Texas
+TX,kaufman,48257,Texas
+TX,kendall,48259,Texas
+TX,kenedy,48261,Texas
+TX,kent,48263,Texas
+TX,kerr,48265,Texas
+TX,kimble,48267,Texas
+TX,king,48269,Texas
+TX,kinney,48271,Texas
+TX,kleberg,48273,Texas
+TX,knox,48275,Texas
+TX,lamar,48277,Texas
+TX,lamb,48279,Texas
+TX,lampasas,48281,Texas
+TX,la salle,48283,Texas
+TX,lavaca,48285,Texas
+TX,lee,48287,Texas
+TX,leon,48289,Texas
+TX,liberty,48291,Texas
+TX,limestone,48293,Texas
+TX,lipscomb,48295,Texas
+TX,live oak,48297,Texas
+TX,llano,48299,Texas
+TX,loving,48301,Texas
+TX,lubbock,48303,Texas
+TX,lynn,48305,Texas
+TX,mcculloch,48307,Texas
+TX,mclennan,48309,Texas
+TX,mcmullen,48311,Texas
+TX,madison,48313,Texas
+TX,marion,48315,Texas
+TX,martin,48317,Texas
+TX,mason,48319,Texas
+TX,matagorda,48321,Texas
+TX,maverick,48323,Texas
+TX,medina,48325,Texas
+TX,menard,48327,Texas
+TX,midland,48329,Texas
+TX,milam,48331,Texas
+TX,mills,48333,Texas
+TX,mitchell,48335,Texas
+TX,montague,48337,Texas
+TX,montgomery,48339,Texas
+TX,moore,48341,Texas
+TX,morris,48343,Texas
+TX,motley,48345,Texas
+TX,nacogdoches,48347,Texas
+TX,navarro,48349,Texas
+TX,newton,48351,Texas
+TX,nolan,48353,Texas
+TX,nueces,48355,Texas
+TX,ochiltree,48357,Texas
+TX,oldham,48359,Texas
+TX,orange,48361,Texas
+TX,palo pinto,48363,Texas
+TX,panola,48365,Texas
+TX,parker,48367,Texas
+TX,parmer,48369,Texas
+TX,pecos,48371,Texas
+TX,polk,48373,Texas
+TX,potter,48375,Texas
+TX,presidio,48377,Texas
+TX,rains,48379,Texas
+TX,randall,48381,Texas
+TX,reagan,48383,Texas
+TX,real,48385,Texas
+TX,red river,48387,Texas
+TX,reeves,48389,Texas
+TX,refugio,48391,Texas
+TX,roberts,48393,Texas
+TX,robertson,48395,Texas
+TX,rockwall,48397,Texas
+TX,runnels,48399,Texas
+TX,rusk,48401,Texas
+TX,sabine,48403,Texas
+TX,san augustine,48405,Texas
+TX,san jacinto,48407,Texas
+TX,san patricio,48409,Texas
+TX,san saba,48411,Texas
+TX,schleicher,48413,Texas
+TX,scurry,48415,Texas
+TX,shackelford,48417,Texas
+TX,shelby,48419,Texas
+TX,sherman,48421,Texas
+TX,smith,48423,Texas
+TX,somervell,48425,Texas
+TX,starr,48427,Texas
+TX,stephens,48429,Texas
+TX,sterling,48431,Texas
+TX,stonewall,48433,Texas
+TX,sutton,48435,Texas
+TX,swisher,48437,Texas
+TX,tarrant,48439,Texas
+TX,taylor,48441,Texas
+TX,terrell,48443,Texas
+TX,terry,48445,Texas
+TX,throckmorton,48447,Texas
+TX,titus,48449,Texas
+TX,tom green,48451,Texas
+TX,travis,48453,Texas
+TX,trinity,48455,Texas
+TX,tyler,48457,Texas
+TX,upshur,48459,Texas
+TX,upton,48461,Texas
+TX,uvalde,48463,Texas
+TX,val verde,48465,Texas
+TX,van zandt,48467,Texas
+TX,victoria,48469,Texas
+TX,walker,48471,Texas
+TX,waller,48473,Texas
+TX,ward,48475,Texas
+TX,washington,48477,Texas
+TX,webb,48479,Texas
+TX,wharton,48481,Texas
+TX,wheeler,48483,Texas
+TX,wichita,48485,Texas
+TX,wilbarger,48487,Texas
+TX,willacy,48489,Texas
+TX,williamson,48491,Texas
+TX,wilson,48493,Texas
+TX,winkler,48495,Texas
+TX,wise,48497,Texas
+TX,wood,48499,Texas
+TX,yoakum,48501,Texas
+TX,young,48503,Texas
+TX,zapata,48505,Texas
+TX,zavala,48507,Texas
+UT,beaver,49001,Utah
+UT,box elder,49003,Utah
+UT,cache,49005,Utah
+UT,carbon,49007,Utah
+UT,daggett,49009,Utah
+UT,davis,49011,Utah
+UT,duchesne,49013,Utah
+UT,emery,49015,Utah
+UT,garfield,49017,Utah
+UT,grand,49019,Utah
+UT,iron,49021,Utah
+UT,juab,49023,Utah
+UT,kane,49025,Utah
+UT,millard,49027,Utah
+UT,morgan,49029,Utah
+UT,piute,49031,Utah
+UT,rich,49033,Utah
+UT,salt lake,49035,Utah
+UT,san juan,49037,Utah
+UT,sanpete,49039,Utah
+UT,sevier,49041,Utah
+UT,summit,49043,Utah
+UT,tooele,49045,Utah
+UT,uintah,49047,Utah
+UT,utah,49049,Utah
+UT,wasatch,49051,Utah
+UT,washington,49053,Utah
+UT,wayne,49055,Utah
+UT,weber,49057,Utah
+VT,addison,50001,Vermont
+VT,bennington,50003,Vermont
+VT,caledonia,50005,Vermont
+VT,chittenden,50007,Vermont
+VT,essex,50009,Vermont
+VT,franklin,50011,Vermont
+VT,grand isle,50013,Vermont
+VT,lamoille,50015,Vermont
+VT,orange,50017,Vermont
+VT,orleans,50019,Vermont
+VT,rutland,50021,Vermont
+VT,washington,50023,Vermont
+VT,windham,50025,Vermont
+VT,windsor,50027,Vermont
+VA,accomack,51001,Virginia
+VA,albemarle,51003,Virginia
+VA,alleghany,51005,Virginia
+VA,amelia,51007,Virginia
+VA,amherst,51009,Virginia
+VA,appomattox,51011,Virginia
+VA,arlington,51013,Virginia
+VA,augusta,51015,Virginia
+VA,bath,51017,Virginia
+VA,bedford,51019,Virginia
+VA,bland,51021,Virginia
+VA,botetourt,51023,Virginia
+VA,brunswick,51025,Virginia
+VA,buchanan,51027,Virginia
+VA,buckingham,51029,Virginia
+VA,campbell,51031,Virginia
+VA,caroline,51033,Virginia
+VA,carroll,51035,Virginia
+VA,charles city,51036,Virginia
+VA,charlotte,51037,Virginia
+VA,chesterfield,51041,Virginia
+VA,clarke,51043,Virginia
+VA,craig,51045,Virginia
+VA,culpeper,51047,Virginia
+VA,cumberland,51049,Virginia
+VA,dickenson,51051,Virginia
+VA,dinwiddie,51053,Virginia
+VA,essex,51057,Virginia
+VA,fairfax,51059,Virginia
+VA,fauquier,51061,Virginia
+VA,floyd,51063,Virginia
+VA,fluvanna,51065,Virginia
+VA,franklin,51067,Virginia
+VA,frederick,51069,Virginia
+VA,giles,51071,Virginia
+VA,gloucester,51073,Virginia
+VA,goochland,51075,Virginia
+VA,grayson,51077,Virginia
+VA,greene,51079,Virginia
+VA,greensville,51081,Virginia
+VA,halifax,51083,Virginia
+VA,hanover,51085,Virginia
+VA,henrico,51087,Virginia
+VA,henry,51089,Virginia
+VA,highland,51091,Virginia
+VA,isle of wight,51093,Virginia
+VA,james city,51095,Virginia
+VA,king and queen,51097,Virginia
+VA,king george,51099,Virginia
+VA,king william,51101,Virginia
+VA,lancaster,51103,Virginia
+VA,lee,51105,Virginia
+VA,loudoun,51107,Virginia
+VA,louisa,51109,Virginia
+VA,lunenburg,51111,Virginia
+VA,madison,51113,Virginia
+VA,mathews,51115,Virginia
+VA,mecklenburg,51117,Virginia
+VA,middlesex,51119,Virginia
+VA,montgomery,51121,Virginia
+VA,nelson,51125,Virginia
+VA,new kent,51127,Virginia
+VA,northampton,51131,Virginia
+VA,northumberland,51133,Virginia
+VA,nottoway,51135,Virginia
+VA,orange,51137,Virginia
+VA,page,51139,Virginia
+VA,patrick,51141,Virginia
+VA,pittsylvania,51143,Virginia
+VA,powhatan,51145,Virginia
+VA,prince edward,51147,Virginia
+VA,prince george,51149,Virginia
+VA,prince william,51153,Virginia
+VA,pulaski,51155,Virginia
+VA,rappahannock,51157,Virginia
+VA,richmond,51159,Virginia
+VA,roanoke,51161,Virginia
+VA,rockbridge,51163,Virginia
+VA,rockingham,51165,Virginia
+VA,russell,51167,Virginia
+VA,scott,51169,Virginia
+VA,shenandoah,51171,Virginia
+VA,smyth,51173,Virginia
+VA,southampton,51175,Virginia
+VA,spotsylvania,51177,Virginia
+VA,stafford,51179,Virginia
+VA,surry,51181,Virginia
+VA,sussex,51183,Virginia
+VA,tazewell,51185,Virginia
+VA,warren,51187,Virginia
+VA,washington,51191,Virginia
+VA,westmoreland,51193,Virginia
+VA,wise,51195,Virginia
+VA,wythe,51197,Virginia
+VA,york,51199,Virginia
+VA,alexandria city,51510,Virginia
+VA,bristol city,51520,Virginia
+VA,buena vista city,51530,Virginia
+VA,charlottesville city,51540,Virginia
+VA,chesapeake city,51550,Virginia
+VA,colonial heights city,51570,Virginia
+VA,covington city,51580,Virginia
+VA,danville city,51590,Virginia
+VA,emporia city,51595,Virginia
+VA,fairfax city,51600,Virginia
+VA,falls church city,51610,Virginia
+VA,franklin city,51620,Virginia
+VA,fredericksburg city,51630,Virginia
+VA,galax city,51640,Virginia
+VA,hampton city,51650,Virginia
+VA,harrisonburg city,51660,Virginia
+VA,hopewell city,51670,Virginia
+VA,lexington city,51678,Virginia
+VA,lynchburg city,51680,Virginia
+VA,manassas city,51683,Virginia
+VA,manassas park city,51685,Virginia
+VA,martinsville city,51690,Virginia
+VA,newport news city,51700,Virginia
+VA,norfolk city,51710,Virginia
+VA,norton city,51720,Virginia
+VA,petersburg city,51730,Virginia
+VA,poquoson city,51735,Virginia
+VA,portsmouth city,51740,Virginia
+VA,radford city,51750,Virginia
+VA,richmond city,51760,Virginia
+VA,roanoke city,51770,Virginia
+VA,salem city,51775,Virginia
+VA,staunton city,51790,Virginia
+VA,suffolk city,51800,Virginia
+VA,virginia beach city,51810,Virginia
+VA,waynesboro city,51820,Virginia
+VA,williamsburg city,51830,Virginia
+VA,winchester city,51840,Virginia
+WA,adams,53001,Washington
+WA,asotin,53003,Washington
+WA,benton,53005,Washington
+WA,chelan,53007,Washington
+WA,clallam,53009,Washington
+WA,clark,53011,Washington
+WA,columbia,53013,Washington
+WA,cowlitz,53015,Washington
+WA,douglas,53017,Washington
+WA,ferry,53019,Washington
+WA,franklin,53021,Washington
+WA,garfield,53023,Washington
+WA,grant,53025,Washington
+WA,grays harbor,53027,Washington
+WA,island,53029,Washington
+WA,jefferson,53031,Washington
+WA,king,53033,Washington
+WA,kitsap,53035,Washington
+WA,kittitas,53037,Washington
+WA,klickitat,53039,Washington
+WA,lewis,53041,Washington
+WA,lincoln,53043,Washington
+WA,mason,53045,Washington
+WA,okanogan,53047,Washington
+WA,pacific,53049,Washington
+WA,pend oreille,53051,Washington
+WA,pierce,53053,Washington
+WA,san juan,53055,Washington
+WA,skagit,53057,Washington
+WA,skamania,53059,Washington
+WA,snohomish,53061,Washington
+WA,spokane,53063,Washington
+WA,stevens,53065,Washington
+WA,thurston,53067,Washington
+WA,wahkiakum,53069,Washington
+WA,walla walla,53071,Washington
+WA,whatcom,53073,Washington
+WA,whitman,53075,Washington
+WA,yakima,53077,Washington
+WV,barbour,54001,West Virginia
+WV,berkeley,54003,West Virginia
+WV,boone,54005,West Virginia
+WV,braxton,54007,West Virginia
+WV,brooke,54009,West Virginia
+WV,cabell,54011,West Virginia
+WV,calhoun,54013,West Virginia
+WV,clay,54015,West Virginia
+WV,doddridge,54017,West Virginia
+WV,fayette,54019,West Virginia
+WV,gilmer,54021,West Virginia
+WV,grant,54023,West Virginia
+WV,greenbrier,54025,West Virginia
+WV,hampshire,54027,West Virginia
+WV,hancock,54029,West Virginia
+WV,hardy,54031,West Virginia
+WV,harrison,54033,West Virginia
+WV,jackson,54035,West Virginia
+WV,jefferson,54037,West Virginia
+WV,kanawha,54039,West Virginia
+WV,lewis,54041,West Virginia
+WV,lincoln,54043,West Virginia
+WV,logan,54045,West Virginia
+WV,mcdowell,54047,West Virginia
+WV,marion,54049,West Virginia
+WV,marshall,54051,West Virginia
+WV,mason,54053,West Virginia
+WV,mercer,54055,West Virginia
+WV,mineral,54057,West Virginia
+WV,mingo,54059,West Virginia
+WV,monongalia,54061,West Virginia
+WV,monroe,54063,West Virginia
+WV,morgan,54065,West Virginia
+WV,nicholas,54067,West Virginia
+WV,ohio,54069,West Virginia
+WV,pendleton,54071,West Virginia
+WV,pleasants,54073,West Virginia
+WV,pocahontas,54075,West Virginia
+WV,preston,54077,West Virginia
+WV,putnam,54079,West Virginia
+WV,raleigh,54081,West Virginia
+WV,randolph,54083,West Virginia
+WV,ritchie,54085,West Virginia
+WV,roane,54087,West Virginia
+WV,summers,54089,West Virginia
+WV,taylor,54091,West Virginia
+WV,tucker,54093,West Virginia
+WV,tyler,54095,West Virginia
+WV,upshur,54097,West Virginia
+WV,wayne,54099,West Virginia
+WV,webster,54101,West Virginia
+WV,wetzel,54103,West Virginia
+WV,wirt,54105,West Virginia
+WV,wood,54107,West Virginia
+WV,wyoming,54109,West Virginia
+WI,adams,55001,Wisconsin
+WI,ashland,55003,Wisconsin
+WI,barron,55005,Wisconsin
+WI,bayfield,55007,Wisconsin
+WI,brown,55009,Wisconsin
+WI,buffalo,55011,Wisconsin
+WI,burnett,55013,Wisconsin
+WI,calumet,55015,Wisconsin
+WI,chippewa,55017,Wisconsin
+WI,clark,55019,Wisconsin
+WI,columbia,55021,Wisconsin
+WI,crawford,55023,Wisconsin
+WI,dane,55025,Wisconsin
+WI,dodge,55027,Wisconsin
+WI,door,55029,Wisconsin
+WI,douglas,55031,Wisconsin
+WI,dunn,55033,Wisconsin
+WI,eau claire,55035,Wisconsin
+WI,florence,55037,Wisconsin
+WI,fond du lac,55039,Wisconsin
+WI,forest,55041,Wisconsin
+WI,grant,55043,Wisconsin
+WI,green,55045,Wisconsin
+WI,green lake,55047,Wisconsin
+WI,iowa,55049,Wisconsin
+WI,iron,55051,Wisconsin
+WI,jackson,55053,Wisconsin
+WI,jefferson,55055,Wisconsin
+WI,juneau,55057,Wisconsin
+WI,kenosha,55059,Wisconsin
+WI,kewaunee,55061,Wisconsin
+WI,la crosse,55063,Wisconsin
+WI,lafayette,55065,Wisconsin
+WI,langlade,55067,Wisconsin
+WI,lincoln,55069,Wisconsin
+WI,manitowoc,55071,Wisconsin
+WI,marathon,55073,Wisconsin
+WI,marinette,55075,Wisconsin
+WI,marquette,55077,Wisconsin
+WI,menominee,55078,Wisconsin
+WI,milwaukee,55079,Wisconsin
+WI,monroe,55081,Wisconsin
+WI,oconto,55083,Wisconsin
+WI,oneida,55085,Wisconsin
+WI,outagamie,55087,Wisconsin
+WI,ozaukee,55089,Wisconsin
+WI,pepin,55091,Wisconsin
+WI,pierce,55093,Wisconsin
+WI,polk,55095,Wisconsin
+WI,portage,55097,Wisconsin
+WI,price,55099,Wisconsin
+WI,racine,55101,Wisconsin
+WI,richland,55103,Wisconsin
+WI,rock,55105,Wisconsin
+WI,rusk,55107,Wisconsin
+WI,st. croix,55109,Wisconsin
+WI,sauk,55111,Wisconsin
+WI,sawyer,55113,Wisconsin
+WI,shawano,55115,Wisconsin
+WI,sheboygan,55117,Wisconsin
+WI,taylor,55119,Wisconsin
+WI,trempealeau,55121,Wisconsin
+WI,vernon,55123,Wisconsin
+WI,vilas,55125,Wisconsin
+WI,walworth,55127,Wisconsin
+WI,washburn,55129,Wisconsin
+WI,washington,55131,Wisconsin
+WI,waukesha,55133,Wisconsin
+WI,waupaca,55135,Wisconsin
+WI,waushara,55137,Wisconsin
+WI,winnebago,55139,Wisconsin
+WI,wood,55141,Wisconsin
+WY,albany,56001,Wyoming
+WY,big horn,56003,Wyoming
+WY,campbell,56005,Wyoming
+WY,carbon,56007,Wyoming
+WY,converse,56009,Wyoming
+WY,crook,56011,Wyoming
+WY,fremont,56013,Wyoming
+WY,goshen,56015,Wyoming
+WY,hot springs,56017,Wyoming
+WY,johnson,56019,Wyoming
+WY,laramie,56021,Wyoming
+WY,lincoln,56023,Wyoming
+WY,natrona,56025,Wyoming
+WY,niobrara,56027,Wyoming
+WY,park,56029,Wyoming
+WY,platte,56031,Wyoming
+WY,sheridan,56033,Wyoming
+WY,sublette,56035,Wyoming
+WY,sweetwater,56037,Wyoming
+WY,teton,56039,Wyoming
+WY,uinta,56041,Wyoming
+WY,washakie,56043,Wyoming
+WY,weston,56045,Wyoming
+AS,eastern district,60010,AS
+AS,manu'a district,60020,AS
+AS,rose island,60030,AS
+AS,swains island,60040,AS
+AS,western district,60050,AS
+GU,guam,66010,GU
+MP,northern islands municipality,69085,MP
+MP,rota municipality,69100,MP
+MP,saipan municipality,69110,MP
+MP,tinian municipality,69120,MP
+PR,adjuntas municipio,72001,PR
+PR,aguada municipio,72003,PR
+PR,aguadilla municipio,72005,PR
+PR,aguas buenas municipio,72007,PR
+PR,aibonito municipio,72009,PR
+PR,añasco municipio,72011,PR
+PR,arecibo municipio,72013,PR
+PR,arroyo municipio,72015,PR
+PR,barceloneta municipio,72017,PR
+PR,barranquitas municipio,72019,PR
+PR,bayamón municipio,72021,PR
+PR,cabo rojo municipio,72023,PR
+PR,caguas municipio,72025,PR
+PR,camuy municipio,72027,PR
+PR,canóvanas municipio,72029,PR
+PR,carolina municipio,72031,PR
+PR,cataño municipio,72033,PR
+PR,cayey municipio,72035,PR
+PR,ceiba municipio,72037,PR
+PR,ciales municipio,72039,PR
+PR,cidra municipio,72041,PR
+PR,coamo municipio,72043,PR
+PR,comerío municipio,72045,PR
+PR,corozal municipio,72047,PR
+PR,culebra municipio,72049,PR
+PR,dorado municipio,72051,PR
+PR,fajardo municipio,72053,PR
+PR,florida municipio,72054,PR
+PR,guánica municipio,72055,PR
+PR,guayama municipio,72057,PR
+PR,guayanilla municipio,72059,PR
+PR,guaynabo municipio,72061,PR
+PR,gurabo municipio,72063,PR
+PR,hatillo municipio,72065,PR
+PR,hormigueros municipio,72067,PR
+PR,humacao municipio,72069,PR
+PR,isabela municipio,72071,PR
+PR,jayuya municipio,72073,PR
+PR,juana díaz municipio,72075,PR
+PR,juncos municipio,72077,PR
+PR,lajas municipio,72079,PR
+PR,lares municipio,72081,PR
+PR,las marías municipio,72083,PR
+PR,las piedras municipio,72085,PR
+PR,loíza municipio,72087,PR
+PR,luquillo municipio,72089,PR
+PR,manatí municipio,72091,PR
+PR,maricao municipio,72093,PR
+PR,maunabo municipio,72095,PR
+PR,mayagüez municipio,72097,PR
+PR,moca municipio,72099,PR
+PR,morovis municipio,72101,PR
+PR,naguabo municipio,72103,PR
+PR,naranjito municipio,72105,PR
+PR,orocovis municipio,72107,PR
+PR,patillas municipio,72109,PR
+PR,peñuelas municipio,72111,PR
+PR,ponce municipio,72113,PR
+PR,quebradillas municipio,72115,PR
+PR,rincón municipio,72117,PR
+PR,río grande municipio,72119,PR
+PR,sabana grande municipio,72121,PR
+PR,salinas municipio,72123,PR
+PR,san germán municipio,72125,PR
+PR,san juan municipio,72127,PR
+PR,san lorenzo municipio,72129,PR
+PR,san sebastián municipio,72131,PR
+PR,santa isabel municipio,72133,PR
+PR,toa alta municipio,72135,PR
+PR,toa baja municipio,72137,PR
+PR,trujillo alto municipio,72139,PR
+PR,utuado municipio,72141,PR
+PR,vega alta municipio,72143,PR
+PR,vega baja municipio,72145,PR
+PR,vieques municipio,72147,PR
+PR,villalba municipio,72149,PR
+PR,yabucoa municipio,72151,PR
+PR,yauco municipio,72153,PR
+UM,midway islands,74300,UM
+VI,st. croix island,78010,VI
+VI,st. john island,78020,VI
+VI,st. thomas island,78030,VI
