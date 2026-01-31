@@ -12,7 +12,6 @@ class Processing(Component):
         self.schema = [
             'ID', 
             'county', 
-            'daily_max_customers_affected', 
             'per_outage_customers_affected', 
             'customers_served',
             'start_time',
@@ -35,7 +34,7 @@ class Processing(Component):
         # Setup for outage grouping
         df = df.sort_values('timestamp')
         last_id = self.county_dfs[county]['ID'].max() if not self.county_dfs[county].empty else 0
-        threshold = timedelta(hours=1, minutes=14)
+        threshold = timedelta(minutes=59)
 
         # Group by timestamp and set IDs for each outage
         df['diff'] = df['timestamp'].diff()             # Get the time difference of curr - previous
@@ -43,18 +42,23 @@ class Processing(Component):
         df['new_outage'] = (df['diff'].isna() | mask)   # Classify the start of a new outage 
         df['ID'] = df['new_outage'].cumsum() + last_id  # Updates the ID using each new outage to increment ID
 
+        # Compute customers affected deltas 
+        df['prev'] = df.groupby('ID')['per_outage_customers_affected'].shift(1).fillna(0)
+        df['delta'] = (df['per_outage_customers_affected'] - df['prev']).clip(lower=0)
+
         # Aggregate result
         result = (
             df.groupby('ID').agg(
                 county=('county', 'first'),
-                per_outage_customers_affected=('per_outage_customers_affected', 'max'),
+                upper=('delta', 'sum'),
+                lower=('per_outage_customers_affected', 'max'),
                 customers_served=('customers_served', 'max'),
                 start_time=('timestamp', 'min'),
                 end_time=('timestamp', 'max')
             ).reset_index()
         )
 
-        result['daily_max_customers_affected'] = 0
+        result['midpoint'] = (result['lower'] + result['upper']) / 2 
         result['duration'] = result['end_time'] - result['start_time']
 
         if self.county_dfs[county].empty:
@@ -62,22 +66,11 @@ class Processing(Component):
         else:
             self.county_dfs[county] = pd.concat([self.county_dfs[county], result], ignore_index=True)
 
-    # Fill in the daily max customers affected column for each county
-    def fill_daily_max(self, county):
-        # Convert customers_affected to numeric 
-        self.county_dfs[county]['per_outage_customers_affected'] = pd.to_numeric(
-            self.county_dfs[county]['per_outage_customers_affected'],
-            errors='coerce'
-        )
-
-        if self.county_dfs[county]['per_outage_customers_affected'].sum() > 0:
-            daily_max = self.county_dfs[county]['per_outage_customers_affected'].max()
-            self.county_dfs[county]['daily_max_customers_affected'] = daily_max
-
     # Creates filler dataframes for counties that had no reported outages for a given day
     def create_filler(self, county):
+        print(f"Creating a filler data frame for {county}")
         # Pull historical customers served
-        read_path = os.path.join(self.std.base_path, 'historical.csv')
+        read_path = os.path.join("pipeline\\historicalCustomersServed", f"{self.state}_customers_served.csv")
         historical_val = -1
 
         # Check that the historical data exists
@@ -96,8 +89,9 @@ class Processing(Component):
         result = pd.DataFrame([{
             "ID": 1,
             "county": county,
-            "daily_max_customers_affected": 0,
-            "per_outage_customers_affected": 0,
+            "lower": 0,
+            "midpoint": 0,
+            "upper": 0,
             "customers_served": historical_val,
             "start_time": pd.NaT,
             "end_time": pd.NaT,
@@ -143,11 +137,6 @@ class Processing(Component):
                 if county_df.size != 0:
                     self.aggregate(county_df, county)
 
-        # Fill in daily max values for each county
-        for county in self.county_dfs:
-            if not self.county_dfs[county].empty:
-                self.fill_daily_max(county)
-
         # Create filler dataframes for counties with no reported outages 
         for county in self.master_county_list:
             if self.county_dfs[county].empty:
@@ -166,7 +155,8 @@ class Processing(Component):
         
         # Combine all county dataframes into one
         combined = pd.concat(processed_data.values(), ignore_index=True)
-        
+        combined = combined.drop(columns=['per_outage_customers_affected'])
+
         print(f"Processing complete for {self.state}")
         
         # once you have data ready for the next step, now we wrap it using the DataWrapper Class
