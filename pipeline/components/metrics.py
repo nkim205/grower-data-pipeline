@@ -56,7 +56,12 @@ class Metrics(Component):
 
         return float(affected.sum() / served)
 
-    def calculate_metric(self, data: pd.DataFrame) -> pd.DataFrame:
+    def calculate_metric(self, data) -> pd.DataFrame:
+        # saidi_df = data[0]
+        # print(saidi_df)
+        # saifi_df = data[1]
+        # print(saifi_df)
+
         if data is None or data.empty:
             return pd.DataFrame(
                 columns=[
@@ -67,6 +72,20 @@ class Metrics(Component):
                     "upper_saifi",
                 ]
             )
+
+        if len(data) != 2:
+            print("Ensure you are passing in both the standardized and fully processed version of the data")
+            return pd.DataFrame(
+                columns=[
+                    "county_name",
+                    "lower_saidi",
+                    "upper_saidi",
+                    "lower_saifi",
+                    "upper_saifi",
+                ]
+            )
+
+        return
 
         rows = []
 
