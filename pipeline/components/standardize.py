@@ -104,9 +104,9 @@ class Standardize(Component):
             
             if lower in self.col_map:
                 data.rename(columns={col: self.col_map[lower]}, inplace=True)
-            elif lower != "% out":  # % Out column requires special handling
+            elif lower != "% out" and lower != "emc":  # % Out column requires special handling
                 data.drop(columns=[col], inplace=True)
-        
+
         return data
 
     # Handles back, missing, and unknown data
@@ -114,7 +114,8 @@ class Standardize(Component):
         # Drop NULL / unknown / empty rows
         data = data.dropna(subset=['county'])
         data = data[~data['county'].isin(['unknown', 'Unknown', 'UNKNOWN', ''])].copy()
-        
+
+        data.columns = data.columns.str.strip().str.lower()
         # If customers served data is missing, estimate it using affected / % out
         if "% out" in data.columns:
             if "customers_served" in data.columns:
@@ -145,7 +146,7 @@ class Standardize(Component):
                 )
                 # Remove % out column as it is no longer needed
                 data.drop(columns=['% out'], inplace=True)
-        
+
         return data
 
     # Standardizes numeric data types
@@ -204,7 +205,7 @@ class Standardize(Component):
                     columns=[c for c in data.columns if c != keep and c in dupes],
                     inplace=True
                 )
-        
+                
         renamed_data = self.rename_cols(data)        
         renamed_data = renamed_data.loc[:, ~renamed_data.columns.str.lower().duplicated()].copy()   # Drop duplicate columns after renaming
 
