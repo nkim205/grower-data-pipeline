@@ -60,7 +60,7 @@ class Processing(Component):
             ).reset_index()
         )
 
-        result['midpoint'] = (result['lower'] + result['upper']) / 2 
+        result['middle'] = (result['lower'] + result['upper']) / 2 
         result['duration'] = result['end_time'] - result['start_time']
 
         if self.county_dfs[county].empty:
@@ -92,7 +92,7 @@ class Processing(Component):
             "ID": 1,
             "county": county,
             "lower": 0,
-            "midpoint": 0,
+            "middle": 0,
             "upper": 0,
             "customers_served": historical_val,
             "start_time": pd.NaT,
