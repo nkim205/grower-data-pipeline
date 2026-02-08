@@ -205,8 +205,8 @@ class Standardize(Component):
                     columns=[c for c in data.columns if c != keep and c in dupes],
                     inplace=True
                 )
-                
-        renamed_data = self.rename_cols(data)        
+
+        renamed_data = self.rename_cols(data)   
         renamed_data = renamed_data.loc[:, ~renamed_data.columns.str.lower().duplicated()].copy()   # Drop duplicate columns after renaming
 
         good_data = self.handle_bad_data(renamed_data)
@@ -221,7 +221,6 @@ class Standardize(Component):
         # Standardize data types
         type_std_data = self.standardize_data_types(good_data)
         type_std_data = type_std_data[type_std_data['customers_served'] != 0]
-
         # Standardize county names
         std_data = self.standardize_county(type_std_data)
         
