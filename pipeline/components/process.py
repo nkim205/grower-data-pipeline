@@ -158,16 +158,19 @@ class Processing(Component):
         return self.county_dfs
 
     def run(self, data):
-        # this is the main function to be implemented, use your helper functions here 
-        processed_data = self.process(data)
+        combined_raw_data = data[0]
         
-        # Combine all county dataframes into one
-        combined = pd.concat(processed_data.values(), ignore_index=True)
-        combined = combined.drop(columns=['per_outage_customers_affected'])
+        std_df = self.std.standardize(combined_raw_data.copy())[1]
+
+        processed_data = self.process([combined_raw_data.copy()])
+        proc_combined = pd.concat(processed_data.values(), ignore_index=True)
+        proc_combined = proc_combined.drop(columns=['per_outage_customers_affected'])
+        
+        output = [std_df, proc_combined]
 
         print(f"Processing complete for {self.state}")
         
         # once you have data ready for the next step, now we wrap it using the DataWrapper Class
-        per_county_data = DataWrapper(combined)
+        per_county_data = DataWrapper(output)
         # we can return this data to the next component of the pipeline
         return per_county_data

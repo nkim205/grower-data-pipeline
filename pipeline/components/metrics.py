@@ -110,6 +110,6 @@ class Metrics(Component):
 
 
     def run(self, data: DataWrapper) -> DataWrapper:
-        statewide_df = data.data  
+        statewide_df = data
         metrics_df = self.calculate_metric(statewide_df)
-        return DataWrapper(metrics_df)
+        return DataWrapper(data=metrics_df)
