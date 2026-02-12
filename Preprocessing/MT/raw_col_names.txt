@@ -1,0 +1,20 @@
+customersserved
+key
+# out
+etr
+n_out
+areaid
+cust_a
+cust_s
+source_file
+% out
+county
+timestamp
+customersaffected
+customersoutnow
+name
+percent_cust_a
+counties
+emc
+# served
+etr_confidence

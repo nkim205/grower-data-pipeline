@@ -1,0 +1,7 @@
+county,per_outage_customers_affected,customers_served,timestamp
+name,out,cust_s,timestamp
+countyname,cust_a,count,
+county,customersoutnow,# served,
+areaid,customersaffected,customersserved,
+,n_out,,
+,# out,,
