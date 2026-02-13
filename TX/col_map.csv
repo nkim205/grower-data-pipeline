@@ -1,0 +1,22 @@
+raw,standard
+COUNTY,county
+Counties,county
+countyname,county
+CountyName,county
+% Affected,per_outage_customers_affected
+# Out,per_outage_customers_affected
+% Out,per_outage_customers_affected
+out,per_outage_customers_affected
+CustomersAffected,per_outage_customers_affected
+customersOutNow,per_outage_customers_affected
+cust_a,per_outage_customers_affected
+percent_cust_a,per_outage_customers_affected
+n_out,per_outage_customers_affected
+pctOut,per_outage_customers_affected
+customersAffected,per_outage_customers_affected
+CUSTOMERS SERVED,customers_served
+# Served,customers_served
+CustomersServed,customers_served
+customersServed,customers_served
+cust_s,customers_served
+timestamp,timestamp
