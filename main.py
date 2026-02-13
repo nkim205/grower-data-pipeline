@@ -63,7 +63,14 @@ if __name__ == "__main__":
 
     args = retrieve_state_arg()
     if args.dry_run:
+        target_date = None
+
+        if args.date:
+            target_date = datetime.strptime(args.date, "%Y-%m-%d").date()
+        else:
+            target_date = (datetime.now() - timedelta(days=1)).date()
+        
         formatted_df = result.data[1]
         print(formatted_df)
-        formatted_df.to_csv(os.path.join("testing", f"{args.state}_pipeline_output.csv"), index=False)
-        print(f"Dry run complete for {args.state}")
+        formatted_df.to_csv(os.path.join("testing", f"{args.state}_pipeline_output_{target_date}.csv"), index=False)
+        print(f"Dry run complete for {args.state}, {target_date}")
