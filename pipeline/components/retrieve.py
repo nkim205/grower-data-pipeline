@@ -8,10 +8,11 @@ import re
 import os
 
 class DataRetrievalS3(Component):
-    def __init__(self, name, state, bucket="urg-power-outage"):
-        super.__init__(name)
+    def __init__(self, name, state, date=None, bucket="urg-power-outage"):
+        super().__init__(name)
         self.state = state
         self.bucket = bucket
+        self.date = date
 
     def retrieve(self, days: int = 1) -> list[pd.DataFrame]:
         """
@@ -35,9 +36,12 @@ class DataRetrievalS3(Component):
         # Initialize S3 client
         s3 = boto3.client("s3")
 
-        # Time window: last N days
-        end_date = datetime.now(timezone.utc).date()
-        start_date = end_date - timedelta(days=days)
+        # Figure out the time window to pull from
+        target_date = None
+        if self.date:
+            target_date = pd.to_datetime(self.date).date()
+        else:
+            target_date = (datetime.now(timezone.utc) - timedelta(days=days)).date()
 
         # List all objects in the given state's folder from S3
         prefix = f"{self.state}/"
@@ -65,11 +69,8 @@ class DataRetrievalS3(Component):
                 # Convert timestamp to datetime
                 df["timestamp"] = pd.to_datetime(df["timestamp"], errors="coerce")
 
-                # Keep rows within the last N days
-                df = df[
-                    (df["timestamp"].dt.date >= start_date) &
-                    (df["timestamp"].dt.date <= end_date)
-                ]
+                # Keep rows starting at the target_date until now
+                df = df[df["timestamp"].dt.date == target_date]
 
                 if not df.empty:
                     df["source_file"] = key
@@ -86,11 +87,11 @@ class DataRetrievalS3(Component):
             raise ValueError(f"Expected column '{provider_col}' not found in data")
 
         provider_dfs = [group for _, group in combined.groupby(provider_col)]
-        combined.to_csv(f"{self.state}_outages.csv", index=False)
+        # combined.to_csv(f"{self.state}_outages.csv", index=False)
 
         return provider_dfs
     
-    def generate_nan_report(provider_dfs: list[pd.DataFrame], output_file="nan_report.xlsx"):
+    def generate_nan_report(self, provider_dfs: list[pd.DataFrame], output_file="nan_report.xlsx"):
         report_rows = []
 
         for df in provider_dfs:
@@ -130,10 +131,11 @@ class DataRetrievalS3(Component):
 
     def run(self, data):
         # this is the main function to be implemented, use your helper functions here 
-        s3_data = self.retrieve()
+        s3_data_list = self.retrieve()
+        combined = pd.concat(s3_data_list, ignore_index=True)
 
         # Generate the NaN report for the retrieved data
-        self.generate_nan_report(s3_data, output_file=f"{self.state}_nan_report.xlsx")
+        # self.generate_nan_report(provider_dfs=s3_data, output_file=f"{self.state}_nan_report.xlsx")
 
         # Add metadata so downstream components know the prefix to use
         metadata = {
@@ -141,7 +143,7 @@ class DataRetrievalS3(Component):
         }
 
         # once you have data ready for the next step, now we wrap it using the DataWrapper Class
-        per_provider_data = DataWrapper(s3_data, metadata=metadata)
+        per_provider_data = DataWrapper([combined, s3_data_list], metadata=metadata)
 
         # we can return this data to the next component of the pipeline
         return per_provider_data

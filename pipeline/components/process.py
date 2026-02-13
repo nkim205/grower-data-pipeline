@@ -16,7 +16,8 @@ class Processing(Component):
             'customers_served',
             'start_time',
             'end_time',
-            'duration'
+            'duration',
+            'emc'
         ]
         self.std = Standardize(name="", state=f"{self.state}", date=f"{self.date}")
         self.col_map = self.std.get_col_map()           # {raw col name : std col name}
@@ -29,7 +30,7 @@ class Processing(Component):
     # Aggregate data for a given county and provider and add it to the list of dfs to return 
     def aggregate(self, df, county):
         # Get only the columns we need 
-        df = df[['county', 'per_outage_customers_affected', 'customers_served', 'timestamp']].copy()
+        df = df[['county', 'per_outage_customers_affected', 'customers_served', 'timestamp', 'emc']].copy()
 
         # Setup for outage grouping
         df = df.sort_values('timestamp')
@@ -54,11 +55,12 @@ class Processing(Component):
                 lower=('per_outage_customers_affected', 'max'),
                 customers_served=('customers_served', 'max'),
                 start_time=('timestamp', 'min'),
-                end_time=('timestamp', 'max')
+                end_time=('timestamp', 'max'),
+                emc=('emc', 'first')
             ).reset_index()
         )
 
-        result['midpoint'] = (result['lower'] + result['upper']) / 2 
+        result['middle'] = (result['lower'] + result['upper']) / 2 
         result['duration'] = result['end_time'] - result['start_time']
 
         if self.county_dfs[county].empty:
@@ -90,12 +92,13 @@ class Processing(Component):
             "ID": 1,
             "county": county,
             "lower": 0,
-            "midpoint": 0,
+            "middle": 0,
             "upper": 0,
             "customers_served": historical_val,
             "start_time": pd.NaT,
             "end_time": pd.NaT,
-            "duration": pd.Timedelta(0)
+            "duration": pd.Timedelta(0),
+            "emc": ""
         }], columns=self.schema)
 
         self.county_dfs[county] = result
@@ -104,16 +107,21 @@ class Processing(Component):
 
     # Sums each provider's customers served number to be used as the total county customers served
     def aggregate_customers_served(self, county):
-        # Enforce numeric datatype
-        self.county_dfs[county]['customers_served'] = pd.to_numeric(
-            self.county_dfs[county]['customers_served'],
-            errors='coerce'
-        ).fillna(0)
+        df = self.county_dfs[county]
+        df.columns = df.columns.str.strip().str.lower()
 
-        # Keep only 1 instance of each unique EMC, take the sum, replace previous customers served with correct values
-        unique_customers_served = self.county_dfs[county]['customers_served'].drop_duplicates()
-        total = int(unique_customers_served.sum())
-        self.county_dfs[county]['customers_served'] = total
+        # Enforce numeric datatype
+        df['customers_served'] = pd.to_numeric(
+            df['customers_served'],
+            errors='coerce'
+        ).fillna(0).astype(int)
+
+        # Group by EMC and take max per provider then sum each provider
+        emc_max = df.groupby('emc', sort=False)['customers_served'].max()
+        total = int(emc_max.sum())
+        df['customers_served'] = total
+        self.county_dfs[county] = df
+        
 
     def process(self, data):
         # Add initial state of processed data to self.county_dfs dictionary
@@ -150,16 +158,19 @@ class Processing(Component):
         return self.county_dfs
 
     def run(self, data):
-        # this is the main function to be implemented, use your helper functions here 
-        processed_data = self.process(data)
+        combined_raw_data = data[0]
         
-        # Combine all county dataframes into one
-        combined = pd.concat(processed_data.values(), ignore_index=True)
-        combined = combined.drop(columns=['per_outage_customers_affected'])
+        std_df = self.std.standardize(combined_raw_data.copy())[1]
+
+        processed_data = self.process([combined_raw_data.copy()])
+        proc_combined = pd.concat(processed_data.values(), ignore_index=True)
+        proc_combined = proc_combined.drop(columns=['per_outage_customers_affected'])
+        
+        output = [std_df, proc_combined]
 
         print(f"Processing complete for {self.state}")
         
         # once you have data ready for the next step, now we wrap it using the DataWrapper Class
-        per_county_data = DataWrapper(combined)
+        per_county_data = DataWrapper(output)
         # we can return this data to the next component of the pipeline
         return per_county_data
