@@ -1,0 +1,11 @@
+area_name
+cust_s
+counties
+county
+timestamp
+cust_a
+emc
+# served
+% out
+source_file
+# out
