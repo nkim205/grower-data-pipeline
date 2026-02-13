@@ -47,6 +47,6 @@ def test(type):
 
     print(f"Testing complete for {type}")
     
-# test("STD")
+test("STD")
 # test("PROC")
 # test("METRICS")
