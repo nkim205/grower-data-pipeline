@@ -1,3 +1,4 @@
+raw,standard
 out,per_outage_customers_affected
 cust_a,per_outage_customers_affected
 cust_s,customers_served

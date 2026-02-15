@@ -1,0 +1,20 @@
+%
+# served
+customercount
+customersserved
+customersoutnow
+% out
+customersaffected
+source_file
+code
+county.
+out
+emc
+name
+pctout
+# out
+count
+served
+county
+timestamp
+aff

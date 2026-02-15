@@ -1,22 +1,22 @@
-name
-key
-customersserved
 etr
-timestamp
-# out
-cust_s
-customersoutnow
-percent_cust_a
-county
-areas
-counties
-areaid
-cust_a
-customersaffected
-etr_confidence
-n_out
-# served
-% out
+key
 emc
-source_file
+county
+name
+cust_s
+n_out
+percent_cust_a
+timestamp
+customersaffected
 state
+areaid
+customersserved
+etr_confidence
+# served
+customersoutnow
+counties
+areas
+cust_a
+# out
+% out
+source_file

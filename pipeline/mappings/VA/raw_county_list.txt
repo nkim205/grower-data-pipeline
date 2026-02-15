@@ -1,0 +1,39 @@
+accomack
+alleghany
+augusta
+bath
+botetourt
+brunswick
+charlotte
+craig
+emporia
+franklin
+giles
+granville
+greensville
+halifax
+highland
+isle of wight
+king george
+lancaster
+lunenburg
+mecklenburg
+monroe
+montgomery
+northampton
+northumberland
+person
+pittsylvania
+richmond
+roanoke
+rockbridge
+somerset
+southampton
+stafford
+suffolk
+surry
+sussex
+town of warsaw
+unknown
+warren
+westmoreland

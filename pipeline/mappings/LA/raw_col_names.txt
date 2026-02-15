@@ -1,0 +1,20 @@
+percentagewithpower
+lastupdatedtime
+county
+% out
+% affected
+state
+latitude
+longitude
+customersserved
+name
+source_file
+customersaffected
+counties
+customer outages
+# out
+timestamp
+# served
+customers served
+emc
+customersoutnow

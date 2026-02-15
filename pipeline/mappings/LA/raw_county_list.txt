@@ -1,0 +1,103 @@
+acadia
+allen
+ar
+ascension
+assumption
+avoyelles
+beauregard
+benton
+bienville
+bossier
+bowie
+caddo
+calcasieu
+caldwell
+cameron
+camp
+carroll
+cass
+catahoula
+childress
+claiborne
+collingsworth
+concordia
+desoto
+donley
+e. baton rouge
+e. carroll
+e. feliciana
+evangeline
+franklin
+grant
+grant parish
+gregg
+hall
+harrison
+hempstead
+hopkins
+howard
+iberia
+iberville
+jackson
+jefferson
+jefferson davis
+la
+la salle
+lafayette
+lafourche
+lincoln
+little river
+livingston
+logan
+madison
+marion
+miller
+morehouse
+morris
+natchitoches
+orleans
+other
+ouachita
+panola
+pike
+plaquemines
+pointe coupee
+polk
+rains
+rapides
+red river
+richland
+rusk
+sabine
+scott
+sebastian
+sevier
+shelby
+smith
+st. bernard
+st. charles
+st. helena
+st. james
+st. john the baptist
+st. landry
+st. martin
+st. tammany
+tangipahoa
+tensas
+terrebonne
+titus
+tx
+union
+unknown
+upshur
+van zandt
+vermilion
+vernon
+w. baton rouge
+w. carroll
+w. feliciana
+washington
+webster
+wheeler
+winn
+wood
