@@ -1,0 +1,29 @@
+% out
+pctout
+county
+customers out
+timestamp
+number of outages
+# out
+percentage affected
+emc
+affected customers
+out
+countyname
+source_file
+customersaffected
+description
+count
+customersoutnow
+numberserved
+customersserved
+# served
+region
+numberout
+last updated
+name
+customers served
+county name
+code
+location
+id

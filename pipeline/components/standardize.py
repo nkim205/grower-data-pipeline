@@ -99,14 +99,41 @@ class Standardize(Component):
 
     # Standardizes column names and drops redundant / unnecessary columns
     def rename_cols(self, data):
-        for col in data.columns:
-            lower = col.strip().lower()
-            
-            if lower in self.col_map:
-                data.rename(columns={col: self.col_map[lower]}, inplace=True)
-            elif lower != "% out" and lower != "emc":  # % Out column requires special handling
-                data.drop(columns=[col], inplace=True)
+        # Normalize column names
+        normalized = {col: col.strip().lower() for col in data.columns}
+        data.rename(columns=normalized, inplace=True)
+        
+        # Rename columns 
+        data.rename(columns=self.col_map, inplace=True)
 
+        # Drop unecessary columns
+        allowed = set(self.col_map.values()) | {"% out", "emc"}
+        drop_cols = [c for c in data.columns if c not in allowed]
+        data.drop(columns=drop_cols, inplace=True)
+        
+        # Handle duplicate columns
+        dupes = data.columns[data.columns.duplicated()].unique()
+
+        for col in dupes:
+            cols = [c for c in data.columns if c == col]
+
+            # Extract duplicate columns as a small DataFrame
+            block = data[cols]
+
+            # Pick the first valid value
+            merged = block.apply(
+                lambda row: next(
+                    (v for v in row 
+                    if pd.notna(v) and str(v).strip() != ""),
+                    None
+                ),
+                axis=1
+            )
+
+            data[cols[0]] = merged
+        
+        data = data.loc[:, ~data.columns.duplicated(keep="first")]
+        
         return data
 
     # Handles back, missing, and unknown data
@@ -128,7 +155,7 @@ class Standardize(Component):
                 # FOR LATER USE (WIP)
                 mask = ~data['% out'].astype(str).str.contains('<', na=True)
                 valid_rows = data[mask]
-
+                
                 # Standardize "< xx.xx%" to "xx.xx"
                 data['% out'] = (
                     data['% out'].astype(str)
@@ -151,6 +178,9 @@ class Standardize(Component):
 
     # Standardizes numeric data types
     def standardize_data_types(self, data):
+        data['timestamp'] = pd.to_datetime(data['timestamp'], errors='coerce')
+        data = data[data['timestamp'].dt.date == pd.to_datetime(self.date).date()]
+
         data['per_outage_customers_affected'] = (
             pd.to_numeric(
                 data['per_outage_customers_affected']
@@ -170,9 +200,6 @@ class Standardize(Component):
                 errors='coerce'
             ).fillna(0)
         )
-        
-        data['timestamp'] = pd.to_datetime(data['timestamp'], errors='coerce')
-        data = data[data['timestamp'].dt.date == pd.to_datetime(self.date).date()]
         
         return data
 
@@ -205,10 +232,8 @@ class Standardize(Component):
                     columns=[c for c in data.columns if c != keep and c in dupes],
                     inplace=True
                 )
-
+                
         renamed_data = self.rename_cols(data)   
-        renamed_data = renamed_data.loc[:, ~renamed_data.columns.str.lower().duplicated()].copy()   # Drop duplicate columns after renaming
-
         good_data = self.handle_bad_data(renamed_data)
 
         # Check for if any columns are still missing. If so, skip that provider
@@ -221,6 +246,7 @@ class Standardize(Component):
         # Standardize data types
         type_std_data = self.standardize_data_types(good_data)
         type_std_data = type_std_data[type_std_data['customers_served'] != 0]
+
         # Standardize county names
         std_data = self.standardize_county(type_std_data)
         

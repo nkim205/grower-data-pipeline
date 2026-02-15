@@ -1,0 +1,21 @@
+raw,standard
+name,county
+cust_a,per_outage_customers_affected
+cust_s,customers_served
+timestamp,timestamp
+counties,county
+areaid,county
+total,customers_served
+premisecount,customers_served
+county,county
+numoutages,per_outage_customers_affected
+area,county
+customersaffected,per_outage_customers_affected
+countyname,county
+out,per_outage_customers_affected
+# out,per_outage_customers_affected
+countynam,county
+customersserved,customers_served
+# served,customers_served
+n_out,per_outage_customers_affected
+customersoutnow,per_outage_customers_affected

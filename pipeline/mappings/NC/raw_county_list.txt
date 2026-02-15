@@ -1,0 +1,173 @@
+alamance
+alexander
+anson
+bladen
+brunswick
+cabarrus
+caldwell
+camden
+catawba
+charlotte
+chatham
+chowan
+cumberland
+currituck
+davidson
+davie
+duplin
+emporia
+forsyth
+franklin
+gaston
+granville
+greensville
+guilford
+halifax
+harnett
+iredell
+johnston
+jones
+lee
+lenoir
+lincoln
+lunenburg
+martin
+mecklenburg
+montgomery
+moore
+nash
+nc - alamance
+nc - alexander
+nc - anson
+nc - avery
+nc - beaufort
+nc - bladen
+nc - brunswick
+nc - buncombe
+nc - burke
+nc - cabarrus
+nc - caldwell
+nc - carteret
+nc - caswell
+nc - catawba
+nc - chatham
+nc - cherokee
+nc - clay
+nc - cleveland
+nc - columbus
+nc - craven
+nc - cumberland
+nc - davidson
+nc - davie
+nc - duplin
+nc - durham
+nc - edgecombe
+nc - forsyth
+nc - franklin
+nc - gaston
+nc - graham
+nc - granville
+nc - greene
+nc - guilford
+nc - halifax
+nc - harnett
+nc - haywood
+nc - henderson
+nc - hoke
+nc - iredell
+nc - jackson
+nc - johnston
+nc - jones
+nc - lee
+nc - lenoir
+nc - lincoln
+nc - macon
+nc - madison
+nc - mcdowell
+nc - mecklenburg
+nc - mitchell
+nc - montgomery
+nc - moore
+nc - nash
+nc - new hanover
+nc - onslow
+nc - orange
+nc - pamlico
+nc - pender
+nc - person
+nc - pitt
+nc - polk
+nc - randolph
+nc - richmond
+nc - robeson
+nc - rockingham
+nc - rowan
+nc - rutherford
+nc - sampson
+nc - scotland
+nc - stanly
+nc - stokes
+nc - surry
+nc - swain
+nc - transylvania
+nc - union
+nc - vance
+nc - wake
+nc - warren
+nc - wayne
+nc - wilkes
+nc - wilson
+nc - yadkin
+nc - yancey
+northampton
+pasquotank
+perquimans
+person
+pittsylvania
+randolph
+richmond
+rockingham
+rowan
+sampson
+sc - abbeville
+sc - anderson
+sc - cherokee
+sc - chester
+sc - chesterfield
+sc - clarendon
+sc - darlington
+sc - dillon
+sc - fairfield
+sc - florence
+sc - georgetown
+sc - greenville
+sc - greenwood
+sc - horry
+sc - kershaw
+sc - lancaster
+sc - laurens
+sc - lee
+sc - marion
+sc - marlboro
+sc - mccormick
+sc - newberry
+sc - oconee
+sc - pickens
+sc - spartanburg
+sc - sumter
+sc - union
+sc - williamsburg
+sc - york
+scotland
+southampton
+stanly
+stokes
+surry
+sussex
+union
+unknown
+warren
+wayne
+wilkes
+wilson
+yadkin

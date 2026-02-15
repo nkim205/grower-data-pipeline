@@ -1,21 +1,19 @@
-countyname
+emc
+cust_s
+etr
+name
+areaid
 percent_cust_a
-customersoutnow
 # out
 customersaffected
-emc
+customersoutnow
+county
 key
-timestamp
-areaid
-cust_a
+countyname
 source_file
-% out
+cust_a
 n_out
 etr_confidence
-etr
-county
+% out
+timestamp
 customersserved
-name
-cust_s
-
-

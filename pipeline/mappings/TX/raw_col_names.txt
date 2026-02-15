@@ -1,0 +1,33 @@
+cust_s
+customersserved
+areaid
+key
+etr
+timestamp
+type
+count
+# served
+out
+% affected
+name
+customersoutnow
+service area
+emc
+# out
+customers served
+area_name
+countyname
+cust_a
+percent_cust_a
+source_file
+customersaffected
+% out
+county
+customer outages
+pctout
+total_cust
+board district
+n_out
+code
+counties
+etr_confidence

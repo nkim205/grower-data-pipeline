@@ -1,24 +1,24 @@
-emc
 etr
-etr_confidence
-pctout
-countyname
-source_file
-name
-count
-customersaffected
-out
-customersserved
-timestamp
-key
 customersoutnow
-% out
-percent_cust_a
-areaid
-n_out
-cust_a
-cust_s
 # out
-county
+etr_confidence
 # served
+percent_cust_a
+emc
+out
+name
+customersserved
+customersaffected
+source_file
+count
+cust_a
 code
+countyname
+key
+pctout
+areaid
+county
+% out
+n_out
+timestamp
+cust_s
