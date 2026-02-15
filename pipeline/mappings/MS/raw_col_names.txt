@@ -1,0 +1,29 @@
+code
+count
+latitude
+n_out
+# out
+percentagewithpower
+% out
+etr
+source_file
+county
+cust_s
+customersaffected
+percent_cust_a
+lastupdatedtime
+# served
+pctout
+longitude
+customersserved
+key
+etr_confidence
+name
+timestamp
+emc
+customersoutnow
+countyname
+state
+cust_a
+areaid
+out

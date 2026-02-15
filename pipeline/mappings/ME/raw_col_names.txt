@@ -1,0 +1,12 @@
+cust_s
+n_out
+percent_cust_a
+timestamp
+areaid
+key
+name
+etr
+emc
+cust_a
+source_file
+etr_confidence

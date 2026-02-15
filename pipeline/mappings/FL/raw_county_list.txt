@@ -1,0 +1,112 @@
+alachua
+baker
+bay
+blank
+bradford
+brantley
+brevard
+brooks
+broward
+calhoun
+camden
+charlotte
+charlton
+chattahoochee
+citrus
+clay
+col
+collier
+columbia
+de soto
+desoto
+dixie
+dougherty
+duval
+escambia
+fl - alachua
+fl - brevard
+fl - citrus
+fl - columbia
+fl - flagler
+fl - franklin
+fl - gilchrist
+fl - hamilton
+fl - hernando
+fl - highlands
+fl - jefferson
+fl - lafayette
+fl - madison
+fl - marion
+fl - orange
+fl - osceola
+fl - pasco
+fl - pinellas
+fl - polk
+fl - seminole
+fl - sumter
+fl - suwannee
+fl - taylor
+fl - volusia
+fl - wakulla
+flagler
+florida
+georgia
+gilchrist
+glades
+glynn
+gulf
+ham
+hardee
+hendry
+hernando
+highlands
+hillsborough
+holmes
+indian river
+jackson
+jefferson
+laf
+lafayette
+lake
+lee
+leon
+levy
+liberty
+madison
+manatee
+marion
+martin
+miami-dade
+monroe
+nassau
+okaloosa
+okeechobee
+orange
+osceola
+palm beach
+pasco
+polk
+putnam
+quitman
+randolph
+santa rosa
+sarasota
+schley
+seminole
+st johns
+st lucie
+stewart
+sumter
+suw
+suwannee
+taylor
+terrell
+thomas
+union
+unknown
+volusia
+walton
+ware
+washington
+wayne
+webster
