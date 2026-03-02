@@ -4,9 +4,10 @@ import pandas as pd
 
 
 class Metrics(Component):
-    def __init__(self, name: str, state):
+    def __init__(self, name: str, state, date):
         super().__init__(name)
         self.state = state
+        self.date = date
         self.std = Standardize(name="", state=f"{self.state}", date="")
         self.county_list = sorted(self.std.get_master_county_list())
         self.metric_cols = ['saidi', 'lower_saifi', 'middle_saifi', 'upper_saifi']
@@ -104,12 +105,20 @@ class Metrics(Component):
         self.export = rounded.copy()
         for col in self.metric_cols:
             self.export[col] = self.export[col].apply(self.format_small)
+    
+        date_str = self.date.isoformat() if self.date else ""
+        self.export.insert(5, "date", date_str)
+        self.df.insert(5, "date", date_str)
 
         return [self.df, self.export]
     
 
 
     def run(self, data: DataWrapper) -> DataWrapper:
-        statewide_df = data
+        statewide_df = data.data
         metrics_df = self.calculate_metric(statewide_df)
-        return DataWrapper(data=metrics_df)
+        metadata = {
+            "s3_prefix": self.state.lower().strip()
+        }
+
+        return DataWrapper(data=metrics_df, metadata=metadata)

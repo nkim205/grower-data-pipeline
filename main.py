@@ -14,6 +14,7 @@ def retrieve_state_arg() -> str:
     parser.add_argument("state", type=str, help="Two-letter state code (e.g., al, ga)")
     parser.add_argument("--dry-run", action="store_true", help="Run pipeline without uploading to s3")
     parser.add_argument("--date", type=str, help="Specific date to process (YYYY-MM-DD)")
+    parser.add_argument("--full-test", action="store_true", help="Include uploading to S3 using test bucket (state-metrics-dev)")
     args = parser.parse_args()
     return args
 
@@ -24,7 +25,7 @@ def execute_pipeline(components) -> DataWrapper:
         # execute_component was implemented in the base_component class, and it calls run for each component and updates corresponding metadata
         component_result = c.execute_component(data)
         # print(component_result.metadata) # print metadata for each component to get relavant metrics (duration, start time)
-        data = component_result.data # update data attribute so that the next component can us
+        data = component_result # update data attribute so that the next component can us
     
     # we are returning DataWrapper Object here
     return component_result 
@@ -44,12 +45,13 @@ def pipeline() -> DataWrapper:
     # Initialize different components
     retrieve = DataRetrievalS3(name="Retrieve Outage Data from S3", state=state, date=target_date) # for retrieve we would need to pass in state parameter
     process = Processing(name="Standardize Outage Data", state=state, date=target_date)
-    metrics = Metrics(name="Calculate SAIDI and SAIFI", state=state)
+    metrics = Metrics(name="Calculate SAIDI and SAIFI", state=state, date=target_date)
 
     components = [retrieve, process, metrics]
 
     if not dry_run:
-        upload = WriteToS3(name='Upload Processed Data to S3', bucket_name='state-metrics')
+        bucket_name = "state-metrics-dev" if args.full_test else "state-metrics"
+        upload = WriteToS3(name='Upload Processed Data to S3', bucket_name=bucket_name)
         components.append(upload)
 
     # call execute_pipeline, which will call the execute method for each component
@@ -59,18 +61,19 @@ def pipeline() -> DataWrapper:
 
 if __name__ == "__main__":
     result = pipeline() # the final_result will be DataWrapper object
-    # print(result.data) # here we are printing data (most likely a df) but we would need to append this data to some csv etc.
-
     args = retrieve_state_arg()
-    if args.dry_run:
-        target_date = None
 
-        if args.date:
-            target_date = datetime.strptime(args.date, "%Y-%m-%d").date()
-        else:
-            target_date = (datetime.now() - timedelta(days=1)).date()
-        
+    target_date = None
+    if args.date:
+        target_date = datetime.strptime(args.date, "%Y-%m-%d").date()
+    else:
+        target_date = (datetime.now() - timedelta(days=1)).date()
+
+    if args.dry_run:        
         formatted_df = result.data[1]
-        print(formatted_df)
+        # print(formatted_df)
         formatted_df.to_csv(os.path.join("testing", f"{args.state}_pipeline_output_{target_date}.csv"), index=False)
         print(f"Dry run complete for {args.state}, {target_date}")
+
+    if args.full_test:
+        print(f"✅ Full test run complete for {args.state}, {target_date}. Metrics have been uploaded to state-metrics-dev. ✅")

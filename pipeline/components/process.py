@@ -139,7 +139,7 @@ class Processing(Component):
                 continue
 
             # Process each county
-            for county in self.raw_county_list:
+            for county in self.master_county_list:
                 county_df = df[df['county'] == county]
 
                 if county_df.size != 0:
@@ -158,19 +158,27 @@ class Processing(Component):
         return self.county_dfs
 
     def run(self, data):
-        combined_raw_data = data[0]
-        
-        std_df = self.std.standardize(combined_raw_data.copy())[1]
+        df_list = data.data[1]
+        std_df_list = []
 
-        processed_data = self.process([combined_raw_data.copy()])
+        for df in df_list:
+            std_df = self.std.standardize(df.copy())[1]
+            std_df_list.append(std_df)
+
+        combined_std_data = pd.concat(std_df_list, ignore_index=True)
+
+        processed_data = self.process([data.data[0].copy()])
         proc_combined = pd.concat(processed_data.values(), ignore_index=True)
         proc_combined = proc_combined.drop(columns=['per_outage_customers_affected'])
         
-        output = [std_df, proc_combined]
-
+        output = [combined_std_data, proc_combined]
         print(f"Processing complete for {self.state}")
         
         # once you have data ready for the next step, now we wrap it using the DataWrapper Class
-        per_county_data = DataWrapper(output)
+        metadata = {
+            "s3_prefix": self.state.lower().strip()
+        }
+
+        per_county_data = DataWrapper(data=output, metadata=metadata)
         # we can return this data to the next component of the pipeline
         return per_county_data

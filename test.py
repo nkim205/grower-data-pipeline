@@ -5,6 +5,7 @@ from pipeline.base import Component, DataWrapper
 from pipeline.components.standardize import Standardize
 from pipeline.components.process import Processing
 from pipeline.components.metrics import Metrics
+from pipeline.components.uploader import WriteToS3
 
 STATE = "va"
 DATE = "2025-05-01"
@@ -26,6 +27,11 @@ def test(type):
     met = Metrics(
         name="test",
         state=STATE
+    )
+
+    up = WriteToS3(
+        name="test",
+        
     )
 
     std_df = std.standardize(df.copy())[1]

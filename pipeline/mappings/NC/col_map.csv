@@ -5,7 +5,7 @@ CountyName,county
 customersAffected,per_outage_customers_affected
 customersOutNow,per_outage_customers_affected
 CustomersAffected,per_outage_customers_affected
-Affected Customers,per_outage_customers_affected
+Affected Customers,customers_served
 Percentage Affected,per_outage_customers_affected
 cust_a,per_outage_customers_affected
 # Out,per_outage_customers_affected
@@ -17,3 +17,6 @@ cust_s,customers_served
 timestamp,timestamp
 name,county
 Location,county
+area_name,county
+location,county
+Number of Outages,per_outage_customers_affected

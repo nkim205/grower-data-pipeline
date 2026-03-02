@@ -102,7 +102,7 @@ class Standardize(Component):
         # Normalize column names
         normalized = {col: col.strip().lower() for col in data.columns}
         data.rename(columns=normalized, inplace=True)
-        
+
         # Rename columns 
         data.rename(columns=self.col_map, inplace=True)
 
@@ -130,10 +130,9 @@ class Standardize(Component):
                 axis=1
             )
 
-            data[cols[0]] = merged
+            data[cols[0]] = merged.to_numpy()
         
         data = data.loc[:, ~data.columns.duplicated(keep="first")]
-        
         return data
 
     # Handles back, missing, and unknown data
@@ -207,13 +206,24 @@ class Standardize(Component):
     def standardize_county(self, data):
         data = data.copy()
         # Map raw county names to standardized names
-        data['county'] = (
+        # data['county'] = (
+        #     data['county']
+        #     .astype(str)
+        #     .str.strip()
+        #     .str.lower()
+        #     .map(self.county_map)
+        # )
+
+        cs = (
             data['county']
             .astype(str)
             .str.strip()
             .str.lower()
-            .map(self.county_map)
         )
+
+        cs = cs.str.replace(r'^([a-z]{2})-', r'\1 - ', regex=True)
+        data['county'] = cs.map(self.county_map)
+
         # Standardize datatype
         data = data[data['county'].map(type) == str]
         
