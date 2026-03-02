@@ -130,7 +130,7 @@ class Standardize(Component):
                 axis=1
             )
 
-            data[cols[0]] = merged
+            data[cols[0]] = merged.to_numpy()
         
         data = data.loc[:, ~data.columns.duplicated(keep="first")]
         return data
