@@ -60,7 +60,7 @@ class DataRetrievalS3(Component):
             if key.lower().endswith(".csv") and re.search(r"per[_]?count(y|ies)?", key, re.IGNORECASE):
 
                 s3_obj = s3.get_object(Bucket=self.bucket, Key=key)
-                df = pd.read_csv(io.BytesIO(s3_obj["Body"].read()))
+                df = pd.read_csv(io.BytesIO(s3_obj["Body"].read()), low_memory=False)
 
                 # Ensure 'timestamp' column exists
                 if "timestamp" not in df.columns:
@@ -133,17 +133,14 @@ class DataRetrievalS3(Component):
         # this is the main function to be implemented, use your helper functions here 
         s3_data_list = self.retrieve()
         combined = pd.concat(s3_data_list, ignore_index=True)
-
-        # Generate the NaN report for the retrieved data
-        # self.generate_nan_report(provider_dfs=s3_data, output_file=f"{self.state}_nan_report.xlsx")
-
+        
         # Add metadata so downstream components know the prefix to use
         metadata = {
             "s3_prefix": self.state.lower().strip()
         }
 
         # once you have data ready for the next step, now we wrap it using the DataWrapper Class
-        per_provider_data = DataWrapper([combined, s3_data_list], metadata=metadata)
+        per_provider_data = DataWrapper(data=[combined, s3_data_list], metadata=metadata)
 
         # we can return this data to the next component of the pipeline
         return per_provider_data

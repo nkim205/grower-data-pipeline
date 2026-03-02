@@ -75,22 +75,20 @@ class WriteToS3(Component):
         """
 
         # Extract dataframe from DataWrapper
-        df = data.data
+        historical_df = data.data[0]    # Used for aggregating historical metrics (WIP)
+        export = data.data[1]           # Cleaned version for dashboard that uses rounded values
 
-        # Pull prefix from metadata
-        prefix = data.metadata.get("s3_prefix", "")
+        # Get state code from metadata and normalize
+        state = data.metadata.get("s3_prefix", "").upper().rstrip("/").strip()
 
         # Build filename
-        filename = f"{date.today().isoformat()}.csv"
-
-        # Normalize S3 prefix (e.g., "al")
-        clean_prefix = prefix.strip().lower().rstrip("/")
+        filename = f"{state}_DATA.csv"
 
         # Build S3 key
-        s3_key = filename if clean_prefix == "" else f"{clean_prefix}/{filename}"
+        s3_key = filename
 
         # Upload the dataframe
-        success = self.upload_dataframe(df, s3_key)
+        success = self.upload_dataframe(export, s3_key)
 
         if not success:
             logger.error(f"Failed to upload to s3://{self.bucket_name}/{s3_key}")
@@ -100,8 +98,8 @@ class WriteToS3(Component):
             "uploaded": success,
             "s3_bucket": self.bucket_name,
             "s3_key": s3_key,
-            "rows": df.shape[0],
-            "columns": df.shape[1],
+            "rows": export.shape[0],
+            "columns": export.shape[1],
         }
         payload = DataWrapper(payload)
 
