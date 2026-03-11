@@ -3,6 +3,7 @@ import os
 from pipeline.components.retrieve import DataRetrievalS3
 from pipeline.components.process import Processing
 from pipeline.components.metrics import Metrics
+from pipeline.components.cleaner import Cleaner
 from pipeline.components.uploader import WriteToS3
 from pipeline.base import DataWrapper
 from datetime import datetime, timedelta
@@ -46,11 +47,13 @@ def pipeline() -> DataWrapper:
     retrieve = DataRetrievalS3(name="Retrieve Outage Data from S3", state=state, date=target_date) # for retrieve we would need to pass in state parameter
     process = Processing(name="Standardize Outage Data", state=state, date=target_date)
     metrics = Metrics(name="Calculate SAIDI and SAIFI", state=state, date=target_date)
+    cleaner = Cleaner(name="Add FIPs codes to each county and format data for final output", state=state, date=target_date)
+    
 
-    components = [retrieve, process, metrics]
+    components = [retrieve, process, metrics, cleaner]
 
     if not dry_run:
-        bucket_name = "state-metrics-dev" if args.full_test else "state-metrics"
+        bucket_name = "state-metrics-dev" if args.full_test else "state-metrics-dev"
         upload = WriteToS3(name='Upload Processed Data to S3', bucket_name=bucket_name)
         components.append(upload)
 
