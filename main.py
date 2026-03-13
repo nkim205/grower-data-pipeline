@@ -53,7 +53,8 @@ def pipeline() -> DataWrapper:
     components = [retrieve, process, metrics, cleaner]
 
     if not dry_run:
-        bucket_name = "state-metrics-dev" if args.full_test else "state-metrics-dev"
+        branch = os.environ.get("BRANCH_NAME", "dev")
+        bucket_name = "state-metrics" if branch == "main" else "state-metrics-dev"
         upload = WriteToS3(name='Upload Processed Data to S3', bucket_name=bucket_name)
         components.append(upload)
 

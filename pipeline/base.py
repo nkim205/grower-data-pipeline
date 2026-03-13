@@ -5,9 +5,9 @@ from datetime import datetime
 # this a wrapper class where we hold the ouput (pandas dataframe) for each component
 # this allows us to store metadata about each df
 class DataWrapper:
-    def __init__(self, data, metadata={}):
+    def __init__(self, data, metadata=None):
         self.data = data
-        self.metadata = metadata
+        self.metadata = metadata if metadata is not None else {}
 
 # this is our superclass for each of our pipeline components
 # pipeline components will inherit from this class
