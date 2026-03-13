@@ -8,7 +8,7 @@ class Preprocess(Component):
     def __init__(self, name, state):
         super().__init__(name)
         self.state = state
-        self.base_path = os.path.join("pipeline", "mappings", f"{self.state}")
+        self.base_path = os.path.join("pipeline", "mappings", f"{self.state.upper()}")
         os.makedirs(self.base_path, exist_ok=True)
 
     def writeRawColNames(self, data):

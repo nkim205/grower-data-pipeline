@@ -9,7 +9,7 @@ class Standardize(Component):
         super().__init__(name)
         self.state = state
         self.date = date
-        self.base_path = os.path.join("pipeline", "mappings", f"{self.state}")
+        self.base_path = os.path.join("pipeline", "mappings", f"{self.state.upper()}")
         
         self.col_map = self.get_col_map()           # {raw col name : std col name}
         self.col_lists = self.get_all_col_lists()   # {std col name : [all raw cols]}
