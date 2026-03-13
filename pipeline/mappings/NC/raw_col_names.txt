@@ -1,0 +1,22 @@
+countyname
+area_name
+emc
+substations
+cust_a
+% out
+# out
+source_file
+cust_s
+affected customers
+# served
+customersserved
+last updated
+name
+percentage affected
+county
+number of outages
+customersaffected
+timestamp
+location
+counties
+customersoutnow

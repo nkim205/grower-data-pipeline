@@ -1,0 +1,268 @@
+from pipeline.base import Component, DataWrapper
+import numpy as np
+import pandas as pd
+import os
+import csv
+
+class Standardize(Component):
+    def __init__(self, name, state, date):
+        super().__init__(name)
+        self.state = state
+        self.date = date
+        self.base_path = os.path.join("pipeline", "mappings", f"{self.state.upper()}")
+        
+        self.col_map = self.get_col_map()           # {raw col name : std col name}
+        self.col_lists = self.get_all_col_lists()   # {std col name : [all raw cols]}
+        self.county_map = self.get_county_map()     # {raw county name : std county name}
+        self.raw_county_list = self.get_raw_county_list()
+        self.master_county_list = self.get_master_county_list()
+
+    def get_col_map(self):
+        col_map = {}
+        read_path = os.path.join(self.base_path, "col_map.csv")
+        
+        try:
+            with open(read_path) as f:
+                reader = csv.reader(f)
+                header = next(reader)
+                
+                for row in reader:
+                    if len(row) >= 2:
+                        raw = row[0].strip().lower()
+                        std_name = row[1].strip().lower()
+                        col_map[raw] = std_name
+        except FileNotFoundError:
+            print(f"Warning: col_map.csv not found at {read_path}")
+        
+        return col_map
+
+    def get_all_col_lists(self):
+        read_path = os.path.join(self.base_path, "raw_col_lists.csv")
+        
+        try:
+            df = pd.read_csv(read_path)
+            col_lists = {col: df[col].dropna().tolist() for col in df.columns}
+        except FileNotFoundError:
+            print(f"Warning: raw_col_lists.csv not found at {read_path}")
+            col_lists = {}
+        
+        return col_lists
+
+    def get_county_map(self):
+        county_map = {}
+        read_path = os.path.join(self.base_path, "county_map.csv")
+        
+        try:
+            with open(read_path) as f:
+                reader = csv.reader(f)
+                header = next(reader)
+                
+                for row in reader:
+                    if len(row) >= 2:
+                        raw = row[0].strip().lower()
+                        std_name = row[1].strip().lower()
+                        county_map[raw] = std_name
+        except FileNotFoundError:
+            print(f"Warning: county_map.csv not found at {read_path}")
+        
+        return county_map
+
+    def get_raw_county_list(self):
+        raw_county_list = set()
+        read_path = os.path.join(self.base_path, "raw_county_list.txt")
+        
+        try:
+            with open(read_path) as f:
+                for line in f:
+                    cleaned = line.strip().lower()
+                    if cleaned:
+                        raw_county_list.add(cleaned)
+        except FileNotFoundError:
+            print(f"Warning: raw_county_list.txt not found at {read_path}")
+        
+        return raw_county_list
+
+    def get_master_county_list(self):
+        master_county_list = set()
+        read_path = os.path.join(self.base_path, "master_county_list.txt")
+        
+        try:
+            with open(read_path) as f:
+                for line in f:
+                    cleaned = line.strip().lower().replace("county", "").strip()
+                    if cleaned:
+                        master_county_list.add(cleaned)
+        except FileNotFoundError:
+            print(f"Warning: master_county_list.txt not found at {read_path}")
+        
+        return master_county_list
+
+    # Standardizes column names and drops redundant / unnecessary columns
+    def rename_cols(self, data):
+        # Normalize column names
+        normalized = {col: col.strip().lower() for col in data.columns}
+        data.rename(columns=normalized, inplace=True)
+
+        # Rename columns 
+        data.rename(columns=self.col_map, inplace=True)
+
+        # Drop unecessary columns
+        allowed = set(self.col_map.values()) | {"% out", "emc"}
+        drop_cols = [c for c in data.columns if c not in allowed]
+        data.drop(columns=drop_cols, inplace=True)
+        
+        # Handle duplicate columns
+        dupes = data.columns[data.columns.duplicated()].unique()
+
+        for col in dupes:
+            cols = [c for c in data.columns if c == col]
+
+            # Extract duplicate columns as a small DataFrame
+            block = data[cols]
+
+            # Pick the first valid value
+            merged = block.apply(
+                lambda row: next(
+                    (v for v in row 
+                    if pd.notna(v) and str(v).strip() != ""),
+                    None
+                ),
+                axis=1
+            )
+
+            data[cols[0]] = merged.to_numpy()
+        
+        data = data.loc[:, ~data.columns.duplicated(keep="first")]
+        return data
+
+    # Handles back, missing, and unknown data
+    def handle_bad_data(self, data):
+        # Drop NULL / unknown / empty rows
+        data = data.dropna(subset=['county'])
+        data = data[~data['county'].isin(['unknown', 'Unknown', 'UNKNOWN', ''])].copy()
+
+        data.columns = data.columns.str.strip().str.lower()
+        # If customers served data is missing, estimate it using affected / % out
+        if "% out" in data.columns:
+            if "customers_served" in data.columns:
+                data.drop(columns="% out", inplace=True)
+            else:
+                # TODO: figure out how to handle "<" more robustly
+                # For a county on a given day, if all % outs are "<" estimations, pull from historical
+                # If a county has at least 1 "valid" % out entry then use that for the rest of its timestamps for that day
+
+                # FOR LATER USE (WIP)
+                mask = ~data['% out'].astype(str).str.contains('<', na=True)
+                valid_rows = data[mask]
+                
+                # Standardize "< xx.xx%" to "xx.xx"
+                data['% out'] = (
+                    data['% out'].astype(str)
+                    .str.replace('<', '', regex=False)
+                    .str.rstrip('%')
+                    .replace('', np.nan)
+                )
+                # Convert decimal to percent
+                data['% out'] = pd.to_numeric(data['% out'], errors='coerce') / 100
+                # Calculate esimated customers served
+                data['customers_served'] = np.where(
+                    (data['% out'].notna()) & (data['% out'] != 0),
+                    (data['per_outage_customers_affected'].astype(float) / data['% out']).round().astype("Int64"),
+                    np.nan
+                )
+                # Remove % out column as it is no longer needed
+                data.drop(columns=['% out'], inplace=True)
+
+        return data
+
+    # Standardizes numeric data types
+    def standardize_data_types(self, data):
+        data['timestamp'] = pd.to_datetime(data['timestamp'], errors='coerce')
+        data = data[data['timestamp'].dt.date == pd.to_datetime(self.date).date()]
+
+        data['per_outage_customers_affected'] = (
+            pd.to_numeric(
+                data['per_outage_customers_affected']
+                .astype(str)
+                .str.replace('"', '', regex=False)
+                .str.replace(',', '', regex=False),
+                errors='coerce'
+            ).fillna(0)
+        )
+        
+        data['customers_served'] = (
+            pd.to_numeric(
+                data['customers_served']
+                .astype(str)
+                .str.replace('"', '', regex=False)
+                .str.replace(',', '', regex=False),
+                errors='coerce'
+            ).fillna(0)
+        )
+        
+        return data
+
+    # Standardizes county names
+    def standardize_county(self, data):
+        data = data.copy()
+        # Map raw county names to standardized names
+        # data['county'] = (
+        #     data['county']
+        #     .astype(str)
+        #     .str.strip()
+        #     .str.lower()
+        #     .map(self.county_map)
+        # )
+
+        cs = (
+            data['county']
+            .astype(str)
+            .str.strip()
+            .str.lower()
+        )
+
+        cs = cs.str.replace(r'^([a-z]{2})-', r'\1 - ', regex=True)
+        data['county'] = cs.map(self.county_map)
+
+        # Standardize datatype
+        data = data[data['county'].map(type) == str]
+        
+        return data
+
+    def standardize(self, data):
+        # Check for multiple customers affected columns
+        if 'c_affected' in self.col_lists:
+            dupes = [c for c in data.columns 
+                    if c.strip().lower() in self.col_lists['c_affected']]
+            
+            if len(dupes) > 1:
+                # If duplicate affected columns exist, keep the one with higher values
+                keep = data[dupes].sum(skipna=True).idxmax()
+                data.drop(
+                    columns=[c for c in data.columns if c != keep and c in dupes],
+                    inplace=True
+                )
+                
+        renamed_data = self.rename_cols(data)   
+        good_data = self.handle_bad_data(renamed_data)
+
+        # Check for if any columns are still missing. If so, skip that provider
+        std_names = ['county', 'per_outage_customers_affected', 'customers_served', 'timestamp']
+        missing = [name for name in std_names if name not in good_data.columns]
+        
+        if missing:
+            return [False, missing]
+        
+        # Standardize data types
+        type_std_data = self.standardize_data_types(good_data)
+        type_std_data = type_std_data[type_std_data['customers_served'] != 0]
+
+        # Standardize county names
+        std_data = self.standardize_county(type_std_data)
+        
+        return [True, std_data]
+
+    def run(self, data):
+        normalized_data = self.standardize(data)
+        provider_data_std = DataWrapper(normalized_data)
+        return provider_data_std

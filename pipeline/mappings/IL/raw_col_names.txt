@@ -1,0 +1,33 @@
+name
+townships
+countynam
+lat
+# out
+percentout
+percent_cust_a
+countyname
+out
+cust_s
+numoutages
+counties
+customersserved
+# served
+cust_a
+timestamp
+etr
+total
+percentaffected
+customersaffected
+n_out
+source_file
+key
+% out
+emc
+township
+customersoutnow
+area
+areaid
+premisecount
+etr_confidence
+county
+lng

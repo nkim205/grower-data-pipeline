@@ -1,0 +1,10 @@
+county,customers_served,per_outage_customers_affected,timestamp
+name,customersServed,customersOutNow,timestamp
+location,customersserved,customers out,last updated
+county name,customers served,numberout,
+countyname,numberserved,out,
+county,# served,affected customers,
+id,count,customersaffected,
+County Name,,customersoutnow,
+,,# out,
+,,number of outages,

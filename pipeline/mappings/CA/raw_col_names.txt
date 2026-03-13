@@ -1,0 +1,7 @@
+name
+source_file
+timestamp
+emc
+customersoutnow
+customersaffected
+customersserved

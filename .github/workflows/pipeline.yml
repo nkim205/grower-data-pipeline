@@ -1,0 +1,118 @@
+name: SAIDI SAIFI Pipeline
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+  schedule:
+    - cron: "0 11 * * *"
+    - cron: "0 23 * * *"
+  workflow_dispatch:
+    inputs:
+      states:
+        description: 'JSON array of lowercase state codes to process (e.g. ["al","ga"])'
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+env:
+  PYTHON_VERSION: "3.11"
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  determine-states:
+    name: Resolve state matrix
+    runs-on: ubuntu-latest
+    outputs:
+      states: ${{ steps.choose.outputs.states }}
+    steps:
+      - name: Choose states for matrix
+        id: choose
+        env:
+          ALL_STATES: '["al","fl","ga","la","ms","nc","sc"]'
+          DEFAULT_MATRIX: '["al"]'
+          DISPATCH_STATES: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.states || '' }}
+          EVENT_NAME: ${{ github.event_name }}
+          VAR_STATES: ${{ vars.STATE_MATRIX }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+
+          event_name = os.environ["EVENT_NAME"]
+
+          if event_name == "schedule" or (event_name == "push" and os.environ["REF_NAME"] == "main"):
+              matrix = os.environ["ALL_STATES"]
+          else:
+              matrix = (
+                  os.environ.get("DISPATCH_STATES")
+                  or os.environ.get("VAR_STATES")
+                  or os.environ["DEFAULT_MATRIX"]
+              )
+
+          try:
+              parsed = json.loads(matrix)
+          except json.JSONDecodeError as exc:
+              raise SystemExit(f"State matrix must be valid JSON array: {exc}")
+
+          if not isinstance(parsed, list) or not parsed:
+              raise SystemExit("Provide at least one state in the matrix JSON array.")
+
+          normalized = []
+          for value in parsed:
+              if not isinstance(value, str):
+                  raise SystemExit("State matrix entries must be strings.")
+              value = value.strip().lower()
+              if not value:
+                  raise SystemExit("State matrix entries cannot be empty.")
+              normalized.append(value)
+
+          matrix_json = json.dumps(normalized)
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as fh:
+              fh.write(f"states={matrix_json}\n")
+          PY
+
+  state-pipeline:
+    name: Run pipeline for ${{ matrix.state }}
+    needs: determine-states
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        state: ${{ fromJson(needs.determine-states.outputs.states) }}
+    env:
+      STATE_CODE: ${{ matrix.state }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5.4.0
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -s requirements.txt ]; then
+            python -m pip install -r requirements.txt
+          fi
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4.1.0
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Execute pipeline
+        env:
+          BRANCH_NAME: ${{ github.ref_name }}
+        run: |
+          python main.py "$STATE_CODE"
