@@ -7,8 +7,9 @@ import argparse
 import re
 import os
 
-TAIL_BYTES = 10 * 1024 * 1024   # 10MB - Tune this to change the amount of bytes being read
+TAIL_BYTES = 10 * 1024 * 1024       # 10MB - Tune this to change the amount of bytes being read
 THRESHOLD_BYTES = 20 * 1024 * 1028  # Only truncate when file exceeds 20 MB - Tune this to change when to truncate 
+USE_OPTIMIZATION = True             # Set to False when testing using full downloads
 
 class DataRetrievalS3(Component):
     def __init__(self, name, state, date=None, bucket="urg-power-outage"):
@@ -61,9 +62,23 @@ class DataRetrievalS3(Component):
 
             # Match any variation of "per_county" in the file name (case-insensitive)
             if key.lower().endswith(".csv") and re.search(r"per[_]?count(y|ies)?", key, re.IGNORECASE):
+                meta = s3.head_object(Bucket=self.bucket, Key=key)
+                f_size = meta["ContentLength"]
 
-                s3_obj = s3.get_object(Bucket=self.bucket, Key=key)
-                df = pd.read_csv(io.BytesIO(s3_obj["Body"].read()), low_memory=False)
+                if USE_OPTIMIZATION and f_size > THRESHOLD_BYTES:
+                    head_resp = s3.get_object(Bucket=self.bucket, Key=key, Range="bytes=0-500")
+                    header_line = head_resp["Body"].read().decode("utf-8", errors="replace").splitlines()[0]
+
+                    tail_resp = s3.get_object(Bucket=self.bucket, Key=key, Range=f"bytes=-{TAIL_BYTES}")
+                    tail_content = tail_resp["Body"].read().decode("utf-8", errors="replace")
+
+                    lines = tail_content.splitlines()
+                    safe_content = header_line + "\n" + "\n".join(lines[1:])
+
+                    df = pd.read_csv(io.StringIO(safe_content), low_memory=False)
+                else:
+                    s3_obj = s3.get_object(Bucket=self.bucket, Key=key)
+                    df = pd.read_csv(io.BytesIO(s3_obj["Body"].read()), low_memory=False)
 
                 # Ensure 'timestamp' column exists
                 if "timestamp" not in df.columns:

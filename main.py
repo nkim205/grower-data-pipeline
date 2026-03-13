@@ -27,7 +27,7 @@ def execute_pipeline(components) -> DataWrapper:
         component_result = c.execute_component(data)
         # print(component_result.metadata) # print metadata for each component to get relavant metrics (duration, start time)
         data = component_result # update data attribute so that the next component can us
-    
+        
     # we are returning DataWrapper Object here
     return component_result 
 
@@ -76,7 +76,7 @@ if __name__ == "__main__":
     if args.dry_run:        
         formatted_df = result.data[1]
         # print(formatted_df)
-        formatted_df.to_csv(os.path.join("testing", f"{args.state}_pipeline_output_{target_date}.csv"), index=False)
+        formatted_df.to_csv(os.path.join("testing", f"{args.state}.csv"), index=False)
         print(f"Dry run complete for {args.state}, {target_date}")
 
     if args.full_test:
