@@ -7,6 +7,9 @@ import argparse
 import re
 import os
 
+TAIL_BYTES = 10 * 1024 * 1024   # 10MB - Tune this to change the amount of bytes being read
+THRESHOLD_BYTES = 20 * 1024 * 1028  # Only truncate when file exceeds 20 MB - Tune this to change when to truncate 
+
 class DataRetrievalS3(Component):
     def __init__(self, name, state, date=None, bucket="urg-power-outage"):
         super().__init__(name)
