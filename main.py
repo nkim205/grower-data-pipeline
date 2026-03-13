@@ -27,7 +27,7 @@ def execute_pipeline(components) -> DataWrapper:
         component_result = c.execute_component(data)
         # print(component_result.metadata) # print metadata for each component to get relavant metrics (duration, start time)
         data = component_result # update data attribute so that the next component can us
-    
+        
     # we are returning DataWrapper Object here
     return component_result 
 
@@ -53,7 +53,8 @@ def pipeline() -> DataWrapper:
     components = [retrieve, process, metrics, cleaner]
 
     if not dry_run:
-        bucket_name = "state-metrics-dev" if args.full_test else "state-metrics-dev"
+        branch = os.environ.get("BRANCH_NAME", "dev")
+        bucket_name = "state-metrics" if branch == "main" else "state-metrics-dev"
         upload = WriteToS3(name='Upload Processed Data to S3', bucket_name=bucket_name)
         components.append(upload)
 
@@ -72,10 +73,10 @@ if __name__ == "__main__":
     else:
         target_date = (datetime.now() - timedelta(days=1)).date()
 
-    if args.dry_run:        
+    if args.dry_run:       
         formatted_df = result.data[1]
         # print(formatted_df)
-        formatted_df.to_csv(os.path.join("testing", f"{args.state}_pipeline_output_{target_date}.csv"), index=False)
+        formatted_df.to_csv(os.path.join("testing", f"{args.state}_baseline.csv"), index=False)
         print(f"Dry run complete for {args.state}, {target_date}")
 
     if args.full_test:

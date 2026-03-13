@@ -112,5 +112,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Execute pipeline
+        env:
+          BRANCH_NAME: ${{ github.ref_name }}
         run: |
           python main.py "$STATE_CODE"

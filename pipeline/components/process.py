@@ -72,7 +72,7 @@ class Processing(Component):
     def create_filler(self, county):
         print(f"Creating a filler data frame for {county}")
         # Pull historical customers served
-        read_path = os.path.join("pipeline\\historicalCustomersServed", f"{self.state}_customers_served.csv")
+        read_path = os.path.join("pipeline", "historicalCustomersServed", f"{self.state.upper()}_customers_served.csv")
         historical_val = -1
 
         # Check that the historical data exists

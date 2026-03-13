@@ -62,7 +62,7 @@ class Metrics(Component):
                 continue
 
             served = cdf['customers_served'].max()
-            if served <= 0 or served is None or served is pd.notna:
+            if served <= 0 or served is None or pd.isna(served):
                 self.set_metric(county, 'lower_saifi', lower)
                 self.set_metric(county, 'middle_saifi', middle)
                 self.set_metric(county, 'upper_saifi', upper)

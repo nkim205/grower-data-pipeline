@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import numpy as np
 from pprint import pprint
 from pipeline.base import Component, DataWrapper
 from pipeline.components.standardize import Standardize
@@ -52,6 +53,69 @@ def test(type):
 
     print(f"Testing complete for {STATE} {type}")
     
+
+
+def normalize(val):
+    if isinstance(val, str) and val.startswith("<"):
+        return val  # keep as-is for string comparison
+    try:
+        return float(val)
+    except (ValueError, TypeError):
+        return np.nan
+
+def values_match(a, b, tol=0.0001):
+    a_norm = normalize(a)
+    b_norm = normalize(b)
+
+    # both are the same "<x" string
+    if isinstance(a_norm, str) and isinstance(b_norm, str):
+        return a_norm == b_norm
+
+    # one is a string threshold, the other is numeric
+    if isinstance(a_norm, str) or isinstance(b_norm, str):
+        return False
+
+    # both numeric
+    if np.isnan(a_norm) and np.isnan(b_norm):
+        return True
+
+    return abs(a_norm - b_norm) <= tol
+
+def test_optimization():
+    states = ["al", "fl", "ga", "nc"]
+    cols_to_check = ["SAIDI", "SAIFI", "LOWER_SAIFI", "UPPER_SAIFI"]
+
+    for state in states:
+        baseline = pd.read_csv(f"testing/{state}_baseline.csv")
+        optimized = pd.read_csv(f"testing/{state}_optimization.csv")
+
+        merged = baseline.merge(optimized, on="County", suffixes=("_base", "_opt"))
+        mismatches = []
+
+        for col in cols_to_check:
+            base_col = f"{col}_base"
+            opt_col = f"{col}_opt"
+
+            if base_col not in merged.columns or opt_col not in merged.columns:
+                continue
+
+            for _, row in merged.iterrows():
+                if not values_match(row[base_col], row[opt_col]):
+                    mismatches.append({
+                        "County": row["County"],
+                        "Column": col,
+                        "Baseline": row[base_col],
+                        "Optimized": row[opt_col]
+                    })
+
+        if not mismatches:
+            print(f"{state}: MATCH")
+        else:
+            print(f"{state}: MISMATCH in {len(mismatches)} values")
+            print(pd.DataFrame(mismatches).to_string(index=False))
+
+
 # test("STD")
 # test("PROC")
-test("METRICS")
+# test("METRICS")
+test_optimization()
