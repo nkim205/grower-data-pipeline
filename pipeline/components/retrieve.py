@@ -7,9 +7,10 @@ import argparse
 import re
 import os
 
-TAIL_BYTES = 10 * 1024 * 1024       # 10MB - Tune this to change the amount of bytes being read
-THRESHOLD_BYTES = 20 * 1024 * 1028  # Only truncate when file exceeds 20 MB - Tune this to change when to truncate 
-USE_OPTIMIZATION = True             # Set to False when testing using full downloads
+TAIL_BYTES = 2.5 * 1024 * 1024      # Tune this to change the amount of bytes being read per truncated file
+THRESHOLD_BYTES = 4 * 1024 * 1024   # Tune this to change what file size to start truncating (e.g. max file size to download)
+USE_OPTIMIZATION = True             # Set to False when testing using full downloads, set to True when wanting to truncate large files
+STALE_THRESHOLD = 14                # Ignore files not updated in the past 14 days
 
 class DataRetrievalS3(Component):
     def __init__(self, name, state, date=None, bucket="urg-power-outage"):
@@ -56,6 +57,9 @@ class DataRetrievalS3(Component):
             return []
 
         dfs = []
+        bytes_available = 0
+        bytes_downloaded = 0
+
         # Loop through each file in state folder
         for obj in response["Contents"]:
             key = obj["Key"]
@@ -64,9 +68,18 @@ class DataRetrievalS3(Component):
             if key.lower().endswith(".csv") and re.search(r"per[_]?count(y|ies)?", key, re.IGNORECASE):
                 meta = s3.head_object(Bucket=self.bucket, Key=key)
                 f_size = meta["ContentLength"]
+                last_modified = meta["LastModified"]
+
+                bytes_available += f_size
+
+                cutoff = datetime.now(timezone.utc) - timedelta(days=STALE_THRESHOLD)
+                if last_modified < cutoff:
+                    continue
 
                 if USE_OPTIMIZATION and f_size > THRESHOLD_BYTES:
-                    head_resp = s3.get_object(Bucket=self.bucket, Key=key, Range="bytes=0-500")
+                    bytes_downloaded += 500 + int(TAIL_BYTES)
+
+                    head_resp = s3.get_object(Bucket=self.bucket, Key=key, Range="bytes=0-250")
                     header_line = head_resp["Body"].read().decode("utf-8", errors="replace").splitlines()[0]
 
                     tail_resp = s3.get_object(Bucket=self.bucket, Key=key, Range=f"bytes=-{TAIL_BYTES}")
@@ -77,6 +90,7 @@ class DataRetrievalS3(Component):
 
                     df = pd.read_csv(io.StringIO(safe_content), low_memory=False)
                 else:
+                    bytes_downloaded += f_size
                     s3_obj = s3.get_object(Bucket=self.bucket, Key=key)
                     df = pd.read_csv(io.BytesIO(s3_obj["Body"].read()), low_memory=False)
 
@@ -105,7 +119,11 @@ class DataRetrievalS3(Component):
             raise ValueError(f"Expected column '{provider_col}' not found in data")
 
         provider_dfs = [group for _, group in combined.groupby(provider_col)]
-        # combined.to_csv(f"{self.state}_outages.csv", index=False)
+        
+        mb = lambda b: round(b / (1024 * 1024), 2)
+        print(f"[{self.state.upper()}] Files scanned: {bytes_available / (1024*1024):.1f} MB available")
+        print(f"[{self.state.upper()}] Actually downloaded: {mb(bytes_downloaded)} MB")
+        print(f"[{self.state.upper()}] Reduction: {100 - (bytes_downloaded / bytes_available * 100):.1f}%")
 
         return provider_dfs
     

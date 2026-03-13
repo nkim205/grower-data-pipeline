@@ -73,10 +73,10 @@ if __name__ == "__main__":
     else:
         target_date = (datetime.now() - timedelta(days=1)).date()
 
-    if args.dry_run:        
+    if args.dry_run:       
         formatted_df = result.data[1]
         # print(formatted_df)
-        formatted_df.to_csv(os.path.join("testing", f"{args.state}.csv"), index=False)
+        formatted_df.to_csv(os.path.join("testing", f"{args.state}_baseline.csv"), index=False)
         print(f"Dry run complete for {args.state}, {target_date}")
 
     if args.full_test:

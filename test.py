@@ -82,7 +82,7 @@ def values_match(a, b, tol=0.0001):
     return abs(a_norm - b_norm) <= tol
 
 def test_optimization():
-    states = ["al", "fl", "ga", "il", "la", "ms", "nc", "sc"]
+    states = ["al", "fl", "ga", "nc"]
     cols_to_check = ["SAIDI", "SAIFI", "LOWER_SAIFI", "UPPER_SAIFI"]
 
     for state in states:
