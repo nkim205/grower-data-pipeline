@@ -1,28 +1,68 @@
-### col_map.csv
-* Stores the raw column name mapping to standardized column name
-* All raw and standardized names will be lower cased and stripped
-* In dictionary form: {raw column name : standardized column name}
+# Mappings Guide
 
-### county_map.csv
-* Stores the raw county name mapping to standardized county name
-* All raw and standardized names will be lower cased and stripped
-* In dictionary form: {raw county name : standardized county name}
+Each state requires its own folder under `pipeline/mappings/{STATE}/` containing the files described below. These files tell the pipeline how to translate the raw provider data for that state into a standardized format that the rest of the pipeline can work with.
 
-### master_county_list.txt
-* Stores the county names to be used as a base for the standardized county name
-* This list could store county names capitalized and with "- County" suffix 
-  * These names will be lower cased and have the "- County" prefixes removed for the standardized version
-* In list format: [A County, B County, ...]
+All string values across all mapping files are stored **lowercased and stripped** of whitespace unless noted otherwise.
 
-### raw_col_lists.csv
-* Stores a list of all raw column names that correspond to a given standardized column name
-* All raw and standardized column names will be lower cased and stripped
-* In dictionary format: {standardized col name : [raw col 1, raw col 2, ...]}
+---
 
-### raw_col_names.txt
-* Stores an intermediate list of all possible column names to later be manually added to their respective column mapping in col_mappings.csv and list in raw_col_lists.csv
-* All raw column names are lower cased and stripped
+## Mapping Files
 
-### raw_county_list.txt
-* Stores the raw list of all possible county names 
-* All raw county names are lower cased and stripped
+### `col_map.csv`
+
+Maps each raw column name found in a provider's CSV to the pipeline's standardized column name.
+
+- Format: `{raw column name : standardized column name}`
+- Used by `standardize.py` to rename incoming columns before processing
+
+---
+
+### `raw_col_lists.csv`
+
+Stores all known raw column name variants that correspond to each standardized column name. Used as a broader fallback when a direct `col_map.csv` match is not found.
+
+- Format: `{standardized col name : [raw col 1, raw col 2, ...]}`
+
+---
+
+### `county_map.csv`
+
+Maps each raw county name (as it appears in provider data) to the pipeline's standardized county name for that state.
+
+- Format: `{raw county name : standardized county name}`
+- Used by `standardize.py` to normalize county names across providers
+
+---
+
+### `master_county_list.txt`
+
+The canonical list of county names used by the pipeline as the authoritative reference for a given state. Every county that should appear in the output must be in this list.
+
+- Format: `[A County, B County, ...]`
+- Names may be stored capitalized with a `" County"` suffix — the pipeline lowercases them and strips the suffix when building the standardized name
+
+---
+
+### `raw_county_list.txt`
+
+A flat list of all raw county name variants seen in the source data for this state. Serves as a reference when building or auditing `county_map.csv`.
+
+- Format: one raw county name per line, lowercased and stripped
+
+---
+
+### `raw_col_names.txt`
+
+An intermediate scratch file listing all raw column names observed in a state's provider CSVs. Use this as a reference when manually populating `col_map.csv` and `raw_col_lists.csv` for a new state.
+
+- Format: one raw column name per line, lowercased and stripped
+
+---
+
+## Adding Mappings for a New State
+
+1. Create a folder at `pipeline/mappings/{STATE}/` using the two-letter uppercase state code (e.g. `GA/`)
+2. Collect raw CSV samples from each provider for that state
+3. Use the raw column names to populate `raw_col_names.txt`, then build `col_map.csv` and `raw_col_lists.csv`
+4. Use the raw county names to populate `raw_county_list.txt`, then build `county_map.csv` and `master_county_list.txt`
+5. Verify by running `python main.py {state} --dry-run` and checking the output for missing or NaN counties
