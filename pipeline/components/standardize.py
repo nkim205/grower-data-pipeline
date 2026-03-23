@@ -5,19 +5,34 @@ import os
 import csv
 
 class Standardize(Component):
+    f"""
+    A helper class used by process.py to clean up and standardize raw data from retrieve.py, transforming
+    things like column names, county names, etc. This class relies on pipeline/mappings/{STATE} to know 
+    how different raw inputs map to our standaardized outputs.  
+    """
+
     def __init__(self, name, state, date):
+        """
+        base_path resolves to the corresponding state folder that holds all required mappings. 
+        For more information regarding col_map, col_lists, county_map, raw_county_list, and 
+        master_county_list, refer to pipeline/mappings/guide.md
+        """
         super().__init__(name)
         self.state = state
         self.date = date
         self.base_path = os.path.join("pipeline", "mappings", f"{self.state.upper()}")
         
-        self.col_map = self.get_col_map()           # {raw col name : std col name}
-        self.col_lists = self.get_all_col_lists()   # {std col name : [all raw cols]}
-        self.county_map = self.get_county_map()     # {raw county name : std county name}
+        self.col_map = self.get_col_map()         
+        self.col_lists = self.get_all_col_lists()   
+        self.county_map = self.get_county_map()     
         self.raw_county_list = self.get_raw_county_list()
         self.master_county_list = self.get_master_county_list()
 
     def get_col_map(self):
+        """
+        Expected format: {raw column name : standardized column name}
+        """
+
         col_map = {}
         read_path = os.path.join(self.base_path, "col_map.csv")
         
@@ -37,6 +52,10 @@ class Standardize(Component):
         return col_map
 
     def get_all_col_lists(self):
+        """
+        Expected format: {standardized col name : [raw col 1, raw col 2, ...]}
+        """
+        
         read_path = os.path.join(self.base_path, "raw_col_lists.csv")
         
         try:
@@ -49,6 +68,10 @@ class Standardize(Component):
         return col_lists
 
     def get_county_map(self):
+        """
+        Expected format: {raw county name : standardized county name}
+        """
+
         county_map = {}
         read_path = os.path.join(self.base_path, "county_map.csv")
         
@@ -68,6 +91,10 @@ class Standardize(Component):
         return county_map
 
     def get_raw_county_list(self):
+        """
+        Expected format: [county 1, county 2, ...]
+        """
+
         raw_county_list = set()
         read_path = os.path.join(self.base_path, "raw_county_list.txt")
         
@@ -83,6 +110,10 @@ class Standardize(Component):
         return raw_county_list
 
     def get_master_county_list(self):
+        """
+        Expected format: [county 1, county 2, ...]
+        """
+
         master_county_list = set()
         read_path = os.path.join(self.base_path, "master_county_list.txt")
         
@@ -97,8 +128,15 @@ class Standardize(Component):
         
         return master_county_list
 
-    # Standardizes column names and drops redundant / unnecessary columns
     def rename_cols(self, data):
+        """
+        Standardizes column names and drops unnecessary columns by:
+            1) Lower casing column names and removing padding 
+            2) Renaming columns to their standardized version
+            3) Dropping unused columns
+            4) Resolving duplicate columns by keeping the first non null value 
+        """
+
         # Normalize column names
         normalized = {col: col.strip().lower() for col in data.columns}
         data.rename(columns=normalized, inplace=True)
@@ -137,11 +175,21 @@ class Standardize(Component):
 
     # Handles back, missing, and unknown data
     def handle_bad_data(self, data):
+        """
+        Bad data is classified as null, empty, or unknown county values and missing customers served values.
+
+        For bad county data, we drop those values. For missing customers served values, we require a '% out'
+        and total number affected columns to estimate the number of customers served as affected / % out. 
+        When providers give values with the prefix '<', we strip the '<' and treat it as an exact value. However,
+        more robust methods may be required.
+        """
+
         # Drop NULL / unknown / empty rows
         data = data.dropna(subset=['county'])
         data = data[~data['county'].isin(['unknown', 'Unknown', 'UNKNOWN', ''])].copy()
 
         data.columns = data.columns.str.strip().str.lower()
+        
         # If customers served data is missing, estimate it using affected / % out
         if "% out" in data.columns:
             if "customers_served" in data.columns:
@@ -175,8 +223,14 @@ class Standardize(Component):
 
         return data
 
-    # Standardizes numeric data types
     def standardize_data_types(self, data):
+        """
+        Filters the data to only keep rows whose timestamp match self.date, then standardizes data types:
+            - timestamp: pandas datetime
+            - per_outage_customers_affected: numeric
+            - customers_served: numeric
+        """
+
         data['timestamp'] = pd.to_datetime(data['timestamp'], errors='coerce')
         data = data[data['timestamp'].dt.date == pd.to_datetime(self.date).date()]
 
@@ -202,17 +256,14 @@ class Standardize(Component):
         
         return data
 
-    # Standardizes county names
     def standardize_county(self, data):
+        """
+        Maps the raw county name values to the standardized county name. A regex is used to transform 
+        certain formats to fit our mappings.
+            e.g. 'ga-fulton' becomes 'ga - fulton'
+        """
+
         data = data.copy()
-        # Map raw county names to standardized names
-        # data['county'] = (
-        #     data['county']
-        #     .astype(str)
-        #     .str.strip()
-        #     .str.lower()
-        #     .map(self.county_map)
-        # )
 
         cs = (
             data['county']
@@ -230,6 +281,23 @@ class Standardize(Component):
         return data
 
     def standardize(self, data):
+        """
+        Entry point fof the class. Takes in as inputs:
+            - data: a single dataframe with the combined raw data
+        
+        Sequence of operations:
+            1)  Checks for and handles multiple customers affected columns, keeping the one with the 
+                highest values
+            2)  Renames columns and handles bad data
+            3)  Ensures all required columns exists, skipping providers with missing columns
+            4)  Standardizes data types and county names
+
+        Returns:
+            [True, standardized_df] on success or [False, list_of_missing_columns] on failure.
+            On success, the pipeline continues execution, and processes the data. On failure,
+            the pipeline stops execution and logs the error.
+        """
+
         # Check for multiple customers affected columns
         if 'c_affected' in self.col_lists:
             dupes = [c for c in data.columns 
@@ -263,6 +331,10 @@ class Standardize(Component):
         return [True, std_data]
 
     def run(self, data):
+        """
+        The public interface inherited from Component. Receives data in the form of a DataWrapper and 
+        returns the standardized data in DataWrapper form.
+        """
         normalized_data = self.standardize(data)
         provider_data_std = DataWrapper(normalized_data)
         return provider_data_std
