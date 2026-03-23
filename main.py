@@ -86,7 +86,7 @@ if __name__ == "__main__":
     upload component. 
     """
     args = retrieve_state_arg()
-    result = pipeline(args.state, args.dry_run, args.target_date)
+    result = pipeline(args.state, args.dry_run, args.date)
 
     target_date = None
     if args.date:
