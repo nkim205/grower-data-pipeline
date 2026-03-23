@@ -4,7 +4,15 @@ import os
 import csv
 
 class Cleaner(Component):
+    """
+    Cleans up both the raw and dashboard version of metrics by formatting all columns. Also adds the FIPs
+    codes to all counties in the dashboard export.
+    """
+
     def __init__(self, name: str, state, date):
+        """
+        Initializes the FIPs mappings into self.fips along with the state and date being processed.
+        """
         super().__init__(name)
         self.state = state
         self.date = date
@@ -18,6 +26,9 @@ class Cleaner(Component):
 
 
     def merge(self, data):
+        """
+        Merges the export data with the FIPs mapping file using county names
+        """
         data["county_clean"] = data["county"].str.strip().str.lower()
         
         # Merge metrics output with FIPS file
@@ -34,6 +45,9 @@ class Cleaner(Component):
 
 
     def get_final(self, data, type):
+        """
+        Formats the data to include all necessary columns and information
+        """
         final = pd.DataFrame({
             "County": data["county"].str.title(),
             "FIPS": data["fips"],
