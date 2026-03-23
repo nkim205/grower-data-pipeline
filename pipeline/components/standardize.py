@@ -5,7 +5,7 @@ import os
 import csv
 
 class Standardize(Component):
-    f"""
+    """
     A helper class used by process.py to clean up and standardize raw data from retrieve.py, transforming
     things like column names, county names, etc. This class relies on pipeline/mappings/{STATE} to know 
     how different raw inputs map to our standaardized outputs.  
