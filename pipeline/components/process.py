@@ -259,13 +259,15 @@ class Processing(Component):
                                 reports, aggregated by county and used for SAIFI calculations.
         """
 
-        df_list = data.data[1]
+        df_list = data.data[1]  # List of providers and their raw reports
         std_df_list = []
 
+        # Standardize each provider to contain just discrete outages and combine into a list of providers
         for df in df_list:
             std_df = self.std.standardize(df.copy())[1]
             std_df_list.append(std_df)
 
+        # Combine all raw data and process into a list of DataFrames for each county
         combined_std_data = pd.concat(std_df_list, ignore_index=True)
 
         processed_data = self.process([data.data[0].copy()])
@@ -281,5 +283,4 @@ class Processing(Component):
         }
 
         per_county_data = DataWrapper(data=output, metadata=metadata)
-        # we can return this data to the next component of the pipeline
         return per_county_data
