@@ -19,7 +19,7 @@ HEAD_BYTES = 500
 TAIL_BYTES = 2.5 * 1024 * 1024      # Tune this to change the amount of bytes being read per truncated file
 THRESHOLD_BYTES = 4 * 1024 * 1024   # Tune this to change what file size to start truncating (e.g. max file size to download)
 USE_OPTIMIZATION = True             # Set to False when testing using full downloads, set to True when wanting to truncate large files
-STALE_THRESHOLD = 2                 # Ignore files not updated in the past X days
+STALE_THRESHOLD = 4                 # Ignore files not updated in the past X days
 
 class DataRetrievalS3(Component):
     """
@@ -187,7 +187,43 @@ class DataRetrievalS3(Component):
             csv_file = output_file.replace(".xlsx", ".csv")
             report_df.to_csv(csv_file, index=False)
             print(f"'openpyxl' not installed. NaN report saved to {csv_file}")
-    
+
+    def retrieve_all(self):
+        """
+        Retrieve's all raw data from the s3 bucket without any optimizations or restrictions. 
+        This is used to help backfill historical data for new states or states that we have 
+        not yet created historical metrics for. 
+        """
+        s3 = boto3.client("s3")
+        prefix = f"{self.state}/"
+        response = s3.list_objects_v2(Bucket=self.bucket, Prefix=prefix)
+
+        if "Contents" not in response:
+            print(f"No files found for state: {self.state}")
+            return []
+
+        dfs = []
+
+        for obj in response["Contents"]:
+            key = obj["Key"]
+
+            if key.lower().endswith(".csv") and re.search(r"per[_]?count(y|ies)?", key, re.IGNORECASE):
+                s3_obj = s3.get_object(Bucket=self.bucket, Key=key)
+                df = pd.read_csv(io.BytesIO(s3_obj["Body"].read()), low_memory=False)
+                
+                if "timestamp" not in df.columns:
+                    continue
+
+                df["timestamp"] = pd.to_datetime(df["timestamp"], errors="coerce", format="mixed")
+                if not df.empty:
+                    df["source_file"] = key
+                    dfs.append(df)
+
+        if not dfs:
+            return []
+        
+        combined = pd.concat(dfs, ignore_index=True)
+        return combined
 
     def run(self, data):
         """
