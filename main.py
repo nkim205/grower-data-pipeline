@@ -14,7 +14,7 @@ def retrieve_state_arg() -> argparse.Namespace:
     """
     Parses and returns command line arguments. Run with --help to see all options
     """
-    parser = argparse.ArgumentParser(description="Retrieve per-county outage data from S3")
+    parser = argparse.ArgumentParser(description="Retrieve per-county outage data from s3")
     parser.add_argument("state", type=str, help="Two-letter state code (e.g., al, ga)")
     parser.add_argument("--dry-run", action="store_true", help="Run pipeline without uploading to s3")
     parser.add_argument("--date", type=str, help="Specific date to process (YYYY-MM-DD)")
