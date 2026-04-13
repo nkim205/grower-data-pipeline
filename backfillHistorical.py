@@ -7,7 +7,7 @@ PURPOSE:
     locally once when adding a new state.
 
 HOW TO RUN & ARGUMENTS:
-    python backfillHistorical.py <state> [--start-date YYYY-MM-DD] [--dry-run] [--dev]
+    python backfillHistorical.py <state> [--start-date YYYY-MM-DD] [--prod-run] [--dev]
     
     state           Two letter lowercase state code (e.g. ga, nc)
     --start-date    Date to begin backfilling from. The default value (2025-08-01) is recommended, as 
@@ -15,8 +15,9 @@ HOW TO RUN & ARGUMENTS:
     --prod-run      Upload to production s3 bucket (state-metrics). Default set to false.
     --dev-run       Upload to state-metrics-dev instead of state-metrics. Default set to false.
 
-    In general, you want to first do a --dry-run or --dev run to verify results, then do a production
-    run to upload results to s3. 
+    In general, you want to first do a non --prod-run or do a --dev run to verify results, then do a production
+    run to upload results to s3. By default with no arguments besides state, the backfill will run from 2025-08-01
+    to present and store results locally in testing/
 
 NOTES:
     - Uses retrieve_all() from DataRetrievalS3, which bypasses all optimizations and stale thresholds 
@@ -165,7 +166,7 @@ if prod_run:
 elif dev_run:
     print(f"✅ Successfully uploaded backfilled historical data for {state} to state-metrics-dev")
 else:
-    print(f"✅ Dry run test to backfill for {state} complete")
+    print(f"✅ Dry run test to backfill for {state} complete. Results uploaded to testing/historical/{state}")
 
 if len(skipped) > 0:
     print(f"The following date(s) were skipped: {skipped}")

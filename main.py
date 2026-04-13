@@ -4,6 +4,7 @@ from pipeline.components.retrieve import DataRetrievalS3
 from pipeline.components.process import Processing
 from pipeline.components.metrics import Metrics
 from pipeline.components.cleaner import Cleaner
+from pipeline.components.historical import UploadHistorical
 from pipeline.components.uploader import WriteToS3
 from pipeline.base import DataWrapper
 from datetime import datetime, timedelta
@@ -41,8 +42,24 @@ def execute_pipeline(components) -> DataWrapper:
         
     return component_result 
 
+def is_morning_cron():
+    return os.environ.get("SCHEDULED_CRON") == '0 11 * * *'
 
-def pipeline(state, dry_run, target_date) -> DataWrapper:
+def resolve_date(date_arg):
+    if date_arg:
+        return datetime.strptime(date_arg, "%Y-%m-%d").date()
+    
+    offset = 0
+    
+    # On ALL pushes, use yesterday's date for metrics. 
+    # Automated daily runs will resolve to today's date when necessary
+    if is_morning_cron() or os.environ.get("GITHUB_EVENT_NAME") == 'push':
+        offset = 1
+    
+    return (datetime.now() - timedelta(days=offset)).date()
+
+
+def pipeline() -> DataWrapper:
     """
     Builds and executes the full pipeline for a given state and date.
     Components are initialized in order and run sequentially via execute_pipeline().
@@ -55,12 +72,7 @@ def pipeline(state, dry_run, target_date) -> DataWrapper:
     args = retrieve_state_arg()
     state = args.state
     dry_run = args.dry_run
-    target_date = None
-
-    if args.date:
-        target_date = datetime.strptime(args.date, "%Y-%m-%d").date()
-    else:
-        target_date = (datetime.now() - timedelta(days=1)).date()
+    target_date = resolve_date(args.date)
 
     # Initialize different components
     retrieve = DataRetrievalS3(name="Retrieve Outage Data from S3", state=state, date=target_date)
@@ -73,6 +85,11 @@ def pipeline(state, dry_run, target_date) -> DataWrapper:
     if not dry_run:
         branch = os.environ.get("BRANCH_NAME", "dev")
         bucket_name = "state-metrics" if branch == "main" else "state-metrics-dev"
+
+        if os.environ.get("BRANCH_NAME") == "main":
+            uploadHistorical = UploadHistorical(name='Append and upload historical data to S3', bucket_name=bucket_name)
+            components.append(uploadHistorical) 
+
         upload = WriteToS3(name='Upload Processed Data to S3', bucket_name=bucket_name)
         components.append(upload)
 
@@ -86,13 +103,9 @@ if __name__ == "__main__":
     upload component. 
     """
     args = retrieve_state_arg()
-    result = pipeline(args.state, args.dry_run, args.date)
+    result = pipeline()
 
-    target_date = None
-    if args.date:
-        target_date = datetime.strptime(args.date, "%Y-%m-%d").date()
-    else:
-        target_date = (datetime.now() - timedelta(days=1)).date()
+    target_date = resolve_date(args.date)
 
     if args.dry_run:       
         formatted_df = result.data[1]
