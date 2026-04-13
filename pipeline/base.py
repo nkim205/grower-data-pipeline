@@ -1,44 +1,78 @@
 import time
-import pandas as pd
 from datetime import datetime
 
-# this a wrapper class where we hold the ouput (pandas dataframe) for each component
-# this allows us to store metadata about each df
 class DataWrapper:
+    """
+    Wraps the output of a pipeline component, bundling the data payload 
+    together with a metadata dictionary for tracking execution information.
+    """
+
     def __init__(self, data, metadata=None):
+        """
+        Args:
+            data:       The output from a pipeline component. Can be a DataFrame,
+                        a list of DataFrams, or a dictionary depending on the stage.
+            metadata:   Optional dictionary for tracking execution information 
+                        (component name, start time, duration). Defaults to an 
+                        empty dictionary. 
+        """
         self.data = data
         self.metadata = metadata if metadata is not None else {}
 
-# this is our superclass for each of our pipeline components
-# pipeline components will inherit from this class
+
+
 class Component:
+    """
+    Base class for all pipeline components. Subclasses must implement run().
+    
+    Each component receives a DataWrapper from the previous stage, performs
+    work, and returns a new DataWrapper. Call execute_component() rather 
+    than run() directly.
+    """
+
     def __init__(self, name):
         self.component_name = name
 
     def start_time(self) -> str:
-        # this is the format of time (Tue Oct 21 18:09:32 2025)
-        return datetime.now().strftime("%c")
+        return datetime.now().strftime("%c")    # e.g. 'Tue Oct 21 18:09:32 2025`
 
     def time_elapsed(self, start: float, end: float) -> float:
         return end - start
     
     # Subclasses need to override this, all components will need to implement this method
     def run(self, data) -> DataWrapper:
+        """
+        Executes this component's logic. Must be overriden by all components.
+
+        Args:
+            data: A DataWrapper containing the output from the previous pipeline 
+            stage. Defaults to None for the first component.
+
+        Returns:
+            DataWrapper: The processed output to pass onto the next stage.
+        """
         raise NotImplementedError
     
-    # Metadata we are collecting for every component
-    # 1) when component execution begins
-    # 2) the duration of execution
-    # we can add more metadata to the dictionary as needed
+
+
     def execute_component(self, data) -> DataWrapper:
-        # log start time and start stopwatch
+        """
+        Wraps run() with timing and metadata tracking. main.py calls this on 
+        each component. Do not call run() directly.
+
+        Tracks the following to the result's metadata dict:
+            - component_name: the name passed into __init__
+            - start_time: human readable timestamp when execution began
+            - duration: formatted elapsed time string (e.g. '0h 00m 1.3s')
+        """
+
         component_start_time = self.start_time()
         t0 = time.perf_counter()
 
-        # call the subclasses run implementation, result type will be of DataWrapper
+        # Call the subclasses run implementation, result type will be of DataWrapper
         component_result = self.run(data)
 
-        # we've finished component execution, now stop the timer
+        # Stop the timer
         t1 = time.perf_counter()
 
         # calculate how component execution took and convert into readable format
@@ -53,12 +87,4 @@ class Component:
              "duration" : duration,
             })
         
-        # we return the result so the next pipeline component can use the previous result
         return component_result
-
-
-
-
-    
-
-

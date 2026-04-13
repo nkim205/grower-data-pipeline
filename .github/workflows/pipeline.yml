@@ -114,5 +114,6 @@ jobs:
       - name: Execute pipeline
         env:
           BRANCH_NAME: ${{ github.ref_name }}
+          SCHEDULED_CRON: ${{ github.event.schedule }}
         run: |
           python main.py "$STATE_CODE"
