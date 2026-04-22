@@ -1,0 +1,27 @@
+# S3 partial-download settings per state. Omitted keys inherit from `defaults`.
+# tail_bytes: bytes read from the end of each large CSV (see retrieve.py).
+# threshold_bytes: files *larger than* this use head+tail optimization when use_optimization is true.
+#
+# utilization_threshold_high: for optimized pulls, row_share = (target-day rows) / (all rows in chunk).
+#   If share is at or above this, the tail window may be too small (truncation risk) — auto-expand later.
+#   0.50 is too loose (normal multi-day tails will fire often). 0.85–0.90 is a common starting range.
+# utilization_log_low: if share is at or below this, tail may be wasteful — log only, no auto-shrink.
+
+defaults:
+  head_bytes: 500
+  tail_bytes: 524288 # 500 KB
+  threshold_bytes: 2097152 # 2 MB — use optimization above this file size
+  stale_threshold_days: 2
+  use_optimization: true
+  utilization_threshold_high: 0.8
+  utilization_log_low: 0.3
+
+states:
+  al: { tail_bytes: 300000 }
+  fl: { tail_bytes: 250000 }
+  ga: { tail_bytes: 200000 }
+  il: { tail_bytes: 100000 }
+  la: { tail_bytes: 250000 }
+  ms: { tail_bytes: 150000 }
+  nc: { tail_bytes: 25000 }
+  sc: { tail_bytes: 100000 }

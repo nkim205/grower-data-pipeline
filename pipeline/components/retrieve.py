@@ -1,4 +1,6 @@
 from pipeline.base import Component, DataWrapper
+from pipeline.config import get_state_retrieve_params
+from pipeline.reporting import print_retrieve_bytes_summary, print_utilization_report
 import boto3
 import pandas as pd
 import io
@@ -6,20 +8,12 @@ from datetime import datetime, timedelta, timezone
 import argparse
 import re
 import os
+from typing import Any
 
 """
-The following constants define the parameters for the partial download optimization. Instead of downloading
-every large file in its entirety, the pipeline fetches only the first HEAD_BYTES (the header row) and the 
-last TAIL_BYTES of the file, reassembling them into a valid CSV. This also defines a STALE_THRESHOLD, so we
-ignore files that have not been updated with the most recent data.
-
-TODO: implement dynamic buffer size logic
+S3 per-state outage retrieve: head+tail optimization for large CSVs, buffer settings from
+pipeline/config/retrieve_buffers.yaml. Utilization/byte logging lives in pipeline.reporting.retrieve_log.
 """
-HEAD_BYTES = 500
-TAIL_BYTES = 2.5 * 1024 * 1024      # Tune this to change the amount of bytes being read per truncated file
-THRESHOLD_BYTES = 4 * 1024 * 1024   # Tune this to change what file size to start truncating (e.g. max file size to download)
-USE_OPTIMIZATION = True             # Set to False when testing using full downloads, set to True when wanting to truncate large files
-STALE_THRESHOLD = 4                 # Ignore files not updated in the past X days
 
 class DataRetrievalS3(Component):
     """
@@ -38,6 +32,9 @@ class DataRetrievalS3(Component):
         self.state = state
         self.bucket = bucket
         self.date = date
+        # Partial pulls only; kept for future tail autotune. See _last_utilization_records for all files.
+        self._last_optimized_utilization_records: list[dict[str, Any]] = []
+        self._last_utilization_records: list[dict[str, Any]] = []
 
     def retrieve(self, days: int = 1) -> list[pd.DataFrame]:
         """
@@ -76,9 +73,20 @@ class DataRetrievalS3(Component):
             print(f"No files found for state: {self.state}")
             return []
 
+        params = get_state_retrieve_params(self.state)
+        head_bytes = params["head_bytes"]
+        tail_bytes = params["tail_bytes"]
+        threshold_bytes = params["threshold_bytes"]
+        stale_threshold_days = params["stale_threshold_days"]
+        use_optimization = params["use_optimization"]
+        util_threshold_high = params["utilization_threshold_high"]
+        util_log_low = params["utilization_log_low"]
+
         dfs = []
         bytes_available = 0
         bytes_downloaded = 0
+        partial_util_records: list[dict[str, Any]] = []
+        full_util_records: list[dict[str, Any]] = []
 
         # Loop through each file in state folder
         for obj in response["Contents"]:
@@ -92,17 +100,19 @@ class DataRetrievalS3(Component):
 
                 bytes_available += f_size
 
-                cutoff = datetime.now(timezone.utc) - timedelta(days=STALE_THRESHOLD)
+                cutoff = datetime.now(timezone.utc) - timedelta(days=stale_threshold_days)
                 if last_modified < cutoff:
                     continue
 
-                if USE_OPTIMIZATION and f_size > THRESHOLD_BYTES:
-                    bytes_downloaded += int(HEAD_BYTES) + int(TAIL_BYTES)
+                is_partial = bool(use_optimization and f_size > threshold_bytes)
+                if is_partial:
+                    bytes_pulled = head_bytes + tail_bytes
+                    bytes_downloaded += head_bytes + tail_bytes
 
-                    head_resp = s3.get_object(Bucket=self.bucket, Key=key, Range=f"bytes=0-{HEAD_BYTES}")
+                    head_resp = s3.get_object(Bucket=self.bucket, Key=key, Range=f"bytes=0-{head_bytes}")
                     header_line = head_resp["Body"].read().decode("utf-8", errors="replace").splitlines()[0]
 
-                    tail_resp = s3.get_object(Bucket=self.bucket, Key=key, Range=f"bytes=-{TAIL_BYTES}")
+                    tail_resp = s3.get_object(Bucket=self.bucket, Key=key, Range=f"bytes=-{tail_bytes}")
                     tail_content = tail_resp["Body"].read().decode("utf-8", errors="replace")
 
                     lines = tail_content.splitlines()
@@ -110,6 +120,7 @@ class DataRetrievalS3(Component):
 
                     df = pd.read_csv(io.StringIO(safe_content), low_memory=False)
                 else:
+                    bytes_pulled = f_size
                     bytes_downloaded += f_size
                     s3_obj = s3.get_object(Bucket=self.bucket, Key=key)
                     df = pd.read_csv(io.BytesIO(s3_obj["Body"].read()), low_memory=False)
@@ -121,7 +132,42 @@ class DataRetrievalS3(Component):
                 # Convert timestamp to datetime
                 df["timestamp"] = pd.to_datetime(df["timestamp"], errors="coerce")
 
-                # Keep rows starting at the target_date until now
+                n_chunk = len(df)   # Total number of rows pulled
+                if n_chunk == 0:
+                    row_u: float | None = None
+                    n_target = 0
+                else:
+                    # Calculate the utilization rate (i.e. fraction of rows that match the target date)
+                    date_series = df["timestamp"].dt.date
+                    n_target = int((date_series == target_date).sum())
+                    row_u = n_target / n_chunk
+                
+                # Add utilization note to each file
+                est_target_bytes = (row_u * bytes_pulled) if row_u is not None else 0.0
+                if row_u is not None and row_u >= util_threshold_high:
+                    note = "high"
+                elif row_u is not None and row_u <= util_log_low:
+                    note = "low"
+                else:
+                    note = ""
+
+                # Create summary of data
+                rec: dict[str, Any] = {
+                    "key": key,
+                    "f_size": f_size,
+                    "bytes_pulled": bytes_pulled,
+                    "n_chunk": n_chunk,
+                    "n_target_rows": n_target,
+                    "row_utilization": row_u,
+                    "est_target_bytes": est_target_bytes,
+                    "note": note,
+                }
+                if is_partial:
+                    partial_util_records.append(rec)
+                else:
+                    full_util_records.append(rec)
+
+                # Keep rows for the target date only (downstream)
                 df = df[df["timestamp"].dt.date == target_date]
 
                 if not df.empty:
@@ -139,11 +185,15 @@ class DataRetrievalS3(Component):
             raise ValueError(f"Expected column '{provider_col}' not found in data")
 
         provider_dfs = [group for _, group in combined.groupby(provider_col)]
-        
-        mb = lambda b: round(b / (1024 * 1024), 2)
-        print(f"[{self.state.upper()}] Files scanned: {bytes_available / (1024*1024):.1f} MB available")
-        print(f"[{self.state.upper()}] Actually downloaded: {mb(bytes_downloaded)} MB")
-        print(f"[{self.state.upper()}] Reduction: {100 - (bytes_downloaded / bytes_available * 100):.1f}%")
+
+        print_retrieve_bytes_summary(self.state, bytes_available, bytes_downloaded)
+
+        all_util = partial_util_records + full_util_records
+        self._last_optimized_utilization_records = partial_util_records
+        self._last_utilization_records = all_util
+        print_utilization_report(
+            self.state, partial_util_records, full_util_records, util_threshold_high, util_log_low
+        )
 
         return provider_dfs
     
